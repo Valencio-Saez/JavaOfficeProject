@@ -37,9 +37,9 @@ public class LoginController : Controller
         // TODO: This method should return a status 200 OK when logged in, else 403, unauthorized
 
         if (HttpContext.Session.Get("adminLoggedIn") != null)
-            return Ok("Logged in");
+            return Ok("Admin logged in");
         else
-            return Unauthorized("You are not logged in");
+            return Forbid("You are not logged in");
     }
 
     [HttpGet("Logout")]
