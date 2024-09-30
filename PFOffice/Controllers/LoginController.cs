@@ -9,7 +9,7 @@ namespace StarterKit.Controllers;
 public class LoginController : Controller
 {
     private readonly ILoginService _loginService;
-    
+
 
     public LoginController(ILoginService loginService)
     {
@@ -19,15 +19,27 @@ public class LoginController : Controller
     [HttpPost("Login")]
     public IActionResult Login([FromBody] LoginBody loginBody)
     {
-        // TODO: Impelement login method
-        return Unauthorized("Incorrect password");
+        if (loginBody == null || string.IsNullOrEmpty(loginBody.Username) || string.IsNullOrEmpty(loginBody.Password))
+            return BadRequest("Invalid login request");
+        var result = _loginService.CheckPassword(loginBody.Username, loginBody.Password);
+
+        if (result == LoginStatus.Success)
+        {
+            return Ok("Logged in");
+        }
+        else
+            return Unauthorized("Incorrect password");
     }
 
     [HttpGet("IsAdminLoggedIn")]
     public IActionResult IsAdminLoggedIn()
     {
         // TODO: This method should return a status 200 OK when logged in, else 403, unauthorized
-        return Unauthorized("You are not logged in");
+
+        if (HttpContext.Session.Get("adminLoggedIn") != null)
+            return Ok("Logged in");
+        else
+            return Unauthorized("You are not logged in");
     }
 
     [HttpGet("Logout")]
