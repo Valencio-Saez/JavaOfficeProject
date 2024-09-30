@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EIeoVcJFZZU=",
+  "dgSpecHash": "GX/jKFXRBeQ=",
   "success": true,
-  "projectFilePath": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/StarterKit.csproj",
+  "projectFilePath": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/StarterKit.csproj",
   "expectedPackageFiles": [
     "/Users/valenciomuskiet/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/Users/valenciomuskiet/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",

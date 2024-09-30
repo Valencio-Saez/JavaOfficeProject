@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/StarterKit.csproj": {}
+    "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/StarterKit.csproj": {}
   },
   "projects": {
-    "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/StarterKit.csproj": {
+    "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/StarterKit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/StarterKit.csproj",
+        "projectUniqueName": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/StarterKit.csproj",
         "projectName": "StarterKit",
-        "projectPath": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/StarterKit.csproj",
+        "projectPath": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/StarterKit.csproj",
         "packagesPath": "/Users/valenciomuskiet/.nuget/packages/",
-        "outputPath": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/obj/",
+        "outputPath": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/valenciomuskiet/.nuget/NuGet/NuGet.Config"
