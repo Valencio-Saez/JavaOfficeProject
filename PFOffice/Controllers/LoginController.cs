@@ -21,25 +21,33 @@ public class LoginController : Controller
     {
         if (loginBody == null || string.IsNullOrEmpty(loginBody.Username) || string.IsNullOrEmpty(loginBody.Password))
             return BadRequest("Invalid login request");
+
         var result = _loginService.CheckPassword(loginBody.Username, loginBody.Password);
+
+        if (result == LoginStatus.IncorrectUsername)
+        {
+            return Unauthorized("Incorrect username");
+        }
+
+        if (result == LoginStatus.IncorrectPassword)
+        {
+            return Unauthorized("Incorrect password");
+        }
 
         if (result == LoginStatus.Success)
         {
+            HttpContext.Session.SetString("adminLoggedIn", loginBody.Username);
             return Ok("Logged in");
         }
-        else
-            return Unauthorized("Incorrect password");
+
+        return Unauthorized("Incorrect password");
     }
 
     [HttpGet("IsAdminLoggedIn")]
     public IActionResult IsAdminLoggedIn()
     {
-        // TODO: This method should return a status 200 OK when logged in, else 403, unauthorized
-
-        if (HttpContext.Session.Get("adminLoggedIn") != null)
-            return Ok("Admin logged in");
-        else
-            return Forbid("You are not logged in");
+        bool isLoggedIn = HttpContext.Session.GetString("adminLoggedIn") != null;
+        return Ok(isLoggedIn);
     }
 
     [HttpGet("Logout")]

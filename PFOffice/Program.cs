@@ -45,13 +45,12 @@ namespace StarterKit
 
             app.UseSession();
 
-            //app.MapControllerRoute(
-                //name: "default",
-                //pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             
             app.MapGet("/", () => Results.Content("Testing Script", "text/html"));
-
 
             app.Run();
 

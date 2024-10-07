@@ -20,21 +20,21 @@ public class LoginService : ILoginService
 
     public LoginStatus CheckPassword(string username, string inputPassword)
     {
-            var admin = _context.Admin.FirstOrDefault(a => a.UserName == username);
+        var admin = _context.Admin.FirstOrDefault(a => a.UserName == username);
+        string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
         // TODO: Make this method check the password with what is in the database
-        if (admin == null)
+        if (admin.UserName == null || admin.UserName != username)
+        {
+            return LoginStatus.IncorrectUsername;
+        }
+        if (admin.Password == null || admin.Password != encryptedPassword)
         {
             return LoginStatus.IncorrectPassword;
         }
-
-
-        string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
-        if (admin.Password == encryptedPassword)
+        if (admin.Password == encryptedPassword && admin.UserName == username)
         {
-            // Password matches
             return LoginStatus.Success;
         }
-
         return LoginStatus.IncorrectPassword;
     }
 }
