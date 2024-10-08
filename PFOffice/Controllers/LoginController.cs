@@ -10,7 +10,7 @@ public class LoginController : Controller
 {
     private readonly ILoginService _loginService;
     // var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
-
+    private bool isLoggedIn;
     public LoginController(ILoginService loginService)
     {
         _loginService = loginService;
@@ -46,13 +46,14 @@ public class LoginController : Controller
     [HttpGet("IsAdminLoggedIn")]
     public IActionResult IsAdminLoggedIn()
     {
-        bool isLoggedIn = HttpContext.Session.GetString("adminLoggedIn") != null;
+        isLoggedIn = HttpContext.Session.GetString("adminLoggedIn") != null;
         return Ok(isLoggedIn);
     }
 
     [HttpGet("Logout")]
     public IActionResult Logout()
     {
+        HttpContext.Session.Remove("adminLoggedIn");
         return Ok("Logged out");
     }
 
