@@ -9,7 +9,7 @@ namespace StarterKit.Controllers;
 public class LoginController : Controller
 {
     private readonly ILoginService _loginService;
-
+    // var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
 
     public LoginController(ILoginService loginService)
     {
@@ -37,7 +37,7 @@ public class LoginController : Controller
         if (result == LoginStatus.Success)
         {
             HttpContext.Session.SetString("adminLoggedIn", loginBody.Username);
-            return Ok("Logged in");
+            return Ok(new { Message = "Logged in" });
         }
 
         return Unauthorized("Incorrect password");

@@ -47,14 +47,12 @@ namespace StarterKit
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
 
             
             app.MapGet("/", () => Results.Content("Testing Script", "text/html"));
-
             app.Run();
-
-
         }
     }
 }
