@@ -37,7 +37,7 @@ public class LoginController : Controller
         if (result == LoginStatus.Success)
         {
             HttpContext.Session.SetString("adminLoggedIn", loginBody.Username);
-            return Ok(new { Message = "Logged in" });
+            return Ok($"User {loginBody.Username} logged in");
         }
 
         return Unauthorized("Incorrect password");

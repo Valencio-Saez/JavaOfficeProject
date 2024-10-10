@@ -1,7 +1,7 @@
 GET http://localhost:5097/
 ###
 
-POST http://localhost:5097/api/v1/Login/Login HTTP/1.1
+POST http://localhost:5097/api/v1/Login/Login
 content-Type: application/json
 
 {
