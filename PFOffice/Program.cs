@@ -22,6 +22,8 @@ namespace StarterKit
             });
 
             builder.Services.AddScoped<ILoginService, LoginService>();
+            builder.Services.AddScoped<IEventService, EventService>();
+
 
             builder.Services.AddDbContext<DatabaseContext>(
                 options => options.UseSqlite(builder.Configuration.GetConnectionString("SqlLiteDb")));
@@ -50,8 +52,7 @@ namespace StarterKit
                 pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
 
-            
-            app.MapGet("/", () => Results.Content("Testing Script", "text/html"));
+            //app.MapGet("/", () => Results.Content("Testing Script", "text/html"));
             app.Run();
         }
     }

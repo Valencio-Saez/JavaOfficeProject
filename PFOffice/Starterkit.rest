@@ -1,3 +1,5 @@
+
+##### Login tests #####
 GET http://localhost:5097/
 ###
 
@@ -14,4 +16,10 @@ GET http://localhost:5097/api/v1/Login/IsAdminLoggedIn
 ###
 
 GET http://localhost:5097/api/v1/Login/Logout
+###
+
+
+##### Event tests #####
+GET http://localhost:5097/api/v1/Event/GetAllEvents
+Accept: application/json
 ###
