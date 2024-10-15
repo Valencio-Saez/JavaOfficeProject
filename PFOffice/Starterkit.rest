@@ -5,10 +5,18 @@ POST http://localhost:5097/api/v1/Login/Login
 content-Type: application/json
 
 {
-    "Username": "admin1",
+    "UserName": "admin1",
     "Password": "password"
 }
 ###
+
+POST http://localhost:5097/api/v1/Login/Login
+content-Type: application/json
+
+{
+    "Email": "AdrianYan@example.com",
+    "Password": "userpassword"
+}
 
 GET http://localhost:5097/api/v1/Login/IsAdminLoggedIn
 ###

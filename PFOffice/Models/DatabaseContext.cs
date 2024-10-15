@@ -21,6 +21,8 @@ namespace StarterKit.Models
         {
             modelBuilder.Entity<Admin>()
                 .HasIndex(p => p.UserName).IsUnique();
+            modelBuilder.Entity<User>()
+                .HasIndex(p => p.Email).IsUnique();
 
             // Seed data for Admin
             modelBuilder.Entity<Admin>()
@@ -33,6 +35,18 @@ namespace StarterKit.Models
                 .HasData(new Admin { AdminId = 4, Email = "admin4@example.com", UserName = "admin4", Password = EncryptionHelper.EncryptPassword("Welcome123") });
             modelBuilder.Entity<Admin>()
                 .HasData(new Admin { AdminId = 5, Email = "admin5@example.com", UserName = "admin5", Password = EncryptionHelper.EncryptPassword("Whatisapassword?") });
+            modelBuilder.Entity<User>()
+            .HasData(new User
+            {
+                UserId = 1,
+                Email = "AdrianYan@example.com",
+                FirstName = "Adrian",
+                LastName = "Yan",
+                RecuringDays = "mo,tu,we,th,fr",
+                Attendances = new List<Attendance>(),
+                Event_Attendances = new List<Event_Attendance>(),
+                Password = EncryptionHelper.EncryptPassword("userpassword")
+            });
         }
     }
 }
