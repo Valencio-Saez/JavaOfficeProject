@@ -57,5 +57,6 @@ namespace StarterKit.Models
         public bool AdminApproval { get; set; }
 
         public required List<Event_Attendance> Event_Attendances { get; set; }
+        public string Review { get; set; } = "";
     }
 }

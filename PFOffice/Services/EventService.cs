@@ -26,5 +26,20 @@ namespace StarterKit.Services
         }
 
         // Other methods like Create, Update, Delete can be added here
+        public async Task<Event> AddReviewAsync(int eventId, string review)
+        {
+            var eventEntity = await _context.Event.FindAsync(eventId);
+            if (!eventEntity == null)
+            {
+                if (eventEntity.Review != "")
+                {
+                    _context.Event.Review = review;
+                    //await _context.SaveChangesAsync();
+                    return await eventEntity;
+                }
+                return await eventEntity;
+            }
+            throw new NotFoundException("Event not found");
+        }
     }
 }

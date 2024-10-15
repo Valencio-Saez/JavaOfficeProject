@@ -21,6 +21,13 @@ namespace StarterKit.Controllers
 
             return Ok(events);
         }
+
+        [HttpPost("{eventId}/reviews")]
+        public async Task<IActionResult> PostReview(int eventId, string review)
+        {
+            var newReview = await _eventService.AddReviewAsync(eventId, review);
+            return CreatedAtAction("PostReview", newReview);
+        }
     }
 }
 
