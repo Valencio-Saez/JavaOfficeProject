@@ -72,7 +72,6 @@ namespace StarterKit.Controllers
 
 }
 
-// Deze class blijft onveranderd
 public class Eventbody
 {
     public required string Title { get; set; }
