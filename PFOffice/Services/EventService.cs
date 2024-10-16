@@ -14,6 +14,7 @@ namespace StarterKit.Services
             _context = context;
         }
 
+        // Read
         public async Task<List<Event>> GetAllEventsAsync()
         {
             
@@ -31,6 +32,6 @@ namespace StarterKit.Services
         }
         
 
-        //  Create, Update, Delete hieronder toevoegen
+        //  Update, Delete hieronder toevoegen
     }
 }
