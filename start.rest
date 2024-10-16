@@ -1,0 +1,11 @@
+###
+GET http://localhost:5097
+###
+POST http://localhost:5097/api/v1/Login/Login
+Content-Type: application/json
+
+{
+    "username": "admin1",
+    "password": "password"
+}
+###
