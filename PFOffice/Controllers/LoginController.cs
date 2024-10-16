@@ -19,14 +19,14 @@ public class LoginController : Controller
     [HttpPost("Login")]
     public IActionResult Login([FromBody] LoginBody loginBody)
     {
-        if (loginBody == null || string.IsNullOrEmpty(loginBody.Username) || string.IsNullOrEmpty(loginBody.Password))
+        if (loginBody == null || string.IsNullOrEmpty(loginBody.UserName) || string.IsNullOrEmpty(loginBody.Password))
             return BadRequest("Invalid login request");
 
-        var result = _loginService.CheckPassword(loginBody.Username, loginBody.Password);
+        var result = _loginService.CheckPassword(loginBody.UserName, loginBody.Password);
 
-        if (result == LoginStatus.IncorrectUsername)
+        if (result == LoginStatus.IncorrectEmail)
         {
-            return Unauthorized("Incorrect username");
+            return Unauthorized("Incorrect ");
         }
 
         if (result == LoginStatus.IncorrectPassword)
@@ -36,8 +36,16 @@ public class LoginController : Controller
 
         if (result == LoginStatus.Success)
         {
-            HttpContext.Session.SetString("adminLoggedIn", loginBody.Username);
-            return Ok(new { Message = "Logged in" });
+            if (loginBody.UserName.Substring(0, 4) == "admin")
+            {
+                HttpContext.Session.SetString("adminLoggedIn", loginBody.Password);
+                return Ok($"User {loginBody.UserName} logged in");
+            }
+            else
+            {
+                HttpContext.Session.SetString("userLoggedIn", loginBody.Password);
+                return Ok($"User {loginBody.UserName} logged in");
+            }
         }
 
         return Unauthorized("Incorrect password");
@@ -61,6 +69,6 @@ public class LoginController : Controller
 
 public class LoginBody
 {
-    public string? Username { get; set; }
+    public string? UserName { get; set; }
     public string? Password { get; set; }
 }

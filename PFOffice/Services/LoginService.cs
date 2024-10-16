@@ -3,7 +3,7 @@ using StarterKit.Utils;
 
 namespace StarterKit.Services;
 
-public enum LoginStatus { IncorrectPassword, IncorrectUsername, Success }
+public enum LoginStatus { IncorrectPassword, IncorrectUsername, IncorrectEmail, Success }
 
 public enum ADMIN_SESSION_KEY { adminLoggedIn }
 
@@ -18,23 +18,28 @@ public class LoginService : ILoginService
         _context = context;
     }
 
-    public LoginStatus CheckPassword(string username, string inputPassword)
+    public LoginStatus CheckPassword(string email, string inputPassword)
     {
-        var admin = _context.Admin.FirstOrDefault(a => a.UserName == username);
+        var admin = _context.Admin.FirstOrDefault(a => a.Email == email);
+        var user = _context.User.FirstOrDefault(u => u.Email == email);
 
         if (admin == null)
         {
-            return LoginStatus.IncorrectUsername;
+            return LoginStatus.IncorrectEmail;
         }
-
+        if (email != admin.Email || email != user.Email)
+        {
+            return LoginStatus.IncorrectEmail;
+        }
         string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
 
-        if (admin.Password != encryptedPassword)
+        if (admin.Password != encryptedPassword || user.Password != encryptedPassword)
         {
             return LoginStatus.IncorrectPassword;
         }
 
         return LoginStatus.Success;
     }
+
 }
 
