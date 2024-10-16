@@ -23,3 +23,15 @@ GET http://localhost:5097/api/v1/Login/Logout
 GET http://localhost:5097/api/v1/Event/GetAllEvents
 Accept: application/json
 ###
+
+POST http://localhost:5097/api/v1/Event
+Content-Type: application/json
+{
+    "Title": "Test Event",
+    "Description": "Test Description",
+    "EventDate": "2021-01-01",
+    "StartTime": "00:00:00",
+    "EndTime": "00:00:00",
+    "Location": "Test Location",
+}
+###

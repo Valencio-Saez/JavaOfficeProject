@@ -81,167 +81,167 @@ namespace StarterKit.Migrations
                 });
 
             // Merging additional entities from the other version
-            modelBuilder.Entity("StarterKit.Models.Customer", b =>
-                {
-                    b.Property<int>("CustomerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+            // modelBuilder.Entity("StarterKit.Models.Customer", b =>
+            //     {
+            //         b.Property<int>("CustomerId")
+            //             .ValueGeneratedOnAdd()
+            //             .HasColumnType("INTEGER");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("TEXT");
+            //         b.Property<string>("Email")
+            //             .HasColumnType("TEXT");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("TEXT");
+            //         b.Property<string>("FirstName")
+            //             .HasColumnType("TEXT");
 
-                    b.Property<string>("LastName")
-                        .HasColumnType("TEXT");
+            //         b.Property<string>("LastName")
+            //             .HasColumnType("TEXT");
 
-                    b.HasKey("CustomerId");
+            //         b.HasKey("CustomerId");
 
-                    b.ToTable("Customer");
-                });
+            //         b.ToTable("Customer");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.Reservation", b =>
-                {
-                    b.Property<int>("ReservationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+            // modelBuilder.Entity("StarterKit.Models.Reservation", b =>
+            //     {
+            //         b.Property<int>("ReservationId")
+            //             .ValueGeneratedOnAdd()
+            //             .HasColumnType("INTEGER");
 
-                    b.Property<int>("AmountOfTickets")
-                        .HasColumnType("INTEGER");
+            //         b.Property<int>("AmountOfTickets")
+            //             .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("INTEGER");
+            //         b.Property<int?>("CustomerId")
+            //             .HasColumnType("INTEGER");
 
-                    b.Property<int?>("TheatreShowDateId")
-                        .HasColumnType("INTEGER");
+            //         b.Property<int?>("TheatreShowDateId")
+            //             .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Used")
-                        .HasColumnType("INTEGER");
+            //         b.Property<bool>("Used")
+            //             .HasColumnType("INTEGER");
 
-                    b.HasKey("ReservationId");
+            //         b.HasKey("ReservationId");
 
-                    b.HasIndex("CustomerId");
+            //         b.HasIndex("CustomerId");
 
-                    b.HasIndex("TheatreShowDateId");
+            //         b.HasIndex("TheatreShowDateId");
 
-                    b.ToTable("Reservation");
-                });
+            //         b.ToTable("Reservation");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.TheatreShow", b =>
-                {
-                    b.Property<int>("TheatreShowId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+            // modelBuilder.Entity("StarterKit.Models.TheatreShow", b =>
+            //     {
+            //         b.Property<int>("TheatreShowId")
+            //             .ValueGeneratedOnAdd()
+            //             .HasColumnType("INTEGER");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
+            //         b.Property<string>("Description")
+            //             .HasColumnType("TEXT");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("REAL");
+            //         b.Property<double>("Price")
+            //             .HasColumnType("REAL");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("TEXT");
+            //         b.Property<string>("Title")
+            //             .HasColumnType("TEXT");
 
-                    b.Property<int?>("VenueId")
-                        .HasColumnType("INTEGER");
+            //         b.Property<int?>("VenueId")
+            //             .HasColumnType("INTEGER");
 
-                    b.HasKey("TheatreShowId");
+            //         b.HasKey("TheatreShowId");
 
-                    b.HasIndex("VenueId");
+            //         b.HasIndex("VenueId");
 
-                    b.ToTable("TheatreShow");
-                });
+            //         b.ToTable("TheatreShow");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.TheatreShowDate", b =>
-                {
-                    b.Property<int>("TheatreShowDateId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+            // modelBuilder.Entity("StarterKit.Models.TheatreShowDate", b =>
+            //     {
+            //         b.Property<int>("TheatreShowDateId")
+            //             .ValueGeneratedOnAdd()
+            //             .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DateAndTime")
-                        .HasColumnType("TEXT");
+            //         b.Property<DateTime>("DateAndTime")
+            //             .HasColumnType("TEXT");
 
-                    b.Property<int?>("TheatreShowId")
-                        .HasColumnType("INTEGER");
+            //         b.Property<int?>("TheatreShowId")
+            //             .HasColumnType("INTEGER");
 
-                    b.HasKey("TheatreShowDateId");
+            //         b.HasKey("TheatreShowDateId");
 
-                    b.HasIndex("TheatreShowId");
+            //         b.HasIndex("TheatreShowId");
 
-                    b.ToTable("TheatreShowDate");
-                });
+            //         b.ToTable("TheatreShowDate");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.Venue", b =>
-                {
-                    b.Property<int>("VenueId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+            // modelBuilder.Entity("StarterKit.Models.Venue", b =>
+            //     {
+            //         b.Property<int>("VenueId")
+            //             .ValueGeneratedOnAdd()
+            //             .HasColumnType("INTEGER");
 
-                    b.Property<int>("Capacity")
-                        .HasColumnType("INTEGER");
+            //         b.Property<int>("Capacity")
+            //             .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+            //         b.Property<string>("Name")
+            //             .HasColumnType("TEXT");
 
-                    b.HasKey("VenueId");
+            //         b.HasKey("VenueId");
 
-                    b.ToTable("Venue");
-                });
+            //         b.ToTable("Venue");
+            //     });
 
-            // Relationships
-            modelBuilder.Entity("StarterKit.Models.Reservation", b =>
-                {
-                    b.HasOne("StarterKit.Models.Customer", "Customer")
-                        .WithMany("Reservations")
-                        .HasForeignKey("CustomerId");
+            // // Relationships
+            // modelBuilder.Entity("StarterKit.Models.Reservation", b =>
+            //     {
+            //         b.HasOne("StarterKit.Models.Customer", "Customer")
+            //             .WithMany("Reservations")
+            //             .HasForeignKey("CustomerId");
 
-                    b.HasOne("StarterKit.Models.TheatreShowDate", "TheatreShowDate")
-                        .WithMany("Reservations")
-                        .HasForeignKey("TheatreShowDateId");
+            //         b.HasOne("StarterKit.Models.TheatreShowDate", "TheatreShowDate")
+            //             .WithMany("Reservations")
+            //             .HasForeignKey("TheatreShowDateId");
 
-                    b.Navigation("Customer");
+            //         b.Navigation("Customer");
 
-                    b.Navigation("TheatreShowDate");
-                });
+            //         b.Navigation("TheatreShowDate");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.TheatreShow", b =>
-                {
-                    b.HasOne("StarterKit.Models.Venue", "Venue")
-                        .WithMany("TheatreShows")
-                        .HasForeignKey("VenueId");
+            // modelBuilder.Entity("StarterKit.Models.TheatreShow", b =>
+            //     {
+            //         b.HasOne("StarterKit.Models.Venue", "Venue")
+            //             .WithMany("TheatreShows")
+            //             .HasForeignKey("VenueId");
 
-                    b.Navigation("Venue");
-                });
+            //         b.Navigation("Venue");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.TheatreShowDate", b =>
-                {
-                    b.HasOne("StarterKit.Models.TheatreShow", "TheatreShow")
-                        .WithMany("theatreShowDates")
-                        .HasForeignKey("TheatreShowId");
+            // modelBuilder.Entity("StarterKit.Models.TheatreShowDate", b =>
+            //     {
+            //         b.HasOne("StarterKit.Models.TheatreShow", "TheatreShow")
+            //             .WithMany("theatreShowDates")
+            //             .HasForeignKey("TheatreShowId");
 
-                    b.Navigation("TheatreShow");
-                });
+            //         b.Navigation("TheatreShow");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.Customer", b =>
-                {
-                    b.Navigation("Reservations");
-                });
+            // modelBuilder.Entity("StarterKit.Models.Customer", b =>
+            //     {
+            //         b.Navigation("Reservations");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.TheatreShow", b =>
-                {
-                    b.Navigation("theatreShowDates");
-                });
+            // modelBuilder.Entity("StarterKit.Models.TheatreShow", b =>
+            //     {
+            //         b.Navigation("theatreShowDates");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.TheatreShowDate", b =>
-                {
-                    b.Navigation("Reservations");
-                });
+            // modelBuilder.Entity("StarterKit.Models.TheatreShowDate", b =>
+            //     {
+            //         b.Navigation("Reservations");
+            //     });
 
-            modelBuilder.Entity("StarterKit.Models.Venue", b =>
-                {
-                    b.Navigation("TheatreShows");
-                });
+            // modelBuilder.Entity("StarterKit.Models.Venue", b =>
+            //     {
+            //         b.Navigation("TheatreShows");
+            //     });
 #pragma warning restore 612, 618
         }
     }
