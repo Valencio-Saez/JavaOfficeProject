@@ -52,7 +52,7 @@ namespace StarterKit
                 pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
 
-            //app.MapGet("/", () => Results.Content("Testing Script", "text/html"));
+            app.MapGet("/", () => Results.Content("Calender Application", "text/html"));
             app.Run();
         }
     }

@@ -1,8 +1,7 @@
-
-##### Login tests #####
+### Application Initialization Test 
 GET http://localhost:5097/
-###
 
+### login POST test – Authenticate Admin or User
 POST http://localhost:5097/api/v1/Login/Login
 content-Type: application/json
 
@@ -10,18 +9,28 @@ content-Type: application/json
     "Username": "admin1",
     "Password": "password"
 }
-###
 
+### ⁠login/status GET test – Check Admin Login/Logout Status and Retrieve Name
 GET http://localhost:5097/api/v1/Login/IsAdminLoggedIn
-###
-
+### 
 GET http://localhost:5097/api/v1/Login/Logout
-###
 
 
-##### Event tests ### niet werkend wegens ontbreken database tabel
-
-
+### Events GET test – Retrieve All Events (Limited Functionality Due to Missing Database)
 GET http://localhost:5097/api/v1/Event/GetAllEvents
 Accept: application/json
-###
+
+
+### Event POST test - POST /events – Create New Event (To Be Tested with Postman; Limited Functionality Due to Missing Database)
+POST http://localhost:5097/api/v1/Event/events
+content-Type: application/json
+Authorization: Bearer {jwt_token} 
+
+{
+    "Title": "New Event",
+    "Description": "This is a new event created for testing purposes.",
+    "EventDate": "2024-12-01",
+    "StartTime": "10:00:00",
+    "EndTime": "12:00:00",
+    "Location": "Online"
+}
