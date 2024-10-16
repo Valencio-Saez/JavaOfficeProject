@@ -9,7 +9,6 @@ namespace StarterKit.Controllers;
 public class LoginController : Controller
 {
     private readonly ILoginService _loginService;
-    // var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
     private bool isLoggedIn;
     public LoginController(ILoginService loginService)
     {
@@ -51,6 +50,13 @@ public class LoginController : Controller
         return Unauthorized("Incorrect password");
     }
 
+    // public IActionResult Register([FromBody] RegisterBody registerBody)
+    // {
+    //     if (registerBody == null || string.IsNullOrEmpty(registerBody.UserName) || string.IsNullOrEmpty(registerBody.Password))
+    //         return BadRequest("Invalid register request");
+        
+    // }
+
     [HttpGet("IsAdminLoggedIn")]
     public IActionResult IsAdminLoggedIn()
     {
@@ -71,4 +77,14 @@ public class LoginBody
 {
     public string? UserName { get; set; }
     public string? Password { get; set; }
+}
+
+public class RegisterBody
+{
+    public string UserName { get; set; }
+    public string Password { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Email { get; set; }
+    public string RecuringDays { get; set; }
 }
