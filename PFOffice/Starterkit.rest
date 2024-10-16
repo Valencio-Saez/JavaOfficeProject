@@ -34,3 +34,23 @@ Authorization: Bearer {jwt_token}
     "EndTime": "12:00:00",
     "Location": "Online"
 }
+
+
+### Event PUT test - Update Existing Event
+PUT http://localhost:5097/api/v1/Event/UpdateEvent/1
+content-Type: application/json
+Authorization: Bearer {jwt_token}
+
+{
+    "Title": "Updated Event",
+    "Description": "This event has been updated for testing purposes.",
+    "EventDate": "2024-12-10",
+    "StartTime": "14:00:00",
+    "EndTime": "16:00:00",
+    "Location": "Main Hall"
+}
+
+### Event DELETE test - Delete Event
+DELETE http://localhost:5097/api/v1/Event/DeleteEvent/1
+Authorization: Bearer {jwt_token}
+###
