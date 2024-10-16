@@ -1,0 +1,25 @@
+
+##### Login tests #####
+GET http://localhost:5097/
+###
+
+POST http://localhost:5097/api/v1/Login/Login
+content-Type: application/json
+
+{
+    "Username": "admin1",
+    "Password": "password"
+}
+###
+
+GET http://localhost:5097/api/v1/Login/IsAdminLoggedIn
+###
+
+GET http://localhost:5097/api/v1/Login/Logout
+###
+
+
+##### Event tests #####
+GET http://localhost:5097/api/v1/Event/GetAllEvents
+Accept: application/json
+###

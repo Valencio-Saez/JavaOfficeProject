@@ -7,6 +7,7 @@ public enum LoginStatus { IncorrectPassword, IncorrectUsername, Success }
 
 public enum ADMIN_SESSION_KEY { adminLoggedIn }
 
+
 public class LoginService : ILoginService
 {
 
@@ -19,7 +20,21 @@ public class LoginService : ILoginService
 
     public LoginStatus CheckPassword(string username, string inputPassword)
     {
-        // TODO: Make this method check the password with what is in the database
-        return LoginStatus.IncorrectPassword;
+        var admin = _context.Admin.FirstOrDefault(a => a.UserName == username);
+
+        if (admin == null)
+        {
+            return LoginStatus.IncorrectUsername;
+        }
+
+        string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
+
+        if (admin.Password != encryptedPassword)
+        {
+            return LoginStatus.IncorrectPassword;
+        }
+
+        return LoginStatus.Success;
     }
 }
+

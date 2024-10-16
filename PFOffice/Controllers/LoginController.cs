@@ -9,8 +9,8 @@ namespace StarterKit.Controllers;
 public class LoginController : Controller
 {
     private readonly ILoginService _loginService;
-    
-
+    // var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
+    private bool isLoggedIn;
     public LoginController(ILoginService loginService)
     {
         _loginService = loginService;
@@ -19,20 +19,41 @@ public class LoginController : Controller
     [HttpPost("Login")]
     public IActionResult Login([FromBody] LoginBody loginBody)
     {
-        // TODO: Impelement login method
+        if (loginBody == null || string.IsNullOrEmpty(loginBody.Username) || string.IsNullOrEmpty(loginBody.Password))
+            return BadRequest("Invalid login request");
+
+        var result = _loginService.CheckPassword(loginBody.Username, loginBody.Password);
+
+        if (result == LoginStatus.IncorrectUsername)
+        {
+            return Unauthorized("Incorrect username");
+        }
+
+        if (result == LoginStatus.IncorrectPassword)
+        {
+            return Unauthorized("Incorrect password");
+        }
+
+        if (result == LoginStatus.Success)
+        {
+            HttpContext.Session.SetString("adminLoggedIn", loginBody.Username);
+            return Ok($"User {loginBody.Username} logged in");
+        }
+
         return Unauthorized("Incorrect password");
     }
 
     [HttpGet("IsAdminLoggedIn")]
     public IActionResult IsAdminLoggedIn()
     {
-        // TODO: This method should return a status 200 OK when logged in, else 403, unauthorized
-        return Unauthorized("You are not logged in");
+        isLoggedIn = HttpContext.Session.GetString("adminLoggedIn") != null;
+        return Ok(isLoggedIn);
     }
 
     [HttpGet("Logout")]
     public IActionResult Logout()
     {
+        HttpContext.Session.Remove("adminLoggedIn");
         return Ok("Logged out");
     }
 
