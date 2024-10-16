@@ -14,7 +14,7 @@ namespace StarterKit.Controllers
         {
             _eventService = eventService;
         }
-
+        [HttpGet("GetAllEvents")] 
         public async Task<IActionResult> GetAllEvents()
         {
             var events = await _eventService.GetAllEventsAsync();

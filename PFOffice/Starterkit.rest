@@ -19,7 +19,9 @@ GET http://localhost:5097/api/v1/Login/Logout
 ###
 
 
-##### Event tests #####
+##### Event tests ### niet werkend wegens ontbreken database tabel
+
+
 GET http://localhost:5097/api/v1/Event/GetAllEvents
 Accept: application/json
 ###
