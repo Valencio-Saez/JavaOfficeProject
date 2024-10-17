@@ -29,17 +29,17 @@ namespace StarterKit.Services
         public async Task<Event> AddReviewAsync(int eventId, string review)
         {
             var eventEntity = await _context.Event.FindAsync(eventId);
-            if (!eventEntity == null)
+            if (eventEntity != null)
             {
                 if (eventEntity.Review != "")
                 {
-                    _context.Event.Review = review;
+                    eventEntity.Review = review;
                     //await _context.SaveChangesAsync();
-                    return await eventEntity;
+                    return eventEntity;
                 }
-                return await eventEntity;
+                return eventEntity;
             }
-            throw new NotFoundException("Event not found");
+            throw new System.Exception("Event not found");
         }
     }
 }
