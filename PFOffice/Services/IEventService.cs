@@ -1,12 +1,14 @@
 using StarterKit.Models;
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace StarterKit.Services
 {
     public interface IEventService
     {
         Task<List<Event>> GetAllEventsAsync();
-        Task<Event> CreateEventAsync(Event newEvent);
+        Task<Event> CreateEventAsync(Eventbody eventBody);
+        Task<Event> UpdateEventAsync(int id, Eventbody eventBody);
+        Task<bool> DeleteEventAsync(int id);
     }
 }
