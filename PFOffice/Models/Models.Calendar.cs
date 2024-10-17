@@ -34,7 +34,7 @@ namespace StarterKit.Models
         public int Event_AttendanceId { get; set; }
         public int Rating { get; set; }
         public required string Feedback { get; set; }
-        public required User User { get; set; }
+        public required User user { get; set; }
         public required Event Event { get; set; }
     }
 
@@ -59,4 +59,11 @@ namespace StarterKit.Models
         public required List<Event_Attendance> Event_Attendances { get; set; }
         public string Review { get; set; }
     }
+
+    // public class AttendanceRequest
+    // {
+    //     public int UserId { get; set; }
+    //     public int EventId { get; set; }
+    // }
+
 }

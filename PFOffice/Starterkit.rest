@@ -54,3 +54,15 @@ Authorization: Bearer {jwt_token}
 DELETE http://localhost:5097/api/v1/Event/DeleteEvent/1
 Authorization: Bearer {jwt_token}
 ###
+
+### Add attendance for a user to an event
+POST http://localhost:5000/api/v1/Event/Attendance?eventId=1&userId=1
+Content-Type: application/json
+
+###
+
+### Get attendees for a specific event
+GET http://localhost:5000/api/v1/Event/1/attendees
+Authorization: Bearer {jwt_token}
+
+###
