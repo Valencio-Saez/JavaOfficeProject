@@ -8,5 +8,6 @@ namespace StarterKit.Services
     {
         Task<List<Event>> GetAllEventsAsync();
         Task<Event> AddReviewAsync(int eventId, string review);
+        Task<Event> CreateEventAsync(Event newEvent);
     }
 }

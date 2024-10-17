@@ -1,8 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using StarterKit.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using StarterKit.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace StarterKit.Services
 {
@@ -15,15 +14,23 @@ namespace StarterKit.Services
             _context = context;
         }
 
-        // Method to retrieve all events, including attendees and reviews
+        // Read
         public async Task<List<Event>> GetAllEventsAsync()
         {
-            // Fetch events and include their attendees (Event_Attendance) and their feedback
+            
             return await _context.Event
-                .Include(e => e.Event_Attendances)             // Include event attendees (Event_Attendance)
-                    .ThenInclude(ea => ea.User)               // Include User for each event attendance
+                .Include(e => e.Event_Attendances)             
+                    .ThenInclude(ea => ea.User)               
                 .ToListAsync();
         }
+        //  Create 
+        public async Task<Event> CreateEventAsync(Event newEvent)
+        {
+            _context.Event.Add(newEvent);
+            await _context.SaveChangesAsync();
+            return newEvent;
+        }
+        
 
         // Other methods like Create, Update, Delete can be added here
         public async Task<Event> AddReviewAsync(int eventId, string review)
@@ -41,5 +48,6 @@ namespace StarterKit.Services
             }
             throw new System.Exception("Event not found");
         }
+        //  Update, Delete hieronder toevoegen
     }
 }
