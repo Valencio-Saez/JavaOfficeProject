@@ -9,6 +9,7 @@ namespace StarterKit.Controllers;
 public class LoginController : Controller
 {
     private readonly ILoginService _loginService;
+    // var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
     private bool isLoggedIn;
     public LoginController(ILoginService loginService)
     {
@@ -18,14 +19,14 @@ public class LoginController : Controller
     [HttpPost("Login")]
     public IActionResult Login([FromBody] LoginBody loginBody)
     {
-        if (loginBody == null || string.IsNullOrEmpty(loginBody.UserName) || string.IsNullOrEmpty(loginBody.Password))
+        if (loginBody == null || string.IsNullOrEmpty(loginBody.Username) || string.IsNullOrEmpty(loginBody.Password))
             return BadRequest("Invalid login request");
 
-        var result = _loginService.CheckPassword(loginBody.UserName, loginBody.Password);
+        var result = _loginService.CheckPassword(loginBody.Username, loginBody.Password);
 
         if (result == LoginStatus.IncorrectUsername)
         {
-            return Unauthorized("Incorrect ");
+            return Unauthorized("Incorrect username");
         }
 
         if (result == LoginStatus.IncorrectPassword)
@@ -35,62 +36,11 @@ public class LoginController : Controller
 
         if (result == LoginStatus.Success)
         {
-            if (loginBody.UserName.Length >= 5 && loginBody.UserName.Substring(0, 5) == "admin")
-            {
-                HttpContext.Session.SetString("adminLoggedIn", loginBody.UserName);
-                return Ok($"User {loginBody.UserName} logged in");
-            }
-            else
-            {
-                HttpContext.Session.SetString("userLoggedIn", loginBody.Password);
-                return Ok($"User {loginBody.UserName} logged in");
-            }
+            HttpContext.Session.SetString("adminLoggedIn", loginBody.Username);
+            return Ok($"User {loginBody.Username} logged in");
         }
 
         return Unauthorized("Incorrect password");
-    }
-
-    [HttpPost("Register")]
-    public IActionResult Register([FromBody] RegisterBody registerBody)
-    {
-        if (registerBody == null || string.IsNullOrEmpty(registerBody.UserName) || string.IsNullOrEmpty(registerBody.Password) || string.IsNullOrEmpty(registerBody.Email) || string.IsNullOrEmpty(registerBody.FirstName) || string.IsNullOrEmpty(registerBody.LastName))
-            return BadRequest("Invalid register request");
-
-        var result = _loginService.CheckRegister(registerBody.UserName, registerBody.Email, registerBody.Password, registerBody.FirstName, registerBody.LastName);
-
-        if (result == RegisterStatus.Success)
-        {
-            // Opslaan in DB
-            return Ok("User registered");
-        }
-
-        if (result == RegisterStatus.IncorrectEmail)
-        {
-            return BadRequest("Email already in use");
-        }
-
-        if (result == RegisterStatus.IncorrectPassword)
-        {
-            return BadRequest("Invalid password");
-        }
-
-        if (result == RegisterStatus.IncorrectUsername)
-        {
-            return BadRequest("Invalid username");
-        }
-
-        if (result == RegisterStatus.InvalidFirstName)
-        {
-            return BadRequest("Invalid first name");
-        }
-
-        if (result == RegisterStatus.InvalidLastName)
-        {
-            return BadRequest("Invalid last name");
-        }
-
-        return BadRequest("Invalid register request");
-
     }
 
     [HttpGet("IsAdminLoggedIn")]
@@ -111,15 +61,6 @@ public class LoginController : Controller
 
 public class LoginBody
 {
-    public string? UserName { get; set; }
+    public string? Username { get; set; }
     public string? Password { get; set; }
-}
-
-public class RegisterBody
-{
-    public string UserName { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
 }
