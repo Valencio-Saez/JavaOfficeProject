@@ -23,7 +23,7 @@ public class LoginController : Controller
 
         var result = _loginService.CheckPassword(loginBody.UserName, loginBody.Password);
 
-        if (result == LoginStatus.IncorrectEmail)
+        if (result == LoginStatus.IncorrectUsername)
         {
             return Unauthorized("Incorrect ");
         }
@@ -35,9 +35,9 @@ public class LoginController : Controller
 
         if (result == LoginStatus.Success)
         {
-            if (loginBody.UserName.Substring(0, 4) == "admin")
+            if (loginBody.UserName.Length >= 5 && loginBody.UserName.Substring(0, 5) == "admin")
             {
-                HttpContext.Session.SetString("adminLoggedIn", loginBody.Password);
+                HttpContext.Session.SetString("adminLoggedIn", loginBody.UserName);
                 return Ok($"User {loginBody.UserName} logged in");
             }
             else
@@ -50,12 +50,48 @@ public class LoginController : Controller
         return Unauthorized("Incorrect password");
     }
 
-    // public IActionResult Register([FromBody] RegisterBody registerBody)
-    // {
-    //     if (registerBody == null || string.IsNullOrEmpty(registerBody.UserName) || string.IsNullOrEmpty(registerBody.Password))
-    //         return BadRequest("Invalid register request");
-        
-    // }
+    [HttpPost("Register")]
+    public IActionResult Register([FromBody] RegisterBody registerBody)
+    {
+        if (registerBody == null || string.IsNullOrEmpty(registerBody.UserName) || string.IsNullOrEmpty(registerBody.Password) || string.IsNullOrEmpty(registerBody.Email) || string.IsNullOrEmpty(registerBody.FirstName) || string.IsNullOrEmpty(registerBody.LastName))
+            return BadRequest("Invalid register request");
+
+        var result = _loginService.CheckRegister(registerBody.UserName, registerBody.Email, registerBody.Password, registerBody.FirstName, registerBody.LastName);
+
+        if (result == RegisterStatus.Success)
+        {
+            // Opslaan in DB
+            return Ok("User registered");
+        }
+
+        if (result == RegisterStatus.IncorrectEmail)
+        {
+            return BadRequest("Email already in use");
+        }
+
+        if (result == RegisterStatus.IncorrectPassword)
+        {
+            return BadRequest("Invalid password");
+        }
+
+        if (result == RegisterStatus.IncorrectUsername)
+        {
+            return BadRequest("Invalid username");
+        }
+
+        if (result == RegisterStatus.InvalidFirstName)
+        {
+            return BadRequest("Invalid first name");
+        }
+
+        if (result == RegisterStatus.InvalidLastName)
+        {
+            return BadRequest("Invalid last name");
+        }
+
+        return BadRequest("Invalid register request");
+
+    }
 
     [HttpGet("IsAdminLoggedIn")]
     public IActionResult IsAdminLoggedIn()
@@ -82,9 +118,8 @@ public class LoginBody
 public class RegisterBody
 {
     public string UserName { get; set; }
+    public string Email { get; set; }
     public string Password { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public string Email { get; set; }
-    public string RecuringDays { get; set; }
 }

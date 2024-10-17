@@ -4,7 +4,7 @@ using StarterKit.Utils;
 namespace StarterKit.Services;
 
 public enum LoginStatus { IncorrectPassword, IncorrectUsername, IncorrectEmail, Success }
-
+public enum RegisterStatus { IncorrectPassword, IncorrectUsername, IncorrectEmail, InvalidFirstName, InvalidLastName, Success }
 public enum ADMIN_SESSION_KEY { adminLoggedIn }
 
 
@@ -18,22 +18,21 @@ public class LoginService : ILoginService
         _context = context;
     }
 
-    public LoginStatus CheckPassword(string email, string inputPassword)
+    public LoginStatus CheckPassword(string username, string inputPassword)
     {
-        var admin = _context.Admin.FirstOrDefault(a => a.Email == email);
-        var user = _context.User.FirstOrDefault(u => u.Email == email);
+        var admin = _context.Admin.FirstOrDefault(a => a.UserName == username);
 
         if (admin == null)
         {
             return LoginStatus.IncorrectEmail;
         }
-        if (email != admin.Email || email != user.Email)
+        if (username != admin.UserName)
         {
-            return LoginStatus.IncorrectEmail;
+            return LoginStatus.IncorrectUsername;
         }
         string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
 
-        if (admin.Password != encryptedPassword || user.Password != encryptedPassword)
+        if (admin.Password != encryptedPassword)
         {
             return LoginStatus.IncorrectPassword;
         }
@@ -41,5 +40,41 @@ public class LoginService : ILoginService
         return LoginStatus.Success;
     }
 
-}
+    public RegisterStatus CheckRegister(string username, string email, string password, string firstname, string lastname)
+    {
+        var user = _context.User.FirstOrDefault(u => u.Email == email);
 
+        if (user != null)
+        {
+            return RegisterStatus.IncorrectEmail;
+        }
+
+        string encryptedPassword = EncryptionHelper.EncryptPassword(password);
+
+        if (encryptedPassword == null)
+        {
+            return RegisterStatus.IncorrectPassword;
+        }
+
+        if (username == null)
+        {
+            return RegisterStatus.IncorrectUsername;
+        }
+
+        if (email == null)
+        {
+            return RegisterStatus.IncorrectEmail;
+        }
+
+        if (firstname == null)
+        {
+            return RegisterStatus.InvalidFirstName;
+        }
+        if (lastname == null)
+        {
+            return RegisterStatus.InvalidLastName;
+        }
+
+        return RegisterStatus.Success;
+    }
+}
