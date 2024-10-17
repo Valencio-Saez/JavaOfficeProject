@@ -11,6 +11,18 @@ content-Type: application/json
 }
 
 ### ⁠login/status GET test – Check Admin Login/Logout Status and Retrieve Name
+POST http://localhost:5097/api/v1/Login/Register HTTP/1.1
+Content-Type: application/json
+
+{
+    "Username":"Aicon",
+    "Email": "user1@example.com",
+    "Password":"password",
+    "FirstName": "Aicon",
+    "LastName": "Yan"
+}
+###
+
 GET http://localhost:5097/api/v1/Login/IsAdminLoggedIn
 ### 
 GET http://localhost:5097/api/v1/Login/Logout
