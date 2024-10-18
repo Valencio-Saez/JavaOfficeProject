@@ -1,27 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj": {}
+    "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/StarterKit.csproj": {}
   },
   "projects": {
-    "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj": {
+    "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/StarterKit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
+        "projectUniqueName": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/StarterKit.csproj",
         "projectName": "StarterKit",
-        "projectPath": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
-        "packagesPath": "C:\\Users\\31633\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\",
+        "projectPath": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/StarterKit.csproj",
+        "packagesPath": "/Users/valenciomuskiet/.nuget/packages/",
+        "outputPath": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\31633\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/valenciomuskiet/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,7 +52,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -61,7 +60,13 @@
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -87,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.402/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
