@@ -182,6 +182,20 @@ namespace StarterKit.Services
             // Return the list of attendees for this event
             return eventEntity.Event_Attendances;
         }
+        public async Task<bool> DeleteAttendanceAsync(int eventId, int userId)
+        {
+            var eventAttendance = await _context.Event_Attendance
+                .FirstOrDefaultAsync(ea => ea.Event.EventId == eventId && ea.user.UserId == userId);
+
+            if (eventAttendance == null)
+            {
+                return false; 
+            }
+
+            _context.Event_Attendance.Remove(eventAttendance);
+            await _context.SaveChangesAsync();
+            return true;
+        }
 
     }
 }
