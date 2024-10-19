@@ -36,7 +36,7 @@ Accept: application/json
 ### Event POST test - POST /events – Create New Event (To Be Tested with Postman; Limited Functionality Due to Missing Database)
 POST http://localhost:5097/api/v1/Event/events
 content-Type: application/json
-Authorization: Bearer {jwt_token} 
+Authorization: Bearer {jwt_token}   
 
 {
     "Title": "New Event",

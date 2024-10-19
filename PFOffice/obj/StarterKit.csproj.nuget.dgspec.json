@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj": {}
+    "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj": {}
   },
   "projects": {
-    "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj": {
+    "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
+        "projectUniqueName": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
         "projectName": "StarterKit",
-        "projectPath": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
-        "packagesPath": "C:\\Users\\31633\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\",
+        "projectPath": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
+        "packagesPath": "C:\\Users\\YanAd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\31633\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\YanAd\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -83,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
