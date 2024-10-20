@@ -1,7 +1,54 @@
-### Application Initialization Test 
+////////// SUCCEEDED TESTS ///////////
+
+
+// Valencio:  application run, Database initialization/configuration)
+
+/// 1.1
+// Adrian 1.1.1  login POST test – Authenticate Admin or User
+// Adrian 1.1.2  login/status GET test – Check Admin Login/Logout Status and Retrieve Name 
+// Adrian 1.1.3 & 1.1.4  Admin login and logout status.
+
+// 1.2
+// Valencio 1.2.1 READ operation configuration 
+// Valencio 1.2.2 Event POST test - Create New Event
+// Valencio 1.2.4a Event GEt test - Retrieve list of all events
+
+
+
+
+///////// MISSING/FAILED TESTS /////////
+
+//1.2
+// Jayden 1.2.4B & 1.2.3  Event PUT test, Event DELETE test + all endpoints protected.
+// Amen 1.2.6 Event -> attach a review
+
+//1.3
+// Adrian 1.3 Registration
+
+//1.4
+// Amen 1.4.1 tm 1.4.4 (Submit Attendance (POST Request), Protected GET Endpoint to View Attendees.)
+// Jayden 1.4.5 Check the availability of the event.
+// Jayden 1.4.6 Delete Attendance for a Specific Event (DELETE Request)
+
+///1.5
+// Jayden 1.5.1 
+// Valencio 1.5.2/1.5.3 
+
+
+
+
+///////////////////////////////////////////////// SUCCEEDED TESTS BELOW ////////////////////////////////////////////////////
+
+
+
+//TRELLO 0.0 (Valencio)
+### Application Initialization & Database Test 
 GET http://localhost:5097/
 
-### login POST test – Authenticate Admin or User
+
+
+//TRELLO 1.1.1 (Adrian) 
+###login POST test – Authenticate Admin or User (Adrian) 
 POST http://localhost:5097/api/v1/Login/Login
 content-Type: application/json
 
@@ -9,47 +56,36 @@ content-Type: application/json
     "Username": "admin1",
     "Password": "password"
 }
-###
 
-### login POST test – Authenticate Admin or User
-POST http://localhost:5097/api/v1/Login/Login
-content-Type: application/json
 
-{
-    "Username": "Aicon",
-    "Password": "password"
-}
-### ⁠login/status GET test – Check Admin Login/Logout Status and Retrieve Name
+
+///TRELLO 1.1.2  (Adrian)
+###⁠login/status GET test – Check Admin Login/Logout Status and Retrieve Name (Adrian)
 POST http://localhost:5097/api/v1/Login/Register HTTP/1.1
 Content-Type: application/json
 
 {
-    "Username":"Ben",
-    "Email": "user2@example.com",
-    "Password":"password2",
-    "FirstName": "Ben",
-    "LastName": "Son"
+    "Username":"Aicon",
+    "Email": "user1@example.com",
+    "Password":"password",
+    "FirstName": "Aicon",
+    "LastName": "Yan"
 }
-###
 
+
+
+/// TRELLO 1.1.3 & 1.1.4 (Adrian)
+### Admin loggin status
 GET http://localhost:5097/api/v1/Login/IsAdminLoggedIn
-### 
-
-GET http://localhost:5097/api/v1/Login/IsUserLoggedIn
-###
-
+### Logout status 
 GET http://localhost:5097/api/v1/Login/Logout
-###
-
-### Events GET test – Retrieve All Events (Limited Functionality Due to Missing Database)
-GET http://localhost:5097/api/v1/Event/GetAllEvents
-Accept: application/json
 
 
-### Event POST test - POST /events – Create New Event (To Be Tested with Postman; Limited Functionality Due to Missing Database)
+
+// TRELLO  1.2.4A (Valencio)
+### Event POST test - POST /events – Create New Event 
 POST http://localhost:5097/api/v1/Event/events
 content-Type: application/json
-Authorization: Bearer {jwt_token} 
 
 {
     "Title": "New Event",
@@ -61,6 +97,23 @@ Authorization: Bearer {jwt_token}
 }
 
 
+
+// TRELLO 1.1.1 1.2.2 & 1.2.4A (Valencio)
+### Events GET test – Retrieve All Events 
+GET http://localhost:5097/api/v1/Event/GetAllEvents
+Accept: application/json
+
+
+
+
+
+
+
+///////////////////////////////// FAILED TESTS BELOW  ////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//  1.2.3/1.2.4B 
 ### Event PUT test - Update Existing Event
 PUT http://localhost:5097/api/v1/Event/UpdateEvent/1
 content-Type: application/json
@@ -75,27 +128,36 @@ Authorization: Bearer {jwt_token}
     "Location": "Main Hall"
 }
 
+
+//  1.2.4B 
 ### Event DELETE test - Delete Event
 DELETE http://localhost:5097/api/v1/Event/DeleteEvent/1
 Authorization: Bearer {jwt_token}
 ###
 
+
 ### Add attendance for a user to an event
 POST http://localhost:5000/api/v1/Event/Attendance?eventId=1&userId=1
 Content-Type: application/json
 
-###
 
+
+// 1.4.2 
 ### Get attendees for a specific event
 GET http://localhost:5000/api/v1/Event/1/attendees
 Authorization: Bearer {jwt_token}
 ###
 
+
+// 1.4.3 
 ### DELETE attendance for a user to an event
 DELETE http://localhost:5000/api/v1/Event/1/attendees/1
 Authorization: Bearer {jwt_token}
 ###
 
+
+
+// 1.5.1 
 ### Delete Attendance for Specific Event
 DELETE http://localhost:5097/api/v1/Event/{eventId}/attendees/{userId}
 Authorization: Bearer {jwt_token}
