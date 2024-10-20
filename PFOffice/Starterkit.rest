@@ -34,9 +34,9 @@ Accept: application/json
 
 
 ### Event POST test - POST /events – Create New Event (To Be Tested with Postman; Limited Functionality Due to Missing Database)
-POST http://localhost:5097/api/v1/Event/events
+POST http://localhost:5097/api/v1/Event/events?sessionId=<session_id>
 content-Type: application/json
-Authorization: Bearer {jwt_token} 
+# Authorization: Bearer {jwt_token} 
 
 {
     "Title": "New Event",
@@ -49,9 +49,9 @@ Authorization: Bearer {jwt_token}
 
 
 ### Event PUT test - Update Existing Event
-PUT http://localhost:5097/api/v1/Event/UpdateEvent/1
+PUT http://localhost:5097/api/v1/Event/UpdateEvent/4?sessionId=<session_id>
 content-Type: application/json
-Authorization: Bearer {jwt_token}
+# Authorization: Bearer {jwt_token}
 
 {
     "Title": "Updated Event",
@@ -63,12 +63,12 @@ Authorization: Bearer {jwt_token}
 }
 
 ### Event DELETE test - Delete Event
-DELETE http://localhost:5097/api/v1/Event/DeleteEvent/1
-Authorization: Bearer {jwt_token}
+DELETE http://localhost:5097/api/v1/Event/DeleteEvent/5?sessionId=<session_id>
+# Authorization: Bearer {jwt_token}
 ###
 
 ### Add attendance for a user to an event
-POST http://localhost:5000/api/v1/Event/Attendance?eventId=1&userId=1
+POST http://localhost:5000/api/v1/Event/Attendance?eventId=2&userId=1
 Content-Type: application/json
 
 ###
@@ -84,21 +84,21 @@ Authorization: Bearer {jwt_token}
 ###
 
 ### Delete Attendance for Specific Event
-DELETE http://localhost:5097/api/v1/Event/{eventId}/attendees/{userId}
-Authorization: Bearer {jwt_token}
+DELETE http://localhost:5097/api/v1/Event/2/specifieke/1?sessionId=<session_id>
+# Authorization: Bearer {jwt_token}
 ###
 
 ### Add Attendance
-POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=1
-Authorization: Bearer {jwt_token}
+POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=2&sessionId=<session_id>
+# Authorization: Bearer {jwt_token}
 ###
 
 ### Update Attendance
-PUT http://localhost:5097/api/v1/AttendanceModification/UpdateAttendance?attendanceId=1&newDate=2024-10-15T09:00:00
-Authorization: Bearer {jwt_token}
+PUT http://localhost:5097/api/v1/AttendanceModification/UpdateAttendance?attendanceId=1&newDate=2024-10-15T09:00:00&sessionId=<session_id>
+# Authorization: Bearer {jwt_token}
 ###
 
 ### Delete Attendance
-DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/1
-Authorization: Bearer {jwt_token}
+DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/1?sessionId=<session_id>
+# Authorization: Bearer {jwt_token}
 ###

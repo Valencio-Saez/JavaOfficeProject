@@ -38,12 +38,14 @@ public class LoginController : Controller
             if (loginBody.UserName.Length >= 5 && loginBody.UserName.Substring(0, 5) == "admin")
             {
                 HttpContext.Session.SetString("adminLoggedIn", loginBody.UserName);
-                return Ok($"User {loginBody.UserName} logged in");
+                // return Ok($"User {loginBody.UserName} logged in");
+                return Ok(new { Message = $"Admin {loginBody.UserName} logged in", SessionId = HttpContext.Session.Id });
             }
             else
             {
                 HttpContext.Session.SetString("userLoggedIn", loginBody.Password);
-                return Ok($"User {loginBody.UserName} logged in");
+                // return Ok($"User {loginBody.UserName} logged in");
+                return Ok(new { Message = $"User {loginBody.UserName} logged in", SessionId = HttpContext.Session.Id });
             }
         }
 
