@@ -334,6 +334,7 @@ C:/Users/YanAd/OneDrive/Documents/GitHub/JavaOfficeProject/PFOffice/obj/Debug/ne
 /Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
 /Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\ikben\OneDrive\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\ikben\OneDrive\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\appsettings.json
 C:\Users\ikben\OneDrive\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\Frontend\package.json

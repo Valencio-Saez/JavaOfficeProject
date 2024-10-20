@@ -53,6 +53,7 @@ namespace StarterKit.Controllers
 
         // POST: api/v1/Event/events (alleen toegankelijk voor ingelogde admins)
         [HttpPost("events")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
         {
             if (!IsAdminLoggedIn())
