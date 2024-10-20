@@ -152,7 +152,7 @@ content-Type: application/json
 
 //  1.2.4B (Jayden)
 ### Event DELETE test - Delete Event
-DELETE http://localhost:5097/api/v1/Event/DeleteEvent/5?sessionId=<session_id>
+DELETE http://localhost:5097/api/v1/Event/DeleteEvent/6?sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
 ###
 
@@ -185,15 +185,15 @@ DELETE http://localhost:5097/api/v1/Event/2/specifieke/1?sessionId=<session_id>
 ###
 
 ### Add Attendance(Jayden)
-POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=2
+POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=3
 ###
 
 ### Update Attendance(Jayden)
-PUT http://localhost:5097/api/v1/AttendanceModification/UpdateAttendance?attendanceId=1&newDate=2024-10-15T09:00:00&sessionId=<session_id>
+PUT http://localhost:5097/api/v1/AttendanceModification/UpdateAttendance?attendanceId=2&newDate=2024-10-15T09:00:00&sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
 ###
 
 ### Delete Attendance(Jayden)
-DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/1?sessionId=<session_id>
+DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/2?sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
 ###

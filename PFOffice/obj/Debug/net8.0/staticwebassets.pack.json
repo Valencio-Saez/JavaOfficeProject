@@ -1,23 +1,23 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\StarterKit.bundle.scp.css",
+      "Id": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\StarterKit.bundle.scp.css",
       "PackagePath": "staticwebassets\\StarterKit.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\images\\portal.jpg",
+      "Id": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\images\\portal.jpg",
       "PackagePath": "staticwebassets\\images\\portal.jpg"
     },
     {
-      "Id": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\lib\\bootstrap.min.css",
+      "Id": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\lib\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap.min.css"
     },
     {

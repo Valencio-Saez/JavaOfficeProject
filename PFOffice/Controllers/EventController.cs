@@ -37,23 +37,7 @@ namespace StarterKit.Controllers
             return CreatedAtAction("PostReview", newReview);
         }
 
-        // [HttpPost("events")]
-        // [Authorize(Roles = "Admin")]
-        // public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return BadRequest(ModelState);
-        //     }
-
-        //     var createdEvent = await _eventService.CreateEventAsync(eventBody);
-
-        //     return CreatedAtAction(nameof(GetAllEvents), new { id = createdEvent.EventId }, createdEvent);
-        // }
-
-        // POST: api/v1/Event/events (alleen toegankelijk voor ingelogde admins)
         [HttpPost("events")]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
         {
             if (!IsAdminLoggedIn())
@@ -221,4 +205,17 @@ public class ReviewBody
 {
     public required int EventId { get; set; }
     public required string Review { get; set; }
+}
+
+public class EventDTO
+{
+    public int EventId { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public DateOnly EventDate { get; set; }
+    public TimeSpan StartTime { get; set; }
+    public TimeSpan EndTime { get; set; }
+    public string Location { get; set; }
+    public bool AdminApproval { get; set; }
+    public string? Review { get; set; }
 }

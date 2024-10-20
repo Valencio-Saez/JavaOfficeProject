@@ -13,6 +13,13 @@ namespace StarterKit
         static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddControllersWithViews()
+                .AddJsonOptions(options =>
+                {
+                    // Hiermee wordt objectcyclus gedetecteerd en opgelost
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+                    options.JsonSerializerOptions.WriteIndented = true; // Optioneel: voor beter leesbare JSON output
+                });
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddDistributedMemoryCache();

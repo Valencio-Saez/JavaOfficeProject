@@ -37,6 +37,7 @@ namespace StarterKit.Models
         public required string Feedback { get; set; }
         public required User user { get; set; }
         public required Event Event { get; set; }
+        public int UserId { get; internal set; }
     }
 
     public class Event
