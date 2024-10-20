@@ -32,7 +32,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpPost("events")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
         {
             if (!ModelState.IsValid)
