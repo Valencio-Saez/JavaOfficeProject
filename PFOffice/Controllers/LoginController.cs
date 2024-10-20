@@ -60,7 +60,7 @@ public class LoginController : Controller
 
         if (result == RegisterStatus.Success)
         {
-            // Opslaan in DB
+            
             return Ok("User registered");
         }
 

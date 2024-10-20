@@ -15,11 +15,11 @@ POST http://localhost:5097/api/v1/Login/Register HTTP/1.1
 Content-Type: application/json
 
 {
-    "Username":"Aicon",
-    "Email": "user1@example.com",
-    "Password":"password",
-    "FirstName": "Aicon",
-    "LastName": "Yan"
+    "Username":"Ben",
+    "Email": "user2@example.com",
+    "Password":"password2",
+    "FirstName": "Ben",
+    "LastName": "Son"
 }
 ###
 
