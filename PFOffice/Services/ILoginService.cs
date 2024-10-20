@@ -1,7 +1,11 @@
+using StarterKit.Models;
+using StarterKit.Controllers;
+
 namespace StarterKit.Services;
 
 public interface ILoginService
 {
-    public LoginStatus CheckPassword(string username, string inputPassword);
-    public RegisterStatus CheckRegister(string username, string email, string password, string FirstName, string LastName);
+    Task<LoginStatus> CheckAdminPassword(string username, string inputPassword);
+    Task<LoginStatus> CheckUserPassword(string username, string inputPassword);
+    Task<User> RegisterUserAsync(RegisterBody registerBody);
 }
