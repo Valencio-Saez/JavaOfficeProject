@@ -57,6 +57,7 @@ Content-Type: application/json
   "Password": "password"
 }
 
+###
 POST http://localhost:5097/api/v1/Login/UserLogin
 content-Type: application/json
 
@@ -125,9 +126,9 @@ Accept: application/json
 
 
 
-//  1.2.3/1.2.4B 
+//  1.2.3/1.2.4B(Jayden) 
 ### Event PUT test - Update Existing Event
-PUT http://localhost:5097/api/v1/Event/UpdateEvent/6?sessionId=<session_id>
+PUT http://localhost:5097/api/v1/Event/UpdateEvent/2?sessionId=<session_id>
 content-Type: application/json
 # Authorization: Bearer {jwt_token}
 
@@ -141,7 +142,7 @@ content-Type: application/json
 }
 
 
-//  1.2.4B 
+//  1.2.4B (Jayden)
 ### Event DELETE test - Delete Event
 DELETE http://localhost:5097/api/v1/Event/DeleteEvent/5?sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
@@ -175,16 +176,16 @@ DELETE http://localhost:5097/api/v1/Event/2/specifieke/1?sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
 ###
 
-### Add Attendance
+### Add Attendance(Jayden)
 POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=2
 ###
 
-### Update Attendance
+### Update Attendance(Jayden)
 PUT http://localhost:5097/api/v1/AttendanceModification/UpdateAttendance?attendanceId=1&newDate=2024-10-15T09:00:00&sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
 ###
 
-### Delete Attendance
+### Delete Attendance(Jayden)
 DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/1?sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
 ###
