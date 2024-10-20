@@ -500,3 +500,4 @@ C:/Users/ikben/OneDrive/Documenten/GitHub/JavaOfficeProject/PFOffice/obj/Debug/n
 /Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
 /Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

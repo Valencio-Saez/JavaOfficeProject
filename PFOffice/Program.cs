@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using StarterKit.Models;
 using StarterKit.Services;
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 namespace StarterKit
 {
     class Program
@@ -11,22 +15,44 @@ namespace StarterKit
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
-
             builder.Services.AddDistributedMemoryCache();
-
-            builder.Services.AddSession(options => 
+            builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);
-                options.Cookie.HttpOnly = true; 
-                options.Cookie.IsEssential = true; 
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
             });
-
             builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<IEventService, EventService>();
-
-
             builder.Services.AddDbContext<DatabaseContext>(
                 options => options.UseSqlite(builder.Configuration.GetConnectionString("SqlLiteDb")));
+
+
+
+            // Authentication services
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = "yourIssuer",
+                    ValidAudience = "yourAudience",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKey"))
+                };
+            });
+
+
+
+
+
 
             var app = builder.Build();
 
@@ -40,9 +66,9 @@ namespace StarterKit
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseSession();
@@ -52,7 +78,7 @@ namespace StarterKit
                 pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
 
-            app.MapGet("/", () => Results.Content("Calender Application", "text/html"));
+            app.MapGet("/", () => Results.Content("Calender 2 Application", "text/html"));
             app.Run();
         }
     }

@@ -189,7 +189,7 @@ namespace StarterKit.Services
 
             if (eventAttendance == null)
             {
-                return false; 
+                return false;
             }
 
             _context.Event_Attendance.Remove(eventAttendance);
