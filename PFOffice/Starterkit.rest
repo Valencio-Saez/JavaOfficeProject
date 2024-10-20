@@ -180,20 +180,20 @@ Authorization: Bearer {jwt_token}
 
 // 1.5.1 
 ### Delete Attendance for Specific Event
-DELETE http://localhost:5097/api/v1/Event/2/specifieke/1?sessionId=<session_id>
+DELETE http://localhost:5097/api/v1/Event/1/specifieke/1?sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
 ###
 
 ### Add Attendance(Jayden)
-POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=3
+POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=7
 ###
 
 ### Update Attendance(Jayden)
 PUT http://localhost:5097/api/v1/AttendanceModification/UpdateAttendance?attendanceId=2&newDate=2024-10-15T09:00:00&sessionId=<session_id>
-# Authorization: Bearer {jwt_token}
+Content-Type: application/json
 ###
 
 ### Delete Attendance(Jayden)
-DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/2?sessionId=<session_id>
+DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/3?sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
 ###
