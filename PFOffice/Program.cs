@@ -29,7 +29,7 @@ namespace StarterKit
 
 
 
-            // Add Authentication services
+            // Authentication services
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
