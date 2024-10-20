@@ -13,5 +13,6 @@ namespace StarterKit.Services
         Task<bool> DeleteEventAsync(int id);
         Task<(bool Success, string Message, Event AttendedEvent)> AddAttendanceAsync(int eventId, int userId);
         Task<List<Event_Attendance>> GetEventAttendeesAsync(int eventId);
+        Task<bool> DeleteAttendanceAsync(int eventId, int userId);
     }
 }

@@ -76,5 +76,29 @@ Content-Type: application/json
 ### Get attendees for a specific event
 GET http://localhost:5000/api/v1/Event/1/attendees
 Authorization: Bearer {jwt_token}
+###
 
+### DELETE attendance for a user to an event
+DELETE http://localhost:5000/api/v1/Event/1/attendees/1
+Authorization: Bearer {jwt_token}
+###
+
+### Delete Attendance for Specific Event
+DELETE http://localhost:5097/api/v1/Event/{eventId}/attendees/{userId}
+Authorization: Bearer {jwt_token}
+###
+
+### Add Attendance
+POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=1
+Authorization: Bearer {jwt_token}
+###
+
+### Update Attendance
+PUT http://localhost:5097/api/v1/AttendanceModification/UpdateAttendance?attendanceId=1&newDate=2024-10-15T09:00:00
+Authorization: Bearer {jwt_token}
+###
+
+### Delete Attendance
+DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/1
+Authorization: Bearer {jwt_token}
 ###

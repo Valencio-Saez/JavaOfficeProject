@@ -115,6 +115,31 @@ namespace StarterKit.Controllers
             }));
         }
 
+        [HttpDelete("{eventId}/attendees/{userId}")]
+        [Authorize]
+        public async Task<IActionResult> DeleteEventAttendee(int eventId)
+        {
+            var deleted = await _eventService.DeleteEventAsync(eventId);
+            if (!deleted)
+            {
+                return NotFound("Event or attendee not found.");
+            }
+
+            return Ok("Attendee removed successfully.");
+        }
+
+        [HttpDelete("{eventId}/attendees/{userId}")]
+        [Authorize]
+        public async Task<IActionResult> SpecificEventAttendee(int eventId, int userId)
+        {
+            var deleted = await _eventService.DeleteAttendanceAsync(eventId, userId);
+            if (!deleted)
+            {
+                return NotFound("Attendance not found.");
+            }
+
+            return Ok("Attendee removed successfully.");
+        }
     }
 
 }
