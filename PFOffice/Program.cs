@@ -18,10 +18,12 @@ namespace StarterKit
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                // options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.IdleTimeout = TimeSpan.FromMinutes(120);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            builder.Services.AddScoped<IAttendanceService, AttendanceService>();
             builder.Services.AddScoped<ILoginService, LoginService>();
             builder.Services.AddScoped<IEventService, EventService>();
             builder.Services.AddDbContext<DatabaseContext>(
@@ -68,10 +70,11 @@ namespace StarterKit
             app.UseStaticFiles();
             app.UseRouting();
 
+            app.UseSession();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",

@@ -11,7 +11,7 @@ using StarterKit.Models;
 namespace StarterKit.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20241020081456_MakeReviewNullable")]
+    [Migration("20241019174920_MakeReviewNullable")]
     partial class MakeReviewNullable
     {
         /// <inheritdoc />

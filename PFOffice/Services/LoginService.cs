@@ -1,3 +1,4 @@
+using StarterKit.Controllers;
 using StarterKit.Models;
 using StarterKit.Utils;
 
@@ -18,18 +19,15 @@ public class LoginService : ILoginService
         _context = context;
     }
 
-    public LoginStatus CheckPassword(string username, string inputPassword)
+    public async Task<LoginStatus> CheckAdminPassword(string username, string inputPassword)
     {
         var admin = _context.Admin.FirstOrDefault(a => a.UserName == username);
 
         if (admin == null)
         {
-            return LoginStatus.IncorrectEmail;
-        }
-        if (username != admin.UserName)
-        {
             return LoginStatus.IncorrectUsername;
         }
+
         string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
 
         if (admin.Password != encryptedPassword)
@@ -40,41 +38,41 @@ public class LoginService : ILoginService
         return LoginStatus.Success;
     }
 
-    public RegisterStatus CheckRegister(string username, string email, string password, string firstname, string lastname)
+    public async Task<LoginStatus> CheckUserPassword(string username, string inputPassword)
     {
-        var user = _context.User.FirstOrDefault(u => u.Email == email);
+        var user = _context.User.FirstOrDefault(u => u.UserName == username);
 
-        if (user != null)
+        if (user == null)
         {
-            return RegisterStatus.IncorrectEmail;
+            return LoginStatus.IncorrectUsername;
         }
 
-        string encryptedPassword = EncryptionHelper.EncryptPassword(password);
+        string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
 
-        if (encryptedPassword == null)
+        if (user.Password != encryptedPassword)
         {
-            return RegisterStatus.IncorrectPassword;
+            return LoginStatus.IncorrectPassword;
         }
 
-        if (username == null)
-        {
-            return RegisterStatus.IncorrectUsername;
-        }
+        return LoginStatus.Success;
+    }
 
-        if (email == null)
+    public async Task<User> RegisterUserAsync(RegisterBody registerBody)
+    {
+        var user = new User
         {
-            return RegisterStatus.IncorrectEmail;
-        }
+            UserName = registerBody.UserName,
+            Email = registerBody.Email,
+            FirstName = registerBody.FirstName,
+            LastName = registerBody.LastName,
+            Password = EncryptionHelper.EncryptPassword(registerBody.Password),
+            RecuringDays = "",
+            Attendances = new List<Attendance>(),
+            Event_Attendances = new List<Event_Attendance>()
+        };
 
-        if (firstname == null)
-        {
-            return RegisterStatus.InvalidFirstName;
-        }
-        if (lastname == null)
-        {
-            return RegisterStatus.InvalidLastName;
-        }
-
-        return RegisterStatus.Success;
+        _context.User.Add(user);
+        await _context.SaveChangesAsync();
+        return user;
     }
 }
