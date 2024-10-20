@@ -21,18 +21,19 @@ public class LoginService : ILoginService
     public LoginStatus CheckPassword(string username, string inputPassword)
     {
         var admin = _context.Admin.FirstOrDefault(a => a.UserName == username);
+        var user = _context.User.FirstOrDefault(u => u.UserName == username);
 
-        if (admin == null)
+        if (admin == null || user == null)
         {
             return LoginStatus.IncorrectEmail;
         }
-        if (username != admin.UserName)
+        if (username != admin.UserName || username != user.UserName)
         {
             return LoginStatus.IncorrectUsername;
         }
         string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
 
-        if (admin.Password != encryptedPassword)
+        if (admin.Password != encryptedPassword || user.Password != encryptedPassword)
         {
             return LoginStatus.IncorrectPassword;
         }

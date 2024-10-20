@@ -1,5 +1,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
+using StarterKit.Models;
 using StarterKit.Services;
 
 namespace StarterKit.Controllers;
@@ -9,10 +10,12 @@ namespace StarterKit.Controllers;
 public class LoginController : Controller
 {
     private readonly ILoginService _loginService;
+    private readonly DatabaseContext _context;
     private bool isLoggedIn;
-    public LoginController(ILoginService loginService)
+    public LoginController(ILoginService loginService, DatabaseContext _context)
     {
         _loginService = loginService;
+        _context = _context;
     }
 
     [HttpPost("Login")]
@@ -51,18 +54,12 @@ public class LoginController : Controller
     }
 
     [HttpPost("Register")]
-    public IActionResult Register([FromBody] RegisterBody registerBody)
+    public async Task<IActionResult> Register([FromBody] RegisterBody registerBody)
     {
         if (registerBody == null || string.IsNullOrEmpty(registerBody.UserName) || string.IsNullOrEmpty(registerBody.Password) || string.IsNullOrEmpty(registerBody.Email) || string.IsNullOrEmpty(registerBody.FirstName) || string.IsNullOrEmpty(registerBody.LastName))
             return BadRequest("Invalid register request");
 
         var result = _loginService.CheckRegister(registerBody.UserName, registerBody.Email, registerBody.Password, registerBody.FirstName, registerBody.LastName);
-
-        if (result == RegisterStatus.Success)
-        {
-            
-            return Ok("User registered");
-        }
 
         if (result == RegisterStatus.IncorrectEmail)
         {
@@ -88,7 +85,23 @@ public class LoginController : Controller
         {
             return BadRequest("Invalid last name");
         }
+        if (result == RegisterStatus.Success)
+        {
+            _context.User.Add(new User
+            {
+                UserName = registerBody.UserName,
+                Email = registerBody.Email,
+                Password = registerBody.Password,
+                FirstName = registerBody.FirstName,
+                LastName = registerBody.LastName,
+                RecuringDays = "",
+                Attendances = new List<Attendance>(),
+                Event_Attendances = new List<Event_Attendance>()
 
+            });
+            await _context.SaveChangesAsync();
+            return Ok("User registered");
+        }
         return BadRequest("Invalid register request");
 
     }
@@ -97,6 +110,13 @@ public class LoginController : Controller
     public IActionResult IsAdminLoggedIn()
     {
         isLoggedIn = HttpContext.Session.GetString("adminLoggedIn") != null;
+        return Ok(isLoggedIn);
+    }
+
+    [HttpGet("IsUserLoggedIn")]
+    public IActionResult IsUserLoggedIn()
+    {
+        isLoggedIn = HttpContext.Session.GetString("userLoggedIn") != null;
         return Ok(isLoggedIn);
     }
 
