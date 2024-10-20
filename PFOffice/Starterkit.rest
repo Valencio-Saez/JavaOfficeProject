@@ -96,7 +96,15 @@ content-Type: application/json
     "Location": "Online"
 }
 
+// TRELLO 1.2.6 (Amen)
+### Event POST test - POST /events – Add Review To Event
+POST http://localhost:5097/api/v1/Event/1/reviews
+content-Type: application/json
 
+{
+    "EventId": 1,
+    "Review": "This event was kind of boring!"
+}
 
 // TRELLO 1.1.1 1.2.2 & 1.2.4A (Valencio)
 ### Events GET test – Retrieve All Events 

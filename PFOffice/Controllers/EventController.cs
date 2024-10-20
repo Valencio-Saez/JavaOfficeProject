@@ -25,9 +25,9 @@ namespace StarterKit.Controllers
         }
 
         [HttpPost("{eventId}/reviews")]
-        public async Task<IActionResult> PostReview(int eventId, string review)
+        public async Task<IActionResult> PostReview([FromBody] ReviewBody reviewbody)
         {
-            var newReview = await _eventService.AddReviewAsync(eventId, review);
+            var newReview = await _eventService.AddReviewAsync(reviewbody);
             return CreatedAtAction("PostReview", newReview);
         }
 
@@ -152,4 +152,10 @@ public class Eventbody
     public TimeSpan StartTime { get; set; }
     public TimeSpan EndTime { get; set; }
     public required string Location { get; set; }
+}
+
+public class ReviewBody
+{
+    public required int EventId { get; set; }
+    public required string Review { get; set; }
 }
