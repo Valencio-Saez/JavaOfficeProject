@@ -3,6 +3,7 @@ using StarterKit.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using StarterKit.Controllers;
 
 namespace StarterKit.Services
 {
@@ -17,26 +18,19 @@ namespace StarterKit.Services
         }
 
 
-        public async Task<(bool Success, string Message)> AddAttendanceAsync(int userId, int eventId)
+        public async Task<(bool Success, string Message)> AddAttendanceAsync(AttendenceBody attendenceBody)
         {
-            var user = await _context.User.FindAsync(userId);
-            var eventEntity = await _context.Event.FindAsync(eventId);
-
-            if (user == null || eventEntity == null)
-            {
-                return (false, "User or event not found.");
-            }
-
             var eventAttendance = new Event_Attendance
             {
-                user = user,
-                Event = eventEntity,
-                Rating = 0, 
-                Feedback = "", 
+                UserId = attendenceBody.UserId,
+                Rating = 0,
+                Event_AttendanceId = attendenceBody.EventId,
+                Event = _context.Event.Find(attendenceBody.EventId),
+                user = _context.User.Find(attendenceBody.UserId),
+                Feedback = ""
             };
 
-            _context.Event_Attendance.Add(eventAttendance);
-    
+            await _context.Event_Attendance.AddAsync(eventAttendance);
             await _context.SaveChangesAsync();
             return (true, "Attendance added successfully.");
         }

@@ -12,18 +12,18 @@
 // Valencio 1.2.1 READ operation configuration 
 // Valencio 1.2.2 Event POST test - Create New Event
 // Valencio 1.2.4a Event GEt test - Retrieve list of all events
+// Amen 1.2.6 Event -> attach a review
 
 
+//1.3
+// Adrian 1.3 Registration
 
 
 ///////// MISSING/FAILED TESTS /////////
 
 //1.2
 // Jayden 1.2.4B & 1.2.3  Event PUT test, Event DELETE test + all endpoints protected.
-// Amen 1.2.6 Event -> attach a review
 
-//1.3
-// Adrian 1.3 Registration
 
 //1.4
 // Amen 1.4.1 tm 1.4.4 (Submit Attendance (POST Request), Protected GET Endpoint to View Attendees.)
@@ -158,8 +158,13 @@ DELETE http://localhost:5097/api/v1/Event/DeleteEvent/6?sessionId=<session_id>
 
 
 ### Add attendance for a user to an event
-POST http://localhost:5000/api/v1/Event/Attendance?eventId=2&userId=1
+POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance
 Content-Type: application/json
+
+{
+    "eventId": 2,
+    "userId" : 1
+}
 
 
 
