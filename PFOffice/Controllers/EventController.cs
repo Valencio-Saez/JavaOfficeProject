@@ -143,7 +143,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpGet("{eventId}/attendees")]
-        [Authorize] // Ensures only authenticated users can access this route
+        //[Authorize] // Ensures only authenticated users can access this route
         public async Task<IActionResult> GetEventAttendees(int eventId)
         {
             var eventAttendees = await _eventService.GetEventAttendeesAsync(eventId);
@@ -164,7 +164,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpDelete("{eventId}/attendees/{userId}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> DeleteEventAttendee(int eventId)
         {
             var deleted = await _eventService.DeleteEventAsync(eventId);
