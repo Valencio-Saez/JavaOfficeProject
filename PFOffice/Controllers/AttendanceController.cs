@@ -25,17 +25,14 @@ namespace StarterKit.Controllers
 
         // POST: api/v1/AttendanceModification/AddAttendance
         [HttpPost("AddAttendance")]
-        public async Task<IActionResult> AddAttendance(int eventId)
+        public async Task<IActionResult> AddAttendance([FromBody] AttendenceBody attendenceBody)
         {
             if (!IsUserOrAdminLoggedIn(out var loggedInUser))
             {
                 return Unauthorized("Login required to add attendance.");
             }
 
-            // Gebruik admin of user voor verdere functionaliteit
-            var userId = 1; // Dummy userId. In een echte applicatie zou je dit ophalen van de ingelogde gebruiker.
-
-            var result = await _attendanceService.AddAttendanceAsync(userId, eventId);
+            var result = await _attendanceService.AddAttendanceAsync(attendenceBody);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
@@ -84,4 +81,10 @@ namespace StarterKit.Controllers
             return Ok("Attendance deleted successfully.");
         }
     }
+
+    public class AttendenceBody
+{
+    public int EventId { get; set; }
+    public int UserId { get; set; }
+}
 }
