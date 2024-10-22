@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Owfor99DtM2M0e6A+OSOWo5cmBnZvLnQAYoopw0LWkQ=",
+  "Hash": "X8oRWpi04yjH6cn+2G8dOsDKuYoCJG9fXI4rgpz7mQI=",
   "Source": "StarterKit",
   "BasePath": "_content/StarterKit",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "StarterKit\\wwwroot",
       "Source": "StarterKit",
-      "ContentRoot": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
       "BasePath": "_content/StarterKit",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\bundle\\StarterKit.styles.css",
+      "Identity": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\bundle\\StarterKit.styles.css",
       "SourceId": "StarterKit",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/StarterKit",
       "RelativePath": "StarterKit.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\bundle\\StarterKit.styles.css"
+      "OriginalItemSpec": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\bundle\\StarterKit.styles.css"
     },
     {
-      "Identity": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\StarterKit.bundle.scp.css",
+      "Identity": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\StarterKit.bundle.scp.css",
       "SourceId": "StarterKit",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/StarterKit",
       "RelativePath": "StarterKit.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\StarterKit.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\StarterKit.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\css\\site.css",
       "SourceId": "StarterKit",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
       "BasePath": "_content/StarterKit",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\favicon.ico",
       "SourceId": "StarterKit",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
       "BasePath": "_content/StarterKit",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\images\\portal.jpg",
+      "Identity": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\images\\portal.jpg",
       "SourceId": "StarterKit",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
       "BasePath": "_content/StarterKit",
       "RelativePath": "images/portal.jpg",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\images\\portal.jpg"
     },
     {
-      "Identity": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\lib\\bootstrap.min.css",
+      "Identity": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\lib\\bootstrap.min.css",
       "SourceId": "StarterKit",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\",
       "BasePath": "_content/StarterKit",
       "RelativePath": "lib/bootstrap.min.css",
       "AssetKind": "All",
