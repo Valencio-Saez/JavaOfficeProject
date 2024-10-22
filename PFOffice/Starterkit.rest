@@ -12,23 +12,21 @@
 // Valencio 1.2.1 READ operation configuration 
 // Valencio 1.2.2 Event POST test - Create New Event
 // Valencio 1.2.4a Event GEt test - Retrieve list of all events
-
-
-
-
-///////// MISSING/FAILED TESTS /////////
-
-//1.2
-// Jayden 1.2.4B & 1.2.3  Event PUT test, Event DELETE test + all endpoints protected.
 // Amen 1.2.6 Event -> attach a review
+// Jayden 1.2.4B & 1.2.3  Event PUT test, Event DELETE test + all endpoints protected.
+
 
 //1.3
 // Adrian 1.3 Registration
 
 //1.4
 // Amen 1.4.1 tm 1.4.4 (Submit Attendance (POST Request), Protected GET Endpoint to View Attendees.)
+// Jayden/Amen 1.4.6 Delete Attendance for a Specific Event (DELETE Request)
+
+///////// MISSING/FAILED TESTS /////////
+
+//1.4
 // Jayden 1.4.5 Check the availability of the event.
-// Jayden 1.4.6 Delete Attendance for a Specific Event (DELETE Request)
 
 ///1.5
 // Jayden 1.5.1 
@@ -126,17 +124,9 @@ Accept: application/json
 
 
 
-
-
-
-
-///////////////////////////////// FAILED TESTS BELOW  ////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 //  1.2.3/1.2.4B(Jayden) 
 ### Event PUT test - Update Existing Event
-PUT http://localhost:5097/api/v1/Event/UpdateEvent/2?sessionId=<session_id>
+PUT http://localhost:5097/api/v1/Event/UpdateEvent/2
 content-Type: application/json
 # Authorization: Bearer {jwt_token}
 
@@ -152,48 +142,64 @@ content-Type: application/json
 
 //  1.2.4B (Jayden)
 ### Event DELETE test - Delete Event
-DELETE http://localhost:5097/api/v1/Event/DeleteEvent/5?sessionId=<session_id>
+DELETE http://localhost:5097/api/v1/Event/DeleteEvent/7
 # Authorization: Bearer {jwt_token}
 ###
 
-
+//1.4.1
 ### Add attendance for a user to an event
-POST http://localhost:5000/api/v1/Event/Attendance?eventId=2&userId=1
+# verander de id's, anders error
+POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance
 Content-Type: application/json
 
+{
+    "eventId": 3,
+    "userId" : 2
+}
 
 
 // 1.4.2 
 ### Get attendees for a specific event
-GET http://localhost:5000/api/v1/Event/1/attendees
-Authorization: Bearer {jwt_token}
+GET http://localhost:5097/api/v1/Event/2/attendees
+#Authorization: Bearer {jwt_token}
 ###
 
 
 // 1.4.3 
 ### DELETE attendance for a user to an event
-DELETE http://localhost:5000/api/v1/Event/1/attendees/1
-Authorization: Bearer {jwt_token}
+DELETE http://localhost:5097/api/v1/Event/2/attendees/1
+#Authorization: Bearer {jwt_token}
 ###
 
 
-
-// 1.5.1 
+// 1.2.4
 ### Delete Attendance for Specific Event
-DELETE http://localhost:5097/api/v1/Event/2/specifieke/1?sessionId=<session_id>
+DELETE http://localhost:5097/api/v1/Event/8/specifieke/1
 # Authorization: Bearer {jwt_token}
 ###
 
-### Add Attendance(Jayden)
-POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=2
+
+//1.4.6
+### Delete Attendance
+DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/8
 ###
 
-### Update Attendance(Jayden)
-PUT http://localhost:5097/api/v1/AttendanceModification/UpdateAttendance?attendanceId=1&newDate=2024-10-15T09:00:00&sessionId=<session_id>
-# Authorization: Bearer {jwt_token}
+
+///////////////////////////////// FAILED TESTS BELOW  ////////////////////////////////////////////////////////////////////////////////////////
+
+
+//1.5.1
+### Update attendance
+PUT http://localhost:5097/api/v1/AttendanceModification/UpdateAttendance
+Content-Type: application/json
+
+{
+  "EventId": 3,
+  "UserId": 2
+}
 ###
 
-### Delete Attendance(Jayden)
-DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/1?sessionId=<session_id>
-# Authorization: Bearer {jwt_token}
+//1.4.5
+### Get Attendees by Event ID
+GET http://localhost:5097/api/v1/Attendance/GetAttendees/100
 ###

@@ -33,11 +33,16 @@ namespace StarterKit.Models
     public class Event_Attendance
     {
         public int Event_AttendanceId { get; set; }
+        public int UserId { get; set; }
+        public int EventId { get; set; }
         public int Rating { get; set; }
-        public required string Feedback { get; set; }
-        public required User user { get; set; }
-        public required Event Event { get; set; }
+        public string Feedback { get; set; }
+
+        // Navigation properties
+        public User user { get; set; } // Ensure this is not null when the object is created
+        public Event Event { get; set; } // Ensure this is not null when the object is created
     }
+
 
     public class Event
     {
@@ -66,5 +71,12 @@ namespace StarterKit.Models
     //     public int UserId { get; set; }
     //     public int EventId { get; set; }
     // }
+    public class AttendeeDto
+    {
+        public int UserId { get; set; }
+        public int EventAttendanceId { get; set; }
+        public string Feedback { get; set; }
+        public int Rating { get; set; }
+    }
 
 }

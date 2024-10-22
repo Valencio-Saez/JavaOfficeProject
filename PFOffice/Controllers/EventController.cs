@@ -37,23 +37,7 @@ namespace StarterKit.Controllers
             return CreatedAtAction("PostReview", newReview);
         }
 
-        // [HttpPost("events")]
-        // [Authorize(Roles = "Admin")]
-        // public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return BadRequest(ModelState);
-        //     }
-
-        //     var createdEvent = await _eventService.CreateEventAsync(eventBody);
-
-        //     return CreatedAtAction(nameof(GetAllEvents), new { id = createdEvent.EventId }, createdEvent);
-        // }
-
-        // POST: api/v1/Event/events (alleen toegankelijk voor ingelogde admins)
         [HttpPost("events")]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
         {
             if (!IsAdminLoggedIn())
@@ -159,7 +143,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpGet("{eventId}/attendees")]
-        [Authorize] // Ensures only authenticated users can access this route
+        //[Authorize] // Ensures only authenticated users can access this route
         public async Task<IActionResult> GetEventAttendees(int eventId)
         {
             var eventAttendees = await _eventService.GetEventAttendeesAsync(eventId);
@@ -180,7 +164,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpDelete("{eventId}/attendees/{userId}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> DeleteEventAttendee(int eventId)
         {
             var deleted = await _eventService.DeleteEventAsync(eventId);
@@ -222,3 +206,4 @@ public class ReviewBody
     public required int EventId { get; set; }
     public required string Review { get; set; }
 }
+
