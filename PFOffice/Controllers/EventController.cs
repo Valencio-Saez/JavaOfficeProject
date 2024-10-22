@@ -40,6 +40,7 @@ namespace StarterKit.Controllers
         [HttpPost("events")]
         public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
         {
+
             if (!IsAdminLoggedIn())
             {
                 return Unauthorized("Admin privileges required to create an event.");
@@ -49,6 +50,7 @@ namespace StarterKit.Controllers
             {
                 return BadRequest(ModelState);
             }
+
 
             var createdEvent = await _eventService.CreateEventAsync(eventBody);
             return CreatedAtAction(nameof(GetAllEvents), new { id = createdEvent.EventId }, createdEvent);

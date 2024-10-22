@@ -1,5 +1,7 @@
 ////////// SUCCEEDED TESTS ///////////
 
+// 18 endpoints, 17 succeed, 1 missing
+
 
 // Valencio:  application run, Database initialization/configuration)
 
@@ -13,11 +15,6 @@
 // Valencio 1.2.2 Event POST test - Create New Event
 // Valencio 1.2.4a Event GEt test - Retrieve list of all events
 
-
-
-
-///////// MISSING/FAILED TESTS /////////
-
 //1.2
 // Jayden 1.2.4B & 1.2.3  Event PUT test, Event DELETE test + all endpoints protected.
 // Amen 1.2.6 Event -> attach a review
@@ -27,18 +24,20 @@
 
 //1.4
 // Amen 1.4.1 tm 1.4.4 (Submit Attendance (POST Request), Protected GET Endpoint to View Attendees.)
-// Jayden 1.4.5 Check the availability of the event.
 // Jayden 1.4.6 Delete Attendance for a Specific Event (DELETE Request)
 
 ///1.5
 // Jayden 1.5.1 
 // Valencio 1.5.2/1.5.3 
 
+///////// MISSING/FAILED TESTS /////////
+
+
+// Jayden 1.4.4/1.4.5 Check the availability of the event.
 
 
 
 ///////////////////////////////////////////////// SUCCEEDED TESTS BELOW ////////////////////////////////////////////////////
-
 
 
 //TRELLO 0.0 (Valencio)
@@ -125,15 +124,6 @@ GET http://localhost:5097/api/v1/Event/GetAllEvents
 Accept: application/json
 
 
-
-
-
-
-
-///////////////////////////////// FAILED TESTS BELOW  ////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 //  1.2.3/1.2.4B(Jayden) 
 ### Event PUT test - Update Existing Event
 PUT http://localhost:5097/api/v1/Event/UpdateEvent/2?sessionId=<session_id>
@@ -157,7 +147,7 @@ DELETE http://localhost:5097/api/v1/Event/DeleteEvent/6?sessionId=<session_id>
 ###
 
 
-### Add attendance for a user to an event
+### 1.4.1 Add attendance for a user to an event
 POST http://localhost:5000/api/v1/Event/Attendance?eventId=2&userId=1
 Content-Type: application/json
 
@@ -178,13 +168,13 @@ Authorization: Bearer {jwt_token}
 
 
 
-// 1.5.1 
-### Delete Attendance for Specific Event
+// 1.5.1, 1.5.2, 1.5.3
+### Delete Attendance for Specific Event (Jayden/Valencio)
 DELETE http://localhost:5097/api/v1/Event/2/specifieke/1?sessionId=<session_id>
 # Authorization: Bearer {jwt_token}
 ###
 
-### Add Attendance(Jayden)
+### Add Attendance(Jayden/Valencio)
 POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance?eventId=3
 ###
 

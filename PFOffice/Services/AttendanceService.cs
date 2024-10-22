@@ -10,13 +10,15 @@ namespace StarterKit.Services
     {
         private readonly DatabaseContext _context;
 
-
         public AttendanceService(DatabaseContext context)
         {
             _context = context;
         }
 
 
+
+
+        //1.5.3  check if attendance if check for existing event attendance before adding a new record
         public async Task<(bool Success, string Message)> AddAttendanceAsync(int userId, int eventId)
         {
             var user = await _context.User.FindAsync(userId);
@@ -27,43 +29,31 @@ namespace StarterKit.Services
                 return (false, "User or event not found.");
             }
 
-            // Voeg een Event_Attendance toe in plaats van alleen een Attendance
+            // Check for existing attendance for the user and event
+            var existingAttendance = await _context.Event_Attendance
+                .FirstOrDefaultAsync(ea => ea.UserId == userId && ea.Event.EventId == eventId); // Assuming Event has an EventId property
+
+            if (existingAttendance != null)
+            {
+                return (false, "You have already booked attendance for this event.");
+            }
+
             var eventAttendance = new Event_Attendance
             {
-                user = user,
-                Event = eventEntity,
-                Rating = 0, 
-                Feedback = "", 
+                user = user, // Correctly using 'user' as per your model
+                Event = eventEntity, // Correctly using 'Event' as per your model
+                Rating = 0,
+                Feedback = "",
             };
 
             _context.Event_Attendance.Add(eventAttendance);
-    
             await _context.SaveChangesAsync();
             return (true, "Attendance added successfully.");
         }
-        // public async Task<(bool Success, string Message)> AddAttendanceAsync(int userId, int eventId)
-        // {
-        //     var user = await _context.User.FindAsync(userId);
-        //     var eventEntity = await _context.Event.FindAsync(eventId);
-
-        //     if (user == null || eventEntity == null)
-        //     {
-        //         return (false, "User or event not found.");
-        //     }
-
-        //     _context.Attendance.Add(new Attendance
-        //     {
-        //         User = user,
-        //         AttendanceDate = DateTime.Now
-        //     });
-
-        //     await _context.SaveChangesAsync();
-        //     return (true, "Attendance added successfully.");
-        // }
 
         public async Task<(bool Success, string Message)> UpdateAttendanceAsync(int userId, int eventAttendanceId, DateTime newDate)
         {
-            // Zoek een Event_Attendance in plaats van een gewone Attendance
+            // Changed: Ensure only the correct user's attendance is updated
             var eventAttendance = await _context.Event_Attendance
                 .FirstOrDefaultAsync(ea => ea.Event_AttendanceId == eventAttendanceId && ea.UserId == userId);
 
@@ -72,8 +62,7 @@ namespace StarterKit.Services
                 return (false, "Event attendance not found or user not authorized.");
             }
 
-            // Hier kan je andere velden van eventAttendance updaten, zoals feedback of rating, of andere aanpassingen maken
-            // Voor nu passen we de AttendanceDate aan van het gekoppelde Event
+            // Update any necessary fields here
             eventAttendance.Event.EventDate = DateOnly.FromDateTime(newDate);
 
             await _context.SaveChangesAsync();
@@ -82,12 +71,13 @@ namespace StarterKit.Services
 
         public async Task<bool> DeleteAttendanceAsync(int userId, int eventAttendanceId)
         {
+            // Changed: Ensure only the correct user's attendance is deleted
             var eventAttendance = await _context.Event_Attendance
                 .FirstOrDefaultAsync(ea => ea.Event_AttendanceId == eventAttendanceId && ea.UserId == userId);
 
             if (eventAttendance == null)
             {
-                return false;
+                return false; // User not authorized or attendance not found
             }
 
             _context.Event_Attendance.Remove(eventAttendance);
