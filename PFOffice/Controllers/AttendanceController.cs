@@ -42,13 +42,13 @@ namespace StarterKit.Controllers
             return Ok(result.Message);
         }
 
-        // PUT: api/v1/AttendanceModification/UpdateAttendance
+        // PUT: api/v1/AttendanceModification/UpdateEventDate
         [HttpPut("UpdateAttendance")]
-        public async Task<IActionResult> UpdateAttendance([FromBody] AttendenceBody attendenceBody)
+        public async Task<IActionResult> UpdateEventDate([FromBody] AttendenceBody attendenceBody)
         {
             if (!IsUserOrAdminLoggedIn(out var loggedInUser))
             {
-                return Unauthorized("Login required to update attendance.");
+                return Unauthorized("Login required to update event date.");
             }
 
             var result = await _attendanceService.UpdateAttendanceAsync(attendenceBody);
@@ -59,6 +59,24 @@ namespace StarterKit.Controllers
 
             return Ok(result.Message);
         }
+
+        // // PUT: api/v1/AttendanceModification/UpdateAttendance
+        // [HttpPut("UpdateAttendance")]
+        // public async Task<IActionResult> UpdateAttendance([FromBody] AttendenceBody attendenceBody)
+        // {
+        //     if (!IsUserOrAdminLoggedIn(out var loggedInUser))
+        //     {
+        //         return Unauthorized("Login required to update attendance.");
+        //     }
+
+        //     var result = await _attendanceService.UpdateAttendanceAsync(attendenceBody);
+        //     if (!result.Success)
+        //     {
+        //         return BadRequest(result.Message);
+        //     }
+
+        //     return Ok(result.Message);
+        // }
 
 
         // DELETE: api/v1/AttendanceModification/DeleteAttendance/{attendanceId}
@@ -98,6 +116,7 @@ namespace StarterKit.Controllers
     {
         public int EventId { get; set; }
         public int UserId { get; set; }
+        public DateTime AttendanceDate { get; set; }
     }
 
 }
