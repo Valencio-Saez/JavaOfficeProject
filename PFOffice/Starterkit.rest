@@ -195,7 +195,8 @@ Content-Type: application/json
 
 {
   "EventId": 3,
-  "UserId": 2
+  "UserId": 2,
+  "AttendanceDate": "2024-12-25T09:00:00"
 }
 ###
 

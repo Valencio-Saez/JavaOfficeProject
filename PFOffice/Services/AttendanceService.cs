@@ -82,28 +82,54 @@ namespace StarterKit.Services
             return attendees;
         }
 
-
         public async Task<(bool Success, string Message)> UpdateAttendanceAsync(AttendenceBody attendenceBody)
         {
-            var eventAttendance = await _context.Event_Attendance
-                .Include(ea => ea.Event)
-                .FirstOrDefaultAsync(ea => ea.Event_AttendanceId == attendenceBody.EventId && ea.UserId == attendenceBody.UserId);
+            var eventEntity = await _context.Event.FindAsync(attendenceBody.EventId);
 
-            if (eventAttendance == null)
+            if (eventEntity == null)
             {
-                return (false, "Event attendance not found or user not authorized.");
+                return (false, "Event not found.");
             }
+
+            eventEntity.EventDate = DateOnly.FromDateTime(attendenceBody.AttendanceDate);
 
             try
             {
                 await _context.SaveChangesAsync();
-                return (true, "Attendance updated successfully.");
+                return (true, "Event date updated successfully.");
             }
             catch (DbUpdateException ex)
             {
-                return (false, "An error occurred while updating the attendance: " + ex.Message);
+                return (false, "An error occurred while updating the event date: " + ex.Message);
             }
         }
+
+
+        // public async Task<(bool Success, string Message)> UpdateAttendanceAsync(AttendenceBody attendenceBody)
+        // {
+        //     // Zoek naar de juiste Attendance
+        //     var attendance = await _context.Attendance
+        //         .Include(a => a.User)
+        //         .FirstOrDefaultAsync(a => a.User.UserId == attendenceBody.UserId && a.User.Event_Attendances.Any(ea => ea.EventId == attendenceBody.EventId));
+
+        //     if (attendance == null)
+        //     {
+        //         return (false, "Attendance not found or user not authorized.");
+        //     }
+
+        //     // Update de datum
+        //     attendance.AttendanceDate = attendenceBody.AttendanceDate;
+
+        //     try
+        //     {
+        //         await _context.SaveChangesAsync();
+        //         return (true, "Attendance date updated successfully.");
+        //     }
+        //     catch (DbUpdateException ex)
+        //     {
+        //         return (false, "An error occurred while updating the attendance: " + ex.Message);
+        //     }
+        // }
         
         public async Task<bool> DeleteAttendanceAsync(int eventAttendanceId)
         {
