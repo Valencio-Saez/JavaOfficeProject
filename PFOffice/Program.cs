@@ -1,13 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using StarterKit.Models;
 using StarterKit.Services;
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-
 namespace StarterKit
-{
+{//sllsss
     class Program
     {
         static void Main(string[] args)
@@ -27,15 +25,13 @@ namespace StarterKit
             builder.Services.AddDbContext<DatabaseContext>(
                 options => options.UseSqlite(builder.Configuration.GetConnectionString("SqlLiteDb")));
 
-
-
             // Authentication services
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-                .AddJwtBearer(options =>
+            .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -48,11 +44,6 @@ namespace StarterKit
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YourSecretKey"))
                 };
             });
-
-
-
-
-
 
             var app = builder.Build();
 
@@ -78,7 +69,9 @@ namespace StarterKit
                 pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
 
-            app.MapGet("/", () => Results.Content("Calender 2 Application", "text/html"));
+            // Serve React app
+            app.MapFallbackToFile("index.html");
+
             app.Run();
         }
     }
