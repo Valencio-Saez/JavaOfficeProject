@@ -1,0 +1,38 @@
+.add-event-form {
+    margin-top: 30px; 
+}
+
+.bold-label {
+    font-weight: bold;
+}
+
+.text-right {
+  text-align:  left;
+
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-secondary {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    padding: 4px;
+    font-size: 12px;
+  }

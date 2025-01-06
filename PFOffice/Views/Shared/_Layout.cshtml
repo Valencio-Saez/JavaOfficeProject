@@ -8,7 +8,7 @@
     <title>@ViewData["Title"] - StarterKit</title>
 
     <!--Custom styling in site.css-->
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
 
     <!--Bootstrap styling-->
     <link rel="stylesheet" href="~/lib/bootstrap.min.css" />
@@ -16,7 +16,10 @@
 
 <body>
 
-    @RenderBody()
+    <div class="container">
+        @RenderBody()
+    </div>
+
 
     <!--The main Javascript bundle that is produced by Webpack containing the React App-->
     <script src="~/js/main.js" asp-append-version="true"></script>
