@@ -4121,19 +4121,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ikben\\.nuget\\packages\\": {}
+    "C:\\Users\\YanAd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
+      "projectUniqueName": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
       "projectName": "StarterKit",
-      "projectPath": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
-      "packagesPath": "C:\\Users\\ikben\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\",
+      "projectPath": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
+      "packagesPath": "C:\\Users\\YanAd\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ikben\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\YanAd\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4214,7 +4214,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
