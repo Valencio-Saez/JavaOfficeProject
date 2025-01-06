@@ -1,5 +1,16 @@
+import * as React from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const goToAdminDashboard = () => {
+    navigate('/admin');
+  };
+
+  const goToLogin = () => {
+    navigate('/login');
+  };
 
   return (
     <div className="container px-5 my-5">
@@ -45,7 +56,9 @@ export default function Home() {
         After every migration you will also need to run <i>dotnet ef database update</i>, this will apply the changes to the database.
       </p>
 
+      <button onClick={goToAdminDashboard}>Go to Admin Dashboard</button>
 
-    </div >
+      <button onClick={goToLogin}>Go to Login page</button>
+    </div>
   );
 }

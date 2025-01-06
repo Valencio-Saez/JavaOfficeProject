@@ -47,7 +47,7 @@ GET http://localhost:5097/
 
 //TRELLO 1.1.1 (Adrian) 
 ###login POST test – Authenticate Admin or User (Adrian) 
-POST http://localhost:5097/api/v1/Login/AdminLogin
+POST http://localhost:5097/api/v1/Login/Login
 Content-Type: application/json
 
 {
@@ -160,7 +160,7 @@ Content-Type: application/json
 
 // 1.4.2 
 ### Get attendees for a specific event
-GET http://localhost:5097/api/v1/Event/2/attendees
+GET http://localhost:5097/api/v1/Event/1/attendees
 #Authorization: Bearer {jwt_token}
 ###
 
