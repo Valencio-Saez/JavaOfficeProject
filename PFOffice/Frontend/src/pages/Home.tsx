@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 interface Event {
   id: number;
@@ -9,48 +9,69 @@ interface Event {
   startDate: string;
 }
 
-const Home: React.FC = () => {
+const Home = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('/api/v1/Login/IsLoggedIn', {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-    })
-      .then((response) => {
-        if (!response.data.IsLoggedIn) {
-          navigate('/login');
-        }
-      })
-      .catch(() => {
-        navigate('/login');
-      });
+    checkLoginStatus();
+  }, []);
 
-    axios.get('/api/v1/event')
-      .then((response) => {
-        setEvents(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching events:', error);
+  const checkLoginStatus = async () => {
+    try {
+      const response = await axios.get('/api/v1/Login/IsUserLoggedIn', {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
-  }, [navigate]);
+      if (!response.data.IsLoggedIn) {
+        navigate('/login'); // Niet-ingelogd: doorsturen naar de loginpagina
+      } else {
+        fetchEvents(); // Ingelogd: haal evenementen op
+      }
+    } catch (error) {
+      console.error('Error checking login status:', error);
+      navigate('/login'); // Bij een fout: doorsturen naar de loginpagina
+    }
+  };
+
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get('/api/v1/Event/GetAllEvents');
+      const futureEvents = response.data.filter((event: Event) => new Date(event.startDate) > new Date());
+      setEvents(futureEvents);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
+  };
 
   const handleEventClick = (id: number) => {
-    navigate(`/events/${id}`);
+    navigate(`/events/${id}`); // Navigeren naar de detailpagina van een evenement
   };
 
   return (
-    <div className="container">
+    <div>
       <h1>Upcoming Events</h1>
-      <ul>
-        {events.map((event) => (
-          <li key={event.id} onClick={() => handleEventClick(event.id)} style={{ cursor: 'pointer' }}>
-            <h3>{event.title}</h3>
-            <p>{event.description}</p>
-            <p>{new Date(event.startDate).toLocaleString()}</p>
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {events.map((event) => (
+            <tr key={event.id}>
+              <td>{event.title}</td>
+              <td>{event.description}</td>
+              <td>{new Date(event.startDate).toLocaleString()}</td>
+              <td>
+                <button onClick={() => handleEventClick(event.id)}>View Details</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
