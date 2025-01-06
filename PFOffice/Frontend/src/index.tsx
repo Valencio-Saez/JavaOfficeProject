@@ -14,6 +14,7 @@ createRoot(document.getElementById('root')!)
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/events/:id" element={<EventDetails />} />
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/add-event" element={<AdminAddEvent/>} />
 
@@ -21,14 +22,3 @@ createRoot(document.getElementById('root')!)
             </Router>
         </React.StrictMode>
     );
-createRoot(document.getElementById("root")!)
-  .render(
-    <React.StrictMode>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/events/:id" element={<EventDetails />} />
-        </Routes>
-      </Router>
-    </React.StrictMode>
-  );
