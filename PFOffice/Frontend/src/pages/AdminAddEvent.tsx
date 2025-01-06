@@ -1,46 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const AdminAddEvent = () => {
-    const navigate = useNavigate();
+const AdminAddEvent: React.FC = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [eventDate, setEventDate] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
-    const [location, setLocation] = useState('');    
+    const [location, setLocation] = useState('');
+    const navigate = useNavigate();
 
-    const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-          await axios.post('/api/v1/Event/events', {
-            title,
-            description,
-            eventDate,
-            startTime,
-            endTime,
-            location
-          });
-          navigate('/admin');
+            const response = await fetch('/api/v1/Event/events', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title,
+                    description,
+                    eventDate,
+                    startTime,
+                    endTime,
+                    location
+                })
+            });
+
+            if (response.ok) {
+                navigate('/admin');
+                alert('Event added successfully!');
+            } else {
+                console.error('Error adding event:', response.statusText);
+            }
         } catch (error) {
-          console.error('Error adding event:', error);
+            console.error('Error adding event:', error);
         }
-      };
-    
-    //   ### Event POST test - POST /events – Create New Event 
-    //   POST http://localhost:5097/api/v1/Event/events
-    //   content-Type: application/json
-      
-    //   {
-    //       "Title": "New Event",
-    //       "Description": "This is a new event created for testing purposes.",
-    //       "EventDate": "2025-01-05",
-    //       "StartTime": "10:00:00",
-    //       "EndTime": "12:00:00",
-    //       "Location": "Online"
-    //   }
-      return (
+    };
+
+    return (
         <div className="container">
             <h1>Admin Dashboard</h1>
             <h2>Add New Event</h2>
@@ -55,21 +54,21 @@ const AdminAddEvent = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="eventDate" className="bold-label">Event Date:</label>
-                    <input type="date" id="eventDate" name="eventDate" value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
+                    <input type="text" id="eventDate" name="eventDate" value={eventDate} onChange={(e) => setEventDate(e.target.value)} placeholder="YYYY-MM-DD" />
                 </div>
                 <div className="form-group">    
                     <label htmlFor="startTime" className="bold-label">Start Time:</label>
-                    <input type="time" id="startTime" name="startTime" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
+                    <input type="text" id="startTime" name="startTime" value={startTime} onChange={(e) => setStartTime(e.target.value)} placeholder="HH:MM:SS" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="endTime" className="bold-label">End Time:</label>
-                    <input type="time" id="endTime" name="endTime" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
+                    <input type="text" id="endTime" name="endTime" value={endTime} onChange={(e) => setEndTime(e.target.value)} placeholder="HH:MM:SS" />
                 </div>
                 <div className="form-group">
                     <label htmlFor="location" className="bold-label">Location:</label>
                     <input type="text" id="location" name="location" value={location} onChange={(e) => setLocation(e.target.value)} />
                 </div>
-                <button className="btn btn-primary">Add Event</button>
+                <button type ="submit" className="btn btn-primary"> Add Event</button>
                 <button className="btn btn-secondary" onClick={() => navigate('/admin')}>Back</button>
             </form>
         </div>

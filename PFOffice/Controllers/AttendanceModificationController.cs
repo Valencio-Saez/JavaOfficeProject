@@ -19,45 +19,23 @@ namespace StarterKit.Controllers
         }
 
         [HttpPost("AddAttendance")]
-        [Authorize]
-        public async Task<IActionResult> AddAttendance(int eventId)
+        public async Task<IActionResult> AddAttendance([FromBody] AttendanceRequest request)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (string.IsNullOrEmpty(userId))
+            if (request == null || request.EventId <= 0 || request.UserId <= 0)
             {
-                return Unauthorized("User not logged in.");
+                return BadRequest("Invalid request data.");
             }
 
-            var result = await _attendanceService.AddAttendanceAsync(int.Parse(userId), eventId);
-
+            var result = await _attendanceService.AddAttendanceAsync(request.UserId, request.EventId);
             if (!result.Success)
             {
                 return BadRequest(result.Message);
             }
 
-            return Ok(result.Message);
-        }
-
-        [HttpPut("UpdateAttendance")]
-        [Authorize] 
-        public async Task<IActionResult> UpdateAttendance(int attendanceId, DateTime newDate)
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (string.IsNullOrEmpty(userId))
+            return Ok(new
             {
-                return Unauthorized("User not logged in.");
-            }
-
-            var result = await _attendanceService.UpdateAttendanceAsync(int.Parse(userId), attendanceId, newDate);
-
-            if (!result.Success)
-            {
-                return BadRequest(result.Message);
-            }
-
-            return Ok(result.Message);
+                result.Message
+            });
         }
 
         [HttpDelete("DeleteAttendance/{attendanceId}")]
@@ -75,10 +53,16 @@ namespace StarterKit.Controllers
 
             if (!result)
             {
-                return NotFound("Attendance not found or user not authorized.");
+                return NotFound("Attendance not found.");
             }
 
-            return Ok("Attendance deleted successfully.");
+            return Ok("Attendee removed successfully.");
         }
+    }
+
+    public class AttendanceRequest
+    {
+        public int EventId { get; set; }
+        public int UserId { get; set; }
     }
 }
