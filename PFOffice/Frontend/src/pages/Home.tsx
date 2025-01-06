@@ -1,3 +1,87 @@
+import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+interface Event {
+  id: number;
+  title: string;
+  description: string;
+  startDate: string;
+}
+
+const Home = () => {
+  const [events, setEvents] = useState<Event[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Temporarily bypass login check
+    // checkLoginStatus();
+    fetchEvents(); // Fetch events directly for testing purposes
+  }, []);
+
+  const checkLoginStatus = async () => {
+    try {
+      const response = await axios.get('/api/v1/Login/IsUserLoggedIn', {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+      if (!response.data.IsLoggedIn) {
+        navigate('/login'); // Redirect to login page if not logged in
+      } else {
+        fetchEvents(); // Fetch events if logged in
+      }
+    } catch (error) {
+      console.error('Error checking login status:', error);
+      navigate('/login'); // Redirect to login on error
+    }
+  };
+
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get('/api/v1/Event/GetAllEvents');
+      const futureEvents = response.data.filter((event: Event) => new Date(event.startDate) > new Date());
+      setEvents(futureEvents);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
+  };
+
+  const handleEventClick = (id: number) => {
+    navigate(`/events/${id}`); // Navigate to event details page
+  };
+
+  return (
+    <div>
+      <h1>Upcoming Events</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {events.map((event) => (
+            <tr key={event.id}>
+              <td>{event.title}</td>
+              <td>{event.description}</td>
+              <td>{new Date(event.startDate).toLocaleString()}</td>
+              <td>
+                <button onClick={() => handleEventClick(event.id)}>View Details</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default Home;
+
+
+
 // import { useNavigate } from 'react-router-dom';
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
@@ -23,13 +107,13 @@
 //         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 //       });
 //       if (!response.data.IsLoggedIn) {
-//         navigate('/login'); // Niet-ingelogd: doorsturen naar de loginpagina
+//         // navigate('/login'); // Not logged in: redirect to login page
 //       } else {
-//         fetchEvents(); // Ingelogd: haal evenementen op
+//         fetchEvents(); // Logged in: fetch events
 //       }
 //     } catch (error) {
 //       console.error('Error checking login status:', error);
-//       navigate('/login'); // Bij een fout: doorsturen naar de loginpagina
+//       // navigate('/login'); // On error: redirect to login page
 //     }
 //   };
 
@@ -43,36 +127,23 @@
 //     }
 //   };
 
-//   const handleEventClick = (id: number) => {
-//     navigate(`/events/${id}`); // Navigeren naar de detailpagina van een evenement
-//   };
-//   const navigate = useNavigate();
-
-//   const goToAdminDashboard = () => {
-//     navigate('/admin');
-//   };
-
 //   return (
 //     <div>
-//       <h1>Upcoming Events</h1>
+//       <h1>Events</h1>
 //       <table>
 //         <thead>
 //           <tr>
 //             <th>Title</th>
 //             <th>Description</th>
-//             <th>Date</th>
-//             <th>Actions</th>
+//             <th>Start Date</th>
 //           </tr>
 //         </thead>
 //         <tbody>
-//           {events.map((event) => (
+//           {events.map(event => (
 //             <tr key={event.id}>
 //               <td>{event.title}</td>
 //               <td>{event.description}</td>
-//               <td>{new Date(event.startDate).toLocaleString()}</td>
-//               <td>
-//                 <button onClick={() => handleEventClick(event.id)}>View Details</button>
-//               </td>
+//               <td>{event.startDate}</td>
 //             </tr>
 //           ))}
 //         </tbody>
@@ -81,78 +152,7 @@
 //   );
 // };
 
-
-import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
-interface Event {
-  id: number;
-  title: string;
-  description: string;
-  startDate: string;
-}
-
-const Home = () => {
-  const [events, setEvents] = useState<Event[]>([]);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    checkLoginStatus();
-  }, []);
-
-  const checkLoginStatus = async () => {
-    try {
-      const response = await axios.get('/api/v1/Login/IsUserLoggedIn', {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-      });
-      if (!response.data.IsLoggedIn) {
-        // navigate('/login'); // Not logged in: redirect to login page
-      } else {
-        fetchEvents(); // Logged in: fetch events
-      }
-    } catch (error) {
-      console.error('Error checking login status:', error);
-      // navigate('/login'); // On error: redirect to login page
-    }
-  };
-
-  const fetchEvents = async () => {
-    try {
-      const response = await axios.get('/api/v1/Event/GetAllEvents');
-      const futureEvents = response.data.filter((event: Event) => new Date(event.startDate) > new Date());
-      setEvents(futureEvents);
-    } catch (error) {
-      console.error('Error fetching events:', error);
-    }
-  };
-
-  return (
-    <div>
-      <h1>Events</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Start Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {events.map(event => (
-            <tr key={event.id}>
-              <td>{event.title}</td>
-              <td>{event.description}</td>
-              <td>{event.startDate}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
-export default Home;
+// export default Home;
 
 // import * as React from "react";
 // import { useNavigate } from 'react-router-dom';
