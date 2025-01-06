@@ -72,6 +72,7 @@ namespace StarterKit.Controllers
         //     return Ok(updatedEvent);
         // }
         [HttpPut("UpdateEvent/{id}")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] Eventbody eventBody)
         {
             if (!IsAdminLoggedIn())
@@ -118,32 +119,16 @@ namespace StarterKit.Controllers
             var deleted = await _eventService.DeleteEventAsync(id);
             if (!deleted)
             {
-                return NotFound("Event not found.");
+                return BadRequest("Event not found or could not be deleted.");
             }
 
             return Ok("Event deleted successfully.");
         }
 
-        [HttpPost("Attendance")]
-        public async Task<IActionResult> AddAttendance(int eventId, int userId)
-        {
-            var result = await _eventService.AddAttendanceAsync(eventId, userId);
 
-            // Check the 'Success' field of the tuple
-            if (!result.Success)
-            {
-                return BadRequest(result.Message); // Return the failure message from the service
-            }
-
-            return Ok(new
-            {
-                result.Message,
-                result.AttendedEvent
-            });
-        }
 
         [HttpGet("{eventId}/attendees")]
-        //[Authorize] // Ensures only authenticated users can access this route
+        // [Authorize] // Ensures only authenticated users can access this route
         public async Task<IActionResult> GetEventAttendees(int eventId)
         {
             var eventAttendees = await _eventService.GetEventAttendeesAsync(eventId);
@@ -164,7 +149,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpDelete("{eventId}/attendees/{userId}")]
-        //[Authorize]
+        // [Authorize]
         public async Task<IActionResult> DeleteEventAttendee(int eventId)
         {
             var deleted = await _eventService.DeleteEventAsync(eventId);
@@ -176,7 +161,8 @@ namespace StarterKit.Controllers
             return Ok("Attendee removed successfully.");
         }
 
-        [HttpDelete("{eventId}/specifieke/{userId}")]
+        [HttpDelete("{eventId}/attendees/{userId}")]
+        // [Authorize]
         public async Task<IActionResult> SpecificEventAttendee(int eventId, int userId)
         {
             var deleted = await _eventService.DeleteAttendanceAsync(eventId, userId);
@@ -189,21 +175,5 @@ namespace StarterKit.Controllers
         }
     }
 
-}
-
-public class Eventbody
-{
-    public required string Title { get; set; }
-    public required string Description { get; set; }
-    public DateOnly EventDate { get; set; }
-    public TimeSpan StartTime { get; set; }
-    public TimeSpan EndTime { get; set; }
-    public required string Location { get; set; }
-}
-
-public class ReviewBody
-{
-    public required int EventId { get; set; }
-    public required string Review { get; set; }
 }
 

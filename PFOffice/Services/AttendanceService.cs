@@ -27,7 +27,17 @@ namespace StarterKit.Services
                 return (false, "Event not found.");
             }
 
-            // Ensure StartTime is of type TimeOnly
+           var attendance = new Event_Attendance() // Create a new Attendance
+            {
+                Event_AttendanceId = 0,
+                Rating = 0,
+                Feedback = "",
+                Event = eventEntity,
+                user = user,
+                
+            };
+
+            _context.Event_Attendance.Add(attendance);
 
             // Check if user already attended the event
             var existingAttendance = await _context.Event_Attendance
