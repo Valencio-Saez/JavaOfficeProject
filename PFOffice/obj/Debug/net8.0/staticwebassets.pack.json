@@ -17,6 +17,18 @@
       "PackagePath": "staticwebassets\\images\\portal.jpg"
     },
     {
+      "Id": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.2c05396b19cc478dd92a.hot-update.js",
+      "PackagePath": "staticwebassets\\js\\app.2c05396b19cc478dd92a.hot-update.js"
+    },
+    {
+      "Id": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.2c05396b19cc478dd92a.hot-update.json",
+      "PackagePath": "staticwebassets\\js\\app.2c05396b19cc478dd92a.hot-update.json"
+    },
+    {
+      "Id": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
       "Id": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\lib\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap.min.css"
     },
