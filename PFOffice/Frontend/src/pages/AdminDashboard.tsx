@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AccessibilityOptions from './AccessibilityOptions';
 
 interface Event {
   eventId: number;
@@ -103,6 +104,7 @@ const AdminDashboard = () => {
           ))}
         </tbody>
       </table>
+      <AccessibilityOptions />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import AccessibilityOptions from './AccessibilityOptions';
 
 interface Attendee {
   userId: number;
@@ -62,6 +63,7 @@ const AdminViewAttendees = () => {
         </tbody>
       </table>
       <button className="btn btn-secondary" onClick={() => navigate('/admin')}>Back to Dashboard</button>
+      <AccessibilityOptions />
     </div>
   );
 };

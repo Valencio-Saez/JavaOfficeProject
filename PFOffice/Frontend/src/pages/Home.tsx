@@ -1,5 +1,6 @@
-import * as React from "react";
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import AccessibilityOptions from './AccessibilityOptions';
 
 export default function Home() {
   const navigate = useNavigate();
@@ -9,27 +10,8 @@ export default function Home() {
   };
 
   return (
-    <div className="container px-5 my-5">
-      <h1>Welcome to the Web development Starter kit!</h1>
-
-      <p>
-        This starter kit contains a basic setup that should help you get up to speed with developing
-        your web application
-      </p>
-
-      <div>
-        The code base of the starter kit contains the following:
-        <ul>
-          <li>Backend with .NET (C#)</li>
-          <li>Frontend using React with Typescript</li>
-          <li>Webpack with hot module reloading enabled</li>
-          <li>A database using Sqlite, we might change this to Postgres later</li>
-          <li>A sample database model for the two cases using Entity Framework core</li>
-          <li>CSS stylesheet using Bootstrap</li>
-        </ul>
-      </div>
-
-      <h2>Choosing a practical case</h2>
+    <div>
+      <h1>Welcome to the Event Management System</h1>
       <p>
         When you have decided as a group which practical case you're going to work on during the course you can uncomment the desired database model in the <b>DatabaseContext.cs</b> and add a new migration.
       </p>
@@ -46,13 +28,19 @@ export default function Home() {
 
       <p>
         Inside the migrations folder you can already find a migration called <i>InitialCreate</i> containing the creation of the Admin entity.
+      </p>
+
+      <p>
         The <b>DatabaseContext.cs</b> file contains two pre-configured databases for the practical cases. You can uncomment one of them and add a new migration
         to apply the model. Inside this file you will also find some data seeds that create a couple of admin users with a password.
+      </p>
 
+      <p>
         After every migration you will also need to run <i>dotnet ef database update</i>, this will apply the changes to the database.
       </p>
 
       <button onClick={goToAdminDashboard}>Go to Admin Dashboard</button>
+      <AccessibilityOptions />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import AccessibilityOptions from './AccessibilityOptions';
 
 const AdminEditEvent = () => {
   const { eventId } = useParams<{ eventId: string }>();
@@ -133,6 +134,7 @@ const AdminEditEvent = () => {
         <button type="submit" className="btn btn-primary">Update Event</button>
         <button type="button" className="btn btn-secondary" onClick={() => navigate('/admin')}>Back</button>
       </form>
+      <AccessibilityOptions />
     </div>
   );
 };

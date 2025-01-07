@@ -6,6 +6,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminAddEvent from "./pages/AdminAddEvent";
 import AdminEditEvent from "./pages/AdminEditEvent";
 import AdminViewAttendees from "./pages/AdminViewAttendees";
+import AccessibilityOptions from "./pages/AccessibilityOptions";
 
 createRoot(document.getElementById('root')!)
     .render(
