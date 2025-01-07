@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useNavigate } from 'react-router-dom';
+import '../../../wwwroot/css/site.css'
 
 export default function Home() {
   const navigate = useNavigate();
@@ -10,6 +11,10 @@ export default function Home() {
 
   const goToLogin = () => {
     navigate('/login');
+  };
+
+  const goToRegister = () => {
+    navigate('/register');
   };
 
   return (
@@ -59,6 +64,8 @@ export default function Home() {
       <button onClick={goToAdminDashboard}>Go to Admin Dashboard</button>
 
       <button onClick={goToLogin}>Go to Login page</button>
+
+      <button onClick={goToRegister}>Go to Register page</button>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../../../wwwroot/css/site.css'
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
@@ -19,23 +20,22 @@ const Login: React.FC = () => {
             });
 
             if (response.ok) {
-                // const data = await response.json();
-                // Store session token and role
-                // localStorage.setItem('token', data.token);
-                // localStorage.setItem('role', username === 'admin1' ? 'admin1' : 'Aicon');
-
                 // Redirect based on role
                 if (username === 'admin1') {
                     navigate('/admin');
+                    return response.json();
                 } else {
                     navigate('/');
+                    return response.json();
                 }
-            } else {
-                const errorData = await response.json();
-                setError(errorData.message || 'Login failed');
             }
-        } catch (error) {
-            setError('An error occurred. Please try again.');
+            if (response.status === 401) {
+                // const errorData = await response.json();
+                throw new Error('Invalid credentials');
+            }
+        }
+        catch (error) {
+            setError('-');
         }
     };
 
@@ -50,6 +50,7 @@ const Login: React.FC = () => {
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        required
                     />
                 </div>
                 <div>
@@ -59,6 +60,7 @@ const Login: React.FC = () => {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}

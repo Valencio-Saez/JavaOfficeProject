@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import AdminDashboard from "./pages/AdminDashboard";
 import Login from "./pages/Login";
 import AdminAddEvent from "./pages/AdminAddEvent";
+import Register from "./pages/Register";
 // import EditEvent from "./pages/EditEvent";
 // import EventAttendees from "./pages/EventAttendees";
 
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!)
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/add-event" element={<AdminAddEvent />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
             </Router>
         </React.StrictMode>

@@ -20,24 +20,22 @@ public class LoginService : ILoginService
 
     public async Task<LoginStatus> CheckPassword(string username, string inputPassword)
     {
-        // Check Admin table
         var admin = await _context.Admin.FirstOrDefaultAsync(a => a.UserName == username);
         if (admin != null)
         {
             string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
-            if (admin.Password == encryptedPassword) // Replace with proper password hashing and comparison
+            if (admin.Password == encryptedPassword)
             {
                 return LoginStatus.Success;
             }
             return LoginStatus.IncorrectPassword;
         }
 
-        // Check User table
         var user = await _context.User.FirstOrDefaultAsync(u => u.UserName == username);
         if (user != null)
         {
             string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
-            if (user.Password == encryptedPassword) // Replace with proper password hashing and comparison
+            if (user.Password == encryptedPassword)
             {
                 return LoginStatus.Success;
             }
