@@ -118,10 +118,6 @@ const Register: React.FC = () => {
                 {success && <p style={{ color: 'green' }}>{success}</p>}
                 <button type="submit">Register</button>
             </form>
-            <button type="button" onClick={() => navigate('/login')}>Go to login page</button>
-            <div>
-                <button type="button" onClick={() => navigate('/')}>Home</button>
-            </div>
         </div>
     );
 };

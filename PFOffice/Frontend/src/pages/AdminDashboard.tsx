@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../../wwwroot/css/site.css';
 import AccessibilityOptions from './AccessibilityOptions';
 
 interface Event {
@@ -15,39 +14,11 @@ interface Event {
 
 const AdminDashboard = () => {
   const [events, setEvents] = useState<Event[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [alertShown, setAlertShown] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkAdminLoggedIn();
     fetchEvents();
   }, []);
-
-  const checkAdminLoggedIn = async () => {
-    try {
-      const response = await fetch('/api/v1/Login/IsAdminLoggedIn');
-      if (response.ok) {
-        const data = await response.json();
-        if (!data && !alertShown) {
-          setAlertShown(true);
-          navigate('/login?error=Admin%20login%20required');
-        }
-      } else {
-        if (!alertShown) {
-          setAlertShown(true);
-          navigate('/login?error=Admin%20login%20required');
-        }
-      }
-    } catch (error) {
-      console.error('Error checking admin login status:', error);
-      if (!alertShown) {
-        setAlertShown(true);
-        navigate('/login?error=Admin%20login%20required');
-      }
-    }
-  };
-
 
   const fetchEvents = async () => {
     try {
@@ -99,7 +70,6 @@ const AdminDashboard = () => {
   return (
     <div>
       <h1>Admin Dashboard</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
       <h2>All Events</h2>
       <div className="text-right">
         <button className="btn btn-primary" onClick={() => navigate('/add-event')}>Add new event</button>
@@ -134,9 +104,6 @@ const AdminDashboard = () => {
           ))}
         </tbody>
       </table>
-      <div>
-        <button type="button" onClick={() => navigate('/')}>Home</button>
-      </div>
       <AccessibilityOptions />
     </div>
   );

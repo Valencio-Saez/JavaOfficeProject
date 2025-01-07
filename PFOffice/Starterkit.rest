@@ -51,7 +51,7 @@ POST http://localhost:5097/api/v1/Login/Login
 Content-Type: application/json
 
 {
-  "UserName": "admin1",
+  "UserName": "--",
   "Password": "password"
 }
 
@@ -96,7 +96,7 @@ GET http://localhost:5097/api/v1/Login/UserLogout
 ### Event POST test - POST /events – Create New Event 
 POST http://localhost:5097/api/v1/Event/events?sessionId=<session_id>
 content-Type: application/json
-# Authorization: Bearer {jwt_token} 
+Authorization: Bearer {jwt_token} 
 
 {
     "Title": "New Event",
@@ -120,7 +120,7 @@ content-Type: application/json
 // TRELLO 1.1.1 1.2.2 & 1.2.4A (Valencio)
 ### Events GET test – Retrieve All Events 
 GET http://localhost:5097/api/v1/Event/GetAllEvents
-# Authorization: Bearer {jwt_token}
+Authorization: Bearer {jwt_token}
 Accept: application/json
 
 
