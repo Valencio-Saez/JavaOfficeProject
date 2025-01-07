@@ -22,18 +22,18 @@ public class LoginController : Controller
     public async Task<IActionResult> Login([FromBody] LoginBody loginBody)
     {
         if (loginBody == null || string.IsNullOrEmpty(loginBody.UserName) || string.IsNullOrEmpty(loginBody.Password))
-            return BadRequest("Invalid login request");
+            return BadRequest(new { message = "Invalid login request" });
 
         var result = await _loginService.CheckPassword(loginBody.UserName, loginBody.Password);
 
         if (result == LoginStatus.IncorrectUsername)
         {
-            return Unauthorized("Incorrect username");
+            return Unauthorized(new { message = "Incorrect username" });
         }
 
         if (result == LoginStatus.IncorrectPassword)
         {
-            return Unauthorized("Incorrect password");
+            return Unauthorized(new { message = "Incorrect password" });
         }
 
         if (result == LoginStatus.Success)
@@ -41,13 +41,13 @@ public class LoginController : Controller
             if (loginBody.UserName == "admin1")
             {
                 HttpContext.Session.SetString("adminLoggedIn", loginBody.UserName);
-                return Ok($"Admin {loginBody.UserName} logged in");
+                return Ok(new { message = $"Admin {loginBody.UserName} logged in" });
             }
             HttpContext.Session.SetString("userLoggedIn", loginBody.UserName);
-            return Ok($"User {loginBody.UserName} logged in");
+            return Ok(new { message = $"User {loginBody.UserName} logged in" });
         }
 
-        return Unauthorized("Login failed");
+        return Unauthorized(new { message = "Login failed" });
     }
 
     [HttpPost("Register")]

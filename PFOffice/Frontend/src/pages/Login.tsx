@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../../wwwroot/css/site.css'
+import '../../../wwwroot/css/site.css';
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
@@ -19,23 +19,19 @@ const Login: React.FC = () => {
                 body: JSON.stringify({ username, password }),
             });
 
+            const data = await response.json();
+
             if (response.ok) {
-                // Redirect based on role
                 if (username === 'admin1') {
                     navigate('/admin');
-                    return response.json();
                 } else {
                     navigate('/');
-                    return response.json();
                 }
+            } else {
+                setError(data.message || 'Login failed');
             }
-            if (response.status === 401) {
-                // const errorData = await response.json();
-                throw new Error('Invalid credentials');
-            }
-        }
-        catch (error) {
-            setError('-');
+        } catch (error) {
+            setError('An unexpected error occurred. Please try again.');
         }
     };
 
