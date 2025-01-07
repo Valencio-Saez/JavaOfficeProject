@@ -24,9 +24,13 @@ namespace StarterKit.Controllers
         }
 
         [HttpGet("GetAllEvents")]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllEvents()
         {
+            if (!IsAdminLoggedIn())
+            {
+                return Unauthorized("Admin privileges required to create an event.");
+            }
             var events = await _eventService.GetAllEventsAsync();
             return Ok(events);
         }
@@ -39,7 +43,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpPost("events")]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "adminLoggedIn")]
         public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
         {
             if (!IsAdminLoggedIn())
@@ -74,7 +78,7 @@ namespace StarterKit.Controllers
         //     return Ok(updatedEvent);
         // }
         [HttpPut("UpdateEvent/{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] Eventbody eventBody)
         {
             if (!IsAdminLoggedIn())
