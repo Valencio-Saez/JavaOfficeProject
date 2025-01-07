@@ -24,7 +24,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpGet("GetAllEvents")]
-        [Authorize (Roles = "Admin") ]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllEvents()
         {
             var events = await _eventService.GetAllEventsAsync();
@@ -32,9 +32,9 @@ namespace StarterKit.Controllers
         }
 
         [HttpPost("{eventId}/reviews")]
-        public async Task<IActionResult> PostReview([FromBody] ReviewBody reviewbody)
+        public async Task<IActionResult> PostReview(int eventId, string review)
         {
-            var newReview = await _eventService.AddReviewAsync(reviewbody);
+            var newReview = await _eventService.AddReviewAsync(eventId, review);
             return CreatedAtAction("PostReview", newReview);
         }
 
@@ -130,7 +130,7 @@ namespace StarterKit.Controllers
 
 
         [HttpGet("{eventId}/attendees")]
-        [Authorize (Roles = "Admin")] 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetEventAttendees(int eventId)
         {
             var eventAttendees = await _eventService.GetEventAttendeesAsync(eventId);
@@ -163,7 +163,7 @@ namespace StarterKit.Controllers
         // }
 
         [HttpDelete("{eventId}/attendees/{userId}")]
-        [Authorize (Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> SpecificEventAttendee(int eventId, int userId)
         {
             var deleted = await _eventService.DeleteAttendanceAsync(eventId, userId);

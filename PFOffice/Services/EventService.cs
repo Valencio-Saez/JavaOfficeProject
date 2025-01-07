@@ -45,14 +45,14 @@ namespace StarterKit.Services
 
         public async Task<Event> AddReviewAsync(int eventId, string review)
         {
-            var eventToUpdate = await _context.Event.FindAsync(reviewBody.EventId);
+            var eventToUpdate = await _context.Event.FindAsync(eventId, review);
 
             if (eventToUpdate == null)
             {
                 return null;
             }
 
-            eventToUpdate.Review = reviewBody.Review;
+            eventToUpdate.Review = review;
             _context.Event.Update(eventToUpdate);
             await _context.SaveChangesAsync();
             return eventToUpdate;
@@ -127,7 +127,7 @@ namespace StarterKit.Services
             {
                 user = user,
                 Event = eventToUpdate,
-                Feedback = "",  
+                Feedback = "",
                 Rating = 0
             });
 
@@ -163,7 +163,7 @@ namespace StarterKit.Services
 
             if (eventEntity == null)
             {
-                return null; 
+                return null;
             }
 
             return eventEntity.Event_Attendances;

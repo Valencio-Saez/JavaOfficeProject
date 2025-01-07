@@ -9,6 +9,14 @@ export default function Home() {
     navigate('/admin');
   };
 
+  const goToLogin = () => {
+    navigate('/login');
+  };
+
+  const goToRegister = () => {
+    navigate('/register');
+  };
+
   return (
     <div>
       <h1>Welcome to the Event Management System</h1>
@@ -40,6 +48,10 @@ export default function Home() {
       </p>
 
       <button onClick={goToAdminDashboard}>Go to Admin Dashboard</button>
+
+      <button onClick={goToLogin}>Go to Login</button>
+
+      <button onClick={goToRegister}>Go to Register</button>
       <AccessibilityOptions />
     </div>
   );

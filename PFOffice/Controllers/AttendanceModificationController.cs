@@ -4,6 +4,7 @@ using StarterKit.Models;
 using StarterKit.Services;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace StarterKit.Controllers
 {
