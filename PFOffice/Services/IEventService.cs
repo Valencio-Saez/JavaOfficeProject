@@ -7,6 +7,8 @@ namespace StarterKit.Services
     public interface IEventService
     {
         Task<List<Event>> GetAllEventsAsync();
+        Task<Event> GetEventByIdAsync(int eventId);
+
         Task<Event> AddReviewAsync(int eventid, string review);
         Task<Event> CreateEventAsync(Eventbody eventBody);
         Task<Event> UpdateEventAsync(int id, Eventbody eventBody);

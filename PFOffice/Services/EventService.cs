@@ -22,6 +22,15 @@ namespace StarterKit.Services
                 .ToListAsync();
         }
 
+        public async Task<Event> GetEventByIdAsync(int eventId)
+        {
+            return await _context.Event
+                .Include(e => e.Event_Attendances)
+                .ThenInclude(ea => ea.user)
+                .FirstOrDefaultAsync(e => e.EventId == eventId);
+        }
+
+
         public async Task<Event> CreateEventAsync(Eventbody eventBody)
         {
 

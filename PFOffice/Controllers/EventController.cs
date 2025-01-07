@@ -24,6 +24,20 @@ namespace StarterKit.Controllers
             return Ok(events);
         }
 
+        [HttpGet("{eventId}")]
+        public async Task<IActionResult> GetEventById(int eventId)
+        {
+            var eventDetails = await _eventService.GetEventByIdAsync(eventId);
+
+            if (eventDetails == null)
+            {
+                return NotFound("Event not found.");
+            }
+
+            return Ok(eventDetails);
+        }
+
+
         [HttpPost("{eventId}/reviews")]
         public async Task<IActionResult> PostReview(int eventId, string review)
         {

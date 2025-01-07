@@ -99,11 +99,11 @@ content-Type: application/json
 # Authorization: Bearer {jwt_token} 
 
 {
-    "Title": "test Event",
+    "Title": "test4 Event",
     "Description": "This is a new event created for testing purposes.",
-    "EventDate": "2025-12-01",
-    "StartTime": "10:00:00",
-    "EndTime": "12:00:00",
+    "EventDate": "2025-12-04",
+    "StartTime": "13:00:00",
+    "EndTime": "15:00:00",
     "Location": "Online"
 }
 
@@ -122,7 +122,8 @@ content-Type: application/json
 GET http://localhost:5097/api/v1/Event/GetAllEvents
 Accept: application/json
 
-
+###
+GET http://localhost:5097/api/v1/Event/2
 
 //  1.2.3/1.2.4B(Jayden) 
 ### Event PUT test - Update Existing Event
