@@ -1,0 +1,43 @@
+.access ul {
+    list-style-type: none;
+  }
+  
+  #accessibility-button img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .high-contrast {
+    color: #f00;
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+  
+  .grey-hues {
+    filter: grayscale(100%);
+  }
+  
+  .colorblind {
+    width: 30%;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: -30px;
+  }
+  
+  .colorchange {
+    width: 100%;
+    height: 40%;
+    align-items: center;
+  }
+  
+  body.colorblind-mode {
+    background-color: #DDCC77;
+  }
+  
+  body.large-text {
+    font-size: 20px;
+  }

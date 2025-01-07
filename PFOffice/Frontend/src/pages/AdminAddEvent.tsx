@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AccessibilityOptions from './AccessibilityOptions';
 
 const AdminAddEvent: React.FC = () => {
     const [title, setTitle] = useState('');
@@ -30,6 +31,7 @@ const AdminAddEvent: React.FC = () => {
 
             if (response.ok) {
                 navigate('/admin');
+                alert('Event added successfully!');
             } else {
                 console.error('Error adding event:', response.statusText);
             }
@@ -39,15 +41,39 @@ const AdminAddEvent: React.FC = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" />
-            <input type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
-            <input type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
-            <input type="time" value={endTime} onChange={(e) => setEndTime(e.target.value)} />
-            <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Location" />
-            <button type="submit">Add Event</button>
-        </form>
+        <div className="container">
+            <h1>Admin Dashboard</h1>
+            <h2>Add New Event</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="title" className="bold-label">Title:</label>
+                    <input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="description" className="bold-label">Description:</label>
+                    <input type="text" id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="eventDate" className="bold-label">Event Date:</label>
+                    <input type="text" id="eventDate" name="eventDate" value={eventDate} onChange={(e) => setEventDate(e.target.value)} placeholder="YYYY-MM-DD" />
+                </div>
+                <div className="form-group">    
+                    <label htmlFor="startTime" className="bold-label">Start Time:</label>
+                    <input type="text" id="startTime" name="startTime" value={startTime} onChange={(e) => setStartTime(e.target.value)} placeholder="HH:MM:SS" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="endTime" className="bold-label">End Time:</label>
+                    <input type="text" id="endTime" name="endTime" value={endTime} onChange={(e) => setEndTime(e.target.value)} placeholder="HH:MM:SS" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="location" className="bold-label">Location:</label>
+                    <input type="text" id="location" name="location" value={location} onChange={(e) => setLocation(e.target.value)} />
+                </div>
+                <button type="submit" className="btn btn-primary">Add Event</button>
+                <button type="button" className="btn btn-secondary" onClick={() => navigate('/admin')}>Back</button>
+            </form>
+            <AccessibilityOptions />
+        </div>
     );
 };
 

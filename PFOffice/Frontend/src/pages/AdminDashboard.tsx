@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AccessibilityOptions from './AccessibilityOptions';
 
-const AdminDashboard: React.FC = () => {
-  const [events, setEvents] = useState([]);
-  const [newEvent, setNewEvent] = useState({
-    title: '',
-    description: '',
-    eventDate: '',
-    startTime: '',
-    endTime: '',
-    location: ''
-  });
+interface Event {
+  eventId: number;
+  title: string;
+  description: string;
+  location: string;
+  eventDate: string;
+  startTime: string;
+  endTime: string;
+}
+
+const AdminDashboard = () => {
+  const [events, setEvents] = useState<Event[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchEvents();
@@ -21,7 +25,12 @@ const AdminDashboard: React.FC = () => {
       const response = await fetch('/api/v1/Event/GetAllEvents');
       if (response.ok) {
         const data = await response.json();
-        setEvents(data);
+        console.log(data);
+        if (data && data.$values && Array.isArray(data.$values)) {
+          setEvents(data.$values);
+        } else {
+          console.error('Error: API response is not in the expected format');
+        }
       } else {
         console.error('Error fetching events:', response.statusText);
       }
@@ -30,49 +39,72 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setNewEvent({ ...newEvent, [name]: value });
+  const handleEdit = (id: number) => {
+    navigate(`/edit-event/${id}`);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('/api/v1/Event/events', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newEvent)
-      });
+  const handleDelete = async (id: number) => {
+    if (window.confirm('Are you sure you want to delete this event?')) {
+      try {
+        const response = await fetch(`/api/v1/Event/DeleteEvent/${id}`, {
+          method: 'DELETE'
+        });
 
-      if (response.ok) {
-        fetchEvents();
-      } else {
-        console.error('Error adding event:', response.statusText);
+        if (response.ok) {
+          fetchEvents();
+          alert('Event deleted successfully!');
+        } else {
+          const errorText = await response.text();
+          alert('Error deleting event: ' + response.statusText + ' ' + response.status + ' ' + errorText);
+        }
+      } catch (error) {
+        alert('Error deleting event: ' + error);
       }
-    } catch (error) {
-      console.error('Error adding event:', error);
     }
+  };
+
+  const viewAttendees = (id: number) => {
+    navigate(`/event/${id}/attendees`);
   };
 
   return (
     <div>
       <h1>Admin Dashboard</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="title" value={newEvent.title} onChange={handleInputChange} placeholder="Title" />
-        <textarea name="description" value={newEvent.description} onChange={handleInputChange} placeholder="Description" />
-        <input type="date" name="eventDate" value={newEvent.eventDate} onChange={handleInputChange} />
-        <input type="time" name="startTime" value={newEvent.startTime} onChange={handleInputChange} />
-        <input type="time" name="endTime" value={newEvent.endTime} onChange={handleInputChange} />
-        <input type="text" name="location" value={newEvent.location} onChange={handleInputChange} placeholder="Location" />
-        <button type="submit">Add Event</button>
-      </form>
-      <ul>
-        {events.map((event: any) => (
-          <li key={event.id}>{event.title}</li>
-        ))}
-      </ul>
+      <h2>All Events</h2>
+      <div className="text-right">
+        <button className="btn btn-primary" onClick={() => navigate('/add-event')}>Add new event</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Event Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {events.map(event => (
+            <tr key={event.eventId}>
+              <td>{event.title}</td>
+              <td>{event.description}</td>
+              <td>{event.location}</td>
+              <td>{new Date(event.eventDate).toLocaleDateString()}</td>
+              <td>{event.startTime}</td>
+              <td>{event.endTime}</td>
+              <td>
+                <button onClick={() => handleEdit(event.eventId)}>Edit</button>
+                <button onClick={() => handleDelete(event.eventId)}>Delete</button>
+                <button onClick={() => viewAttendees(event.eventId)}>View Attendees</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <AccessibilityOptions />
     </div>
   );
 };

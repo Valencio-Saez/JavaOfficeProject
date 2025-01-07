@@ -74,8 +74,8 @@ Content-Type: application/json
     "Username":"Aiconn",
     "Email": "user2@example.com",
     "Password":"password",
-    "FirstName": "Aicon",
-    "LastName": "Yan"
+    "FirstName": "Amen",
+    "LastName": "Tsehaie"
 }
 ###
 
@@ -120,6 +120,7 @@ content-Type: application/json
 // TRELLO 1.1.1 1.2.2 & 1.2.4A (Valencio)
 ### Events GET test – Retrieve All Events 
 GET http://localhost:5097/api/v1/Event/GetAllEvents
+Authorization: Bearer {jwt_token}
 Accept: application/json
 
 

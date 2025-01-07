@@ -1,5 +1,5 @@
 .add-event-form {
-    margin-top: 30px;
+    margin-top: 30px; 
 }
 
 .bold-label {
@@ -7,9 +7,9 @@
 }
 
 .text-right {
-    text-align: left;
+  text-align:  left;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .btn-primary {
@@ -26,13 +26,13 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
-}
-
-.form-group label {
+  }
+  
+  .form-group label {
     margin-bottom: 5px;
-}
-
-.form-group input {
+  }
+  
+  .form-group input {
     padding: 4px;
     font-size: 12px;
-}
+  }
