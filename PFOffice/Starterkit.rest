@@ -120,6 +120,7 @@ content-Type: application/json
 // TRELLO 1.1.1 1.2.2 & 1.2.4A (Valencio)
 ### Events GET test – Retrieve All Events 
 GET http://localhost:5097/api/v1/Event/GetAllEvents
+Authorization: Bearer {jwt_token}
 Accept: application/json
 
 
@@ -127,6 +128,7 @@ Accept: application/json
 //  1.2.3/1.2.4B(Jayden) 
 ### Event PUT test - Update Existing Event
 PUT http://localhost:5097/api/v1/Event/UpdateEvent/1
+Authorization: Bearer {jwt_token}
 content-Type: application/json
 
 {
@@ -142,7 +144,7 @@ content-Type: application/json
 //  1.2.4B (Jayden)
 ### Event DELETE test - Delete Event
 DELETE http://localhost:5097/api/v1/Event/DeleteEvent/8
-# Authorization: Bearer {jwt_token}
+Authorization: Bearer {jwt_token}
 ###
 
 //1.4.1
@@ -174,7 +176,7 @@ DELETE http://localhost:5097/api/v1/Event/5/attendees/1
 // 1.2.4
 ### Delete Attendance for Specific Event
 DELETE http://localhost:5097/api/v1/Event/5/specifieke/1
-# Authorization: Bearer {jwt_token}
+Authorization: Bearer {jwt_token}
 ###
 
 
