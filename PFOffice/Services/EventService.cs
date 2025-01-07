@@ -30,6 +30,20 @@ namespace StarterKit.Services
                 .FirstOrDefaultAsync(e => e.EventId == eventId);
         }
 
+        public async Task<Event> AddReviewAsync(int eventId, string review)
+        {
+            var eventToUpdate = await _context.Event.FindAsync(eventId, review);
+
+            if (eventToUpdate == null)
+            {
+                return null;
+            }
+
+            eventToUpdate.Review = review;
+            _context.Event.Update(eventToUpdate);
+            await _context.SaveChangesAsync();
+            return eventToUpdate;
+        }
 
         public async Task<Event> CreateEventAsync(Eventbody eventBody)
         {
@@ -51,22 +65,6 @@ namespace StarterKit.Services
             return newEvent;
         }
 
-        // Other methods like Create, Update, Delete can be added here
-        public async Task<Event> AddReviewAsync(int eventId, string review)
-        {
-            var eventEntity = await _context.Event.FindAsync(eventId);
-            if (eventEntity != null)
-            {
-                if (eventEntity.Review != "")
-                {
-                    eventEntity.Review = review;
-                    //await _context.SaveChangesAsync();
-                    return eventEntity;
-                }
-                return eventEntity;
-            }
-            throw new System.Exception("Event not found");
-        }
 
         public async Task<Event> UpdateEventAsync(int id, Eventbody eventBody)
         {
@@ -105,34 +103,28 @@ namespace StarterKit.Services
 
         public async Task<(bool Success, string Message, Event AttendedEvent)> AddAttendanceAsync(int eventId, int userId)
         {
-            // Retrieve the event by eventId
             var eventToUpdate = await _context.Event
                 .Include(e => e.Event_Attendances)
                 .FirstOrDefaultAsync(e => e.EventId == eventId);
 
-            // Check if the event exists
             if (eventToUpdate == null)
             {
                 return (false, "Event not found", null);
             }
 
-            // Convert StartTime and EndTime (TimeSpan) to TimeOnly for comparison
             var eventStartDateTime = eventToUpdate.EventDate.ToDateTime(TimeOnly.FromTimeSpan(eventToUpdate.StartTime));
 
-            // Check if the event is in the past or already started
             var currentDateTime = DateTime.Now;
             if (currentDateTime > eventStartDateTime)
             {
                 return (false, "Event is not available (either it has passed or already started)", null);
             }
 
-            // Check if the user is already attending the event
             if (eventToUpdate.Event_Attendances.Any(ea => ea.user.UserId == userId))
             {
                 return (false, "User is already attending the event", null);
             }
 
-            // Add the user to the event's attendance list
             var user = await _context.User.FindAsync(userId);
             if (user == null)
             {
@@ -143,7 +135,7 @@ namespace StarterKit.Services
             {
                 user = user,
                 Event = eventToUpdate,
-                Feedback = "",  // Add any default value if needed
+                Feedback = "",
                 Rating = 0
             });
 
@@ -159,25 +151,19 @@ namespace StarterKit.Services
 
         public async Task<bool> AddReviewToEventAsync(int eventId, string review)
         {
-            // Retrieve the event by eventId
             var eventToUpdate = await _context.Event.FindAsync(eventId);
-
-            // Check if the event exists
             if (eventToUpdate == null)
             {
                 return false;
             }
 
-            // Update the review property
             eventToUpdate.Review = review;
 
-            // Save changes to the database
             return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<List<Event_Attendance>> GetEventAttendeesAsync(int eventId)
         {
-            // Retrieve the event by its ID and include attendees
             var eventEntity = await _context.Event
                 .Include(e => e.Event_Attendances)
                 .ThenInclude(ea => ea.user)
@@ -185,10 +171,9 @@ namespace StarterKit.Services
 
             if (eventEntity == null)
             {
-                return null; // Event not found
+                return null;
             }
 
-            // Return the list of attendees for this event
             return eventEntity.Event_Attendances;
         }
         public async Task<bool> DeleteAttendanceAsync(int eventId, int userId)

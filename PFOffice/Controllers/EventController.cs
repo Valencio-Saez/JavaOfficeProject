@@ -18,8 +18,13 @@ namespace StarterKit.Controllers
         }
 
         [HttpGet("GetAllEvents")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllEvents()
         {
+            if (!IsAdminLoggedIn())
+            {
+                return Unauthorized("Admin privileges required to create an event.");
+            }
             var events = await _eventService.GetAllEventsAsync();
             return Ok(events);
         }
@@ -37,7 +42,6 @@ namespace StarterKit.Controllers
             return Ok(eventDetails);
         }
 
-
         [HttpPost("{eventId}/reviews")]
         public async Task<IActionResult> PostReview(int eventId, string review)
         {
@@ -46,7 +50,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpPost("events")]
-        //[Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "adminLoggedIn")]
         public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
         {
             if (!ModelState.IsValid)
@@ -60,7 +64,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpPut("UpdateEvent/{id}")]
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] Eventbody eventBody)
         {
             if (!ModelState.IsValid)
@@ -92,7 +96,7 @@ namespace StarterKit.Controllers
 
 
         [HttpGet("{eventId}/attendees")]
-        // [Authorize] // Ensures only authenticated users can access this route
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetEventAttendees(int eventId)
         {
             var eventAttendees = await _eventService.GetEventAttendeesAsync(eventId);
@@ -102,7 +106,6 @@ namespace StarterKit.Controllers
                 return NotFound("Event not found.");
             }
 
-            // Return a list of users (attendees) attending the event
             return Ok(eventAttendees.Select(ea => new
             {
                 ea.user.UserId,
@@ -112,21 +115,21 @@ namespace StarterKit.Controllers
             }));
         }
 
-        [HttpDelete("{eventId}/attendees/{userId}")]
+        // [HttpDelete("{eventId}/attendees/{userId}")]
         // [Authorize]
-        public async Task<IActionResult> DeleteEventAttendee(int eventId)
-        {
-            var deleted = await _eventService.DeleteEventAsync(eventId);
-            if (!deleted)
-            {
-                return NotFound("Event or attendee not found.");
-            }
+        // public async Task<IActionResult> DeleteEventAttendee(int eventId)
+        // {
+        //     var deleted = await _eventService.DeleteEventAsync(eventId);
+        //     if (!deleted)
+        //     {
+        //         return NotFound("Event or attendee not found.");
+        //     }
 
-            return Ok("Attendee removed successfully.");
-        }
+        //     return Ok("Attendee removed successfully.");
+        // }
 
         [HttpDelete("{eventId}/attendees/{userId}")]
-        // [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> SpecificEventAttendee(int eventId, int userId)
         {
             var deleted = await _eventService.DeleteAttendanceAsync(eventId, userId);

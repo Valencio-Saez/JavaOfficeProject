@@ -1,6 +1,7 @@
 using StarterKit.Controllers;
 using StarterKit.Models;
 using StarterKit.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace StarterKit.Services;
 
@@ -8,10 +9,8 @@ public enum LoginStatus { IncorrectPassword, IncorrectUsername, IncorrectEmail, 
 public enum RegisterStatus { IncorrectPassword, IncorrectUsername, IncorrectEmail, InvalidFirstName, InvalidLastName, Success }
 public enum ADMIN_SESSION_KEY { adminLoggedIn }
 
-
 public class LoginService : ILoginService
 {
-
     private readonly DatabaseContext _context;
 
     public LoginService(DatabaseContext context)
@@ -19,42 +18,31 @@ public class LoginService : ILoginService
         _context = context;
     }
 
-    public async Task<LoginStatus> CheckAdminPassword(string username, string inputPassword)
+    public async Task<LoginStatus> CheckPassword(string username, string inputPassword)
     {
-        var admin = _context.Admin.FirstOrDefault(a => a.UserName == username);
-
-        if (admin == null)
+        var admin = await _context.Admin.FirstOrDefaultAsync(a => a.UserName == username);
+        if (admin != null)
         {
-            return LoginStatus.IncorrectUsername;
-        }
-
-        string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
-
-        if (admin.Password != encryptedPassword)
-        {
+            string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
+            if (admin.Password == encryptedPassword)
+            {
+                return LoginStatus.Success;
+            }
             return LoginStatus.IncorrectPassword;
         }
 
-        return LoginStatus.Success;
-    }
-
-    public async Task<LoginStatus> CheckUserPassword(string username, string inputPassword)
-    {
-        var user = _context.User.FirstOrDefault(u => u.UserName == username);
-
-        if (user == null)
+        var user = await _context.User.FirstOrDefaultAsync(u => u.UserName == username);
+        if (user != null)
         {
-            return LoginStatus.IncorrectUsername;
-        }
-
-        string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
-
-        if (user.Password != encryptedPassword)
-        {
+            string encryptedPassword = EncryptionHelper.EncryptPassword(inputPassword);
+            if (user.Password == encryptedPassword)
+            {
+                return LoginStatus.Success;
+            }
             return LoginStatus.IncorrectPassword;
         }
 
-        return LoginStatus.Success;
+        return LoginStatus.IncorrectUsername;
     }
 
     public async Task<User> RegisterUserAsync(RegisterBody registerBody)

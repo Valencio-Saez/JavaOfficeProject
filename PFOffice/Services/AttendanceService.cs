@@ -26,14 +26,14 @@ namespace StarterKit.Services
                 return (false, "User or event not found.");
             }
 
-           var attendance = new Event_Attendance() // Create a new Attendance
+            var attendance = new Event_Attendance()
             {
                 Event_AttendanceId = 0,
                 Rating = 0,
                 Feedback = "",
                 Event = eventEntity,
                 user = user,
-                
+
             };
 
             _context.Event_Attendance.Add(attendance);

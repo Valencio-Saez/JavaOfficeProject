@@ -22,7 +22,7 @@ namespace StarterKit.Models
             modelBuilder.Entity<Admin>()
                 .HasIndex(p => p.UserName).IsUnique();
             // modelBuilder.Entity<User>()
-                // .HasIndex(p => p.UserName).IsUnique();
+            // .HasIndex(p => p.UserName).IsUnique();
 
             // Seed data for Admin
             modelBuilder.Entity<Admin>()

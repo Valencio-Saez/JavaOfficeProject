@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 interface Event {
   eventId: number;
@@ -22,8 +21,10 @@ const Home = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('/api/v1/Event/GetAllEvents');
-      const data = response.data;
+      const response = await fetch('/api/v1/Event/GetAllEvents', {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      });
+      const data = await response.json();
 
       if (data && data.$values && Array.isArray(data.$values)) {
         // Filter events to only include those in the future
@@ -47,12 +48,13 @@ const Home = () => {
 
   return (
     <div>
-      <h1>User... Homepage</h1>
-      <h2>Upcoming Events</h2>
+      <h1>Events</h1>
       <table>
         <thead>
           <tr>
             <th>Title</th>
+            <th>Description</th>
+            <th>Location</th>
             <th>Event Date</th>
             <th>Start Time</th>
             <th>End Time</th>
@@ -63,6 +65,8 @@ const Home = () => {
           {events.map((event) => (
             <tr key={event.eventId}>
               <td>{event.title}</td>
+              <td>{event.description}</td>
+              <td>{event.location}</td>
               <td>{new Date(event.eventDate).toLocaleDateString()}</td>
               <td>{event.startTime}</td>
               <td>{event.endTime}</td>

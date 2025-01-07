@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AccessibilityOptions from './AccessibilityOptions';
 
 const AdminAddEvent: React.FC = () => {
     const [title, setTitle] = useState('');
@@ -68,9 +69,10 @@ const AdminAddEvent: React.FC = () => {
                     <label htmlFor="location" className="bold-label">Location:</label>
                     <input type="text" id="location" name="location" value={location} onChange={(e) => setLocation(e.target.value)} />
                 </div>
-                <button type ="submit" className="btn btn-primary"> Add Event</button>
-                <button className="btn btn-secondary" onClick={() => navigate('/admin')}>Back</button>
+                <button type="submit" className="btn btn-primary">Add Event</button>
+                <button type="button" className="btn btn-secondary" onClick={() => navigate('/admin')}>Back</button>
             </form>
+            <AccessibilityOptions />
         </div>
     );
 };
