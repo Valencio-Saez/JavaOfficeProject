@@ -34,8 +34,7 @@ namespace StarterKit.Services
                 EndTime = eventBody.EndTime,
                 Location = eventBody.Location,
                 AdminApproval = false,
-                Event_Attendances = new List<Event_Attendance>(),
-                Review = ""
+                Event_Attendances = new List<Event_Attendance>()
             };
 
             _context.Event.Add(newEvent);
@@ -44,19 +43,20 @@ namespace StarterKit.Services
         }
 
         // Other methods like Create, Update, Delete can be added here
-        public async Task<Event> AddReviewAsync(ReviewBody reviewBody)
+        public async Task<Event> AddReviewAsync(int eventId, string review)
         {
-            var eventToUpdate = await _context.Event.FindAsync(reviewBody.EventId);
-
-            if (eventToUpdate == null)
+            var eventEntity = await _context.Event.FindAsync(eventId);
+            if (eventEntity != null)
             {
-                return null;
+                if (eventEntity.Review != "")
+                {
+                    eventEntity.Review = review;
+                    //await _context.SaveChangesAsync();
+                    return eventEntity;
+                }
+                return eventEntity;
             }
-
-            eventToUpdate.Review = reviewBody.Review;
-            _context.Event.Update(eventToUpdate);
-            await _context.SaveChangesAsync();
-            return eventToUpdate;
+            throw new System.Exception("Event not found");
         }
 
         public async Task<Event> UpdateEventAsync(int id, Eventbody eventBody)

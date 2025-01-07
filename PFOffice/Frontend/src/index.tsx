@@ -6,6 +6,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminAddEvent from "./pages/AdminAddEvent";
 import AdminEditEvent from "./pages/AdminEditEvent";
 import AdminViewAttendees from "./pages/AdminViewAttendees";
+import EventDetailsHome from "./pages/EventDetailsHome";
 
 createRoot(document.getElementById('root')!)
     .render(
@@ -13,7 +14,7 @@ createRoot(document.getElementById('root')!)
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/events/:id" element={<EventDetails />} />
+                    <Route path="/events/:eventId" element={<EventDetailsHome />} />
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/add-event" element={<AdminAddEvent/>} />
                     <Route path="/edit-event/:eventId" element={<AdminEditEvent/>} />    

@@ -96,12 +96,12 @@ GET http://localhost:5097/api/v1/Login/UserLogout
 ### Event POST test - POST /events – Create New Event 
 POST http://localhost:5097/api/v1/Event/events?sessionId=<session_id>
 content-Type: application/json
-Authorization: Bearer {jwt_token} 
+# Authorization: Bearer {jwt_token} 
 
 {
-    "Title": "New Event",
+    "Title": "test Event",
     "Description": "This is a new event created for testing purposes.",
-    "EventDate": "2024-12-01",
+    "EventDate": "2025-12-01",
     "StartTime": "10:00:00",
     "EndTime": "12:00:00",
     "Location": "Online"

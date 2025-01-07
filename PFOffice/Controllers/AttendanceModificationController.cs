@@ -24,7 +24,7 @@ namespace StarterKit.Controllers
             if (request == null || request.EventId <= 0 || request.UserId <= 0)
             {
                 return BadRequest("Invalid request data.");
-            }
+            };
 
             var result = await _attendanceService.AddAttendanceAsync(request.UserId, request.EventId);
             if (!result.Success)

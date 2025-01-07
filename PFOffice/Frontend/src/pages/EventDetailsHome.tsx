@@ -1,42 +1,84 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 interface Event {
-  id: number;
+  eventId: number;
   title: string;
   description: string;
-  startDate: string;
   location: string;
+  eventDate: string;
+  startTime: string;
+  endTime: string;
 }
 
-const EventDetails: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const [event, setEvent] = useState<Event | null>(null);
+const EventDetailsHome = () => {
+  const [events, setEvents] = useState<Event[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Haal details van het evenement op
-    axios.get(`/api/v1/event/${id}`)
-      .then((response) => {
-        setEvent(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching event details:', error);
-      });
-  }, [id]);
+    fetchEvents(); // Fetch events directly for testing purposes
+  }, []);
 
-  if (!event) {
-    return <p>Loading...</p>;
-  }
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get('/api/v1/Event/GetAllEvents');
+      const data = response.data;
+
+      if (data && data.$values && Array.isArray(data.$values)) {
+        // Filter events to only include those in the future
+        const now = new Date();
+        const futureEvents = data.$values.filter((event: Event) => {
+          const eventDateTime = new Date(`${event.eventDate}T${event.startTime}`);
+          return eventDateTime > now;
+        });
+        setEvents(futureEvents);
+      } else {
+        console.error('Unexpected API response format:', data);
+      }
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
+  };
+
+  const handleEventClick = (id: number) => {
+    navigate(`/events/${id}`); // Navigate to event details page
+  };
 
   return (
-    <div className="container">
-      <h1>{event.title}</h1>
-      <p>{event.description}</p>
-      <p>{new Date(event.startDate).toLocaleString()}</p>
-      <p>Location: {event.location}</p>
+    <div>
+      <h1>User... Homepage</h1>
+      <h2>Upcoming Events</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Event Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {events.map((event) => (
+            <tr key={event.eventId}>
+              <td>{event.title}</td>
+              <td>{event.description}</td>
+              <td>{event.location}</td>
+              <td>{new Date(event.eventDate).toLocaleDateString()}</td>
+              <td>{event.startTime}</td>
+              <td>{event.endTime}</td>
+              <td>
+                <button onClick={() => handleEventClick(event.eventId)}>View Details</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default EventDetails;
+export default EventDetailsHome;

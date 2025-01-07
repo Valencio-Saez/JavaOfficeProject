@@ -31,16 +31,15 @@ namespace StarterKit.Models
     public class Event_Attendance
     {
         public int Event_AttendanceId { get; set; }
-        public int UserId { get; set; }
-        public int EventId { get; set; }
         public int Rating { get; set; }
-        public string Feedback { get; set; }
+        public required string Feedback { get; set; }
 
-        // Navigation properties
-        public User user { get; set; } // Ensure this is not null when the object is created
-        public Event Event { get; set; } // Ensure this is not null when the object is created
+        //[JsonIgnore]
+        public required User user { get; set; }
+
+        //[JsonIgnore]
+        public required Event Event { get; set; }
     }
-
 
     public class Event
     {
@@ -55,20 +54,9 @@ namespace StarterKit.Models
 
         //[JsonIgnore]
         public required List<Event_Attendance> Event_Attendances { get; set; }
-        public required string? Review { get; set; }
+        public string? Review { get; set; }
     }
 
-    // public class AttendanceRequest
-    // {
-    //     public int UserId { get; set; }
-    //     public int EventId { get; set; }
-    // }
-    public class AttendeeDto
-    {
-        public int UserId { get; set; }
-        public int EventAttendanceId { get; set; }
-        public string Feedback { get; set; }
-        public int Rating { get; set; }
     public class AttendanceRequest
     {
         public int UserId { get; set; }
