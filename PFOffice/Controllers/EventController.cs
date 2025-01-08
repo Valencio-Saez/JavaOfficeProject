@@ -27,10 +27,10 @@ namespace StarterKit.Controllers
         [HttpGet("GetAllEvents")]
         public async Task<IActionResult> GetAllEvents()
         {
-            if (!IsAdminLoggedIn()) 
-            {
-                return Unauthorized("Access denied. Admin login required.");
-            }
+            // if (!IsAdminLoggedIn()) 
+            // {
+            //     return Unauthorized("Access denied. Admin login required.");
+            // }
             var events = await _eventService.GetAllEventsAsync();
             return Ok(events);
         }
