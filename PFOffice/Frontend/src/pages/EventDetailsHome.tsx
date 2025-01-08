@@ -16,11 +16,13 @@ const EventDetailsHome = () => {
   const [event, setEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isUserAttending, setIsUserAttending] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (eventId) {
       fetchEventDetails(eventId);
+      checkUserAttendance(eventId);
     }
   }, [eventId]);
 
@@ -46,6 +48,23 @@ const EventDetailsHome = () => {
     }
   };
 
+  const checkUserAttendance = async (id: string) => {
+    try {
+      const response = await fetch(`/api/v1/Event/${id}/isUserAttending`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Failed to check user attendance');
+      }
+      const data = await response.json();
+      setIsUserAttending(data.isAttending);
+    } catch (error) {
+      console.error('Error checking user attendance:', error);
+    }
+  };
+
   const handleAttend = async () => {
     try {
       const response = await fetch('/api/v1/AttendanceModification/AddAttendance', {
@@ -65,9 +84,33 @@ const EventDetailsHome = () => {
       }
 
       const data = await response.json();
-      alert(`You are now attending the event. Welcome, ${data.username}!`);
+      alert(`You are now attending the event. Welcome, ${data.UserName}!`);
+      setIsUserAttending(true);
     } catch (error) {
       console.error('Error attending event:', error);
+      alert((error as Error).message); // Explicitly cast error to Error
+    }
+  };
+
+  const handleDeleteAttendance = async () => {
+    try {
+      const response = await fetch(`/api/v1/Event/${eventId}/specifieke`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || 'Failed to delete attendance');
+      }
+
+      alert('Attendance deleted successfully.');
+      setIsUserAttending(false);
+      navigate('/user'); // Navigate to UserPage to refresh the events list
+    } catch (error) {
+      console.error('Error deleting attendance:', error);
       alert((error as Error).message); // Explicitly cast error to Error
     }
   };
@@ -98,7 +141,11 @@ const EventDetailsHome = () => {
       <p><strong>End Time:</strong> {event.endTime}</p>
       <div style={{ marginTop: '20px' }}>
         <button style={{ marginRight: '30px' }} onClick={goBack}>Go Back</button>
-        <button onClick={handleAttend}>Attend Event</button>
+        {isUserAttending ? (
+          <button onClick={handleDeleteAttendance}>Delete Attendance</button>
+        ) : (
+          <button onClick={handleAttend}>Attend Event</button>
+        )}
       </div>
     </div>
   );

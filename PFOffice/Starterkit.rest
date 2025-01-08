@@ -96,7 +96,7 @@ content-Type: application/json
 # Authorization: Bearer {jwt_token} 
 
 {
-    "Title": "Event3",
+    "Title": "Event 7",
     "Description": "This is a new event created for testing purposes. and checking",
     "EventDate": "2025-12-05",
     "StartTime": "10:00:00",
@@ -120,6 +120,11 @@ GET http://localhost:5097/api/v1/Event/GetAllEvents
 # Authorization: Bearer {jwt_token}
 # Accept: application/json
 
+
+### Get user events
+GET http://localhost:5097/api/v1/Event/GetUserEvents
+# Authorization: Bearer <your_token_here>
+
 ###
 GET http://localhost:5097/api/v1/Event/2
 
@@ -137,6 +142,10 @@ content-Type: application/json
     "EndTime": "16:00:00",
     "Location": "Main Hall"
 }
+
+### Check if User is Attending Event
+GET http://localhost:5097/api/v1/Event/2/isUserAttending
+# Authorization: Bearer {jwt_token}
 
 
 //  1.2.4B (Jayden)
@@ -172,14 +181,14 @@ DELETE http://localhost:5097/api/v1/Event/2/attendees/1
 
 // 1.2.4
 ### Delete Attendance for Specific Event
-DELETE http://localhost:5097/api/v1/Event/14/specifieke/1
+DELETE http://localhost:5097/api/v1/Event/2/specifieke/1
 # Authorization: Bearer {jwt_token}
 ###
 
 
 //1.4.6
 ### Delete Attendance
-DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/8
+DELETE http://localhost:5097/api/v1/AttendanceModification/DeleteAttendance/3
 ###
 
 //1.5.1
