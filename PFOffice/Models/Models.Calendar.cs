@@ -31,8 +31,6 @@ namespace StarterKit.Models
     public class Event_Attendance
     {
         public int Event_AttendanceId { get; set; }
-        public int UserId { get; set; }
-        public int EventId { get; set; }
         public int Rating { get; set; }
         public required string Feedback { get; set; }
 
@@ -42,7 +40,6 @@ namespace StarterKit.Models
         //[JsonIgnore]
         public required Event Event { get; set; }
     }
-
 
     public class Event
     {
@@ -55,14 +52,13 @@ namespace StarterKit.Models
         public required string Location { get; set; }
         public bool AdminApproval { get; set; }
 
-        //[JsonIgnore]
+        // [JsonIgnore]
         public required List<Event_Attendance> Event_Attendances { get; set; }
         public string? Review { get; set; }
     }
 
     public class AttendanceRequest
     {
-        public int UserId { get; set; }
         public int EventId { get; set; }
     }
 

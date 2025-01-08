@@ -44,10 +44,20 @@ namespace StarterKit.Services
         {
             return await _context.Event
                 .Include(e => e.Event_Attendances)
-                .ThenInclude(ea => ea.user)
+                    .ThenInclude(ea => ea.user)
                 .FirstOrDefaultAsync(e => e.EventId == eventId);
         }
 
+        public async Task<Event> AddReviewAsync(int eventId, string review)
+        {
+            var eventToUpdate = await _context.Event.FindAsync(eventId);
+            if (eventToUpdate != null)
+            {
+                eventToUpdate.Review = review;
+                await _context.SaveChangesAsync();
+            }
+            return eventToUpdate;
+        }
 
         public async Task<Event> CreateEventAsync(Eventbody eventBody)
         {
@@ -61,8 +71,7 @@ namespace StarterKit.Services
                 EndTime = eventBody.EndTime,
                 Location = eventBody.Location,
                 AdminApproval = false,
-                Event_Attendances = new List<Event_Attendance>(),
-                Review = ""
+                Event_Attendances = new List<Event_Attendance>()
             };
 
             _context.Event.Add(newEvent);
@@ -70,20 +79,6 @@ namespace StarterKit.Services
             return newEvent;
         }
 
-        public async Task<Event> AddReviewAsync(int eventId, string review)
-        {
-            var eventToUpdate = await _context.Event.FindAsync(eventId, review);
-
-            if (eventToUpdate == null)
-            {
-                return null;
-            }
-
-            eventToUpdate.Review = review;
-            _context.Event.Update(eventToUpdate);
-            await _context.SaveChangesAsync();
-            return eventToUpdate;
-        }
 
         public async Task<Event> UpdateEventAsync(int id, Eventbody eventBody)
         {

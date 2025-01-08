@@ -22,10 +22,11 @@ const Login: React.FC = () => {
             const data = await response.json();
 
             if (response.ok) {
+                const data = await response.json();
                 if (username === 'admin1') {
                     navigate('/admin');
                 } else {
-                    navigate('/');
+                    navigate('/user');
                 }
             } else {
                 setError(data.message || 'Login failed');

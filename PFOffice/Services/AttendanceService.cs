@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using StarterKit.Models;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace StarterKit.Services
@@ -9,7 +8,6 @@ namespace StarterKit.Services
     public class AttendanceService : IAttendanceService
     {
         private readonly DatabaseContext _context;
-
 
         public AttendanceService(DatabaseContext context)
         {
@@ -33,12 +31,10 @@ namespace StarterKit.Services
                 Feedback = "",
                 Event = eventEntity,
                 user = user,
-
             };
 
             _context.Event_Attendance.Add(attendance);
-
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return (true, "Attendance added successfully.");
         }
 
