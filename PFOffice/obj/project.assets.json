@@ -839,6 +839,25 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
+      "Microsoft.Extensions.Caching.SqlServer/9.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Azure.Identity": "1.11.4",
+          "Microsoft.Data.SqlClient": "4.0.5",
+          "Microsoft.Extensions.Caching.Abstractions": "9.0.0",
+          "Microsoft.Extensions.Options": "9.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.SqlServer.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Caching.SqlServer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/9.0.0": {
         "type": "package",
         "dependencies": {
@@ -3467,6 +3486,25 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Microsoft.Extensions.Caching.SqlServer/9.0.0": {
+      "sha512": "0UxkUETnHPrsnD+iRxyxh2rSDAcKPPsZEBnOa5PSXOeOPN+wI8+BWmcn2Lq4MkRZCvykuHQy9MrBGr5ish9sSA==",
+      "type": "package",
+      "path": "microsoft.extensions.caching.sqlserver/9.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net462/Microsoft.Extensions.Caching.SqlServer.dll",
+        "lib/net462/Microsoft.Extensions.Caching.SqlServer.xml",
+        "lib/net9.0/Microsoft.Extensions.Caching.SqlServer.dll",
+        "lib/net9.0/Microsoft.Extensions.Caching.SqlServer.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.SqlServer.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Caching.SqlServer.xml",
+        "microsoft.extensions.caching.sqlserver.9.0.0.nupkg.sha512",
+        "microsoft.extensions.caching.sqlserver.nuspec"
+      ]
+    },
     "Microsoft.Extensions.Configuration.Abstractions/9.0.0": {
       "sha512": "lqvd7W3FGKUO1+ZoUEMaZ5XDJeWvjpy2/M/ptCGz3tXLD4HWVaSzjufsAsjemasBEg+2SxXVtYVvGt5r2nKDlg==",
       "type": "package",
@@ -5287,23 +5325,24 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.0",
+      "Microsoft.Extensions.Caching.SqlServer >= 9.0.0",
       "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ikben\\.nuget\\packages\\": {}
+    "C:\\Users\\YanAd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
+      "projectUniqueName": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
       "projectName": "StarterKit",
-      "projectPath": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
-      "packagesPath": "C:\\Users\\ikben\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\",
+      "projectPath": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\StarterKit.csproj",
+      "packagesPath": "C:\\Users\\YanAd\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\YanAd\\OneDrive\\Documents\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ikben\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\YanAd\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -5364,6 +5403,10 @@
             "target": "Package",
             "version": "[9.0.0, )"
           },
+          "Microsoft.Extensions.Caching.SqlServer": {
+            "target": "Package",
+            "version": "[9.0.0, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
@@ -5388,16 +5431,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\ikben\\OneDrive\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

@@ -52,14 +52,13 @@ namespace StarterKit.Models
         public required string Location { get; set; }
         public bool AdminApproval { get; set; }
 
-        //[JsonIgnore]
+        // [JsonIgnore]
         public required List<Event_Attendance> Event_Attendances { get; set; }
         public string? Review { get; set; }
     }
 
     public class AttendanceRequest
     {
-        public int UserId { get; set; }
         public int EventId { get; set; }
     }
 

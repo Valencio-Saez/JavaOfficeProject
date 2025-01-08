@@ -48,7 +48,7 @@ POST http://localhost:5097/api/v1/Login/Login
 Content-Type: application/json
 
 {
-  "UserName": "Aicon",
+  "UserName": "admin1",
   "Password": "password"
 }
 

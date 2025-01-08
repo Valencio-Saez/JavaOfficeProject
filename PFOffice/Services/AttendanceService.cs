@@ -34,7 +34,7 @@ namespace StarterKit.Services
             };
 
             _context.Event_Attendance.Add(attendance);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return (true, "Attendance added successfully.");
         }
 

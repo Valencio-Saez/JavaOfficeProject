@@ -19,6 +19,25 @@ namespace StarterKit.Services
             return await _context.Event
                 .Include(e => e.Event_Attendances)
                     .ThenInclude(ea => ea.user)
+                .Select(e => new Event
+                {
+                    EventId = e.EventId,
+                    Title = e.Title,
+                    Description = e.Description,
+                    Location = e.Location,
+                    EventDate = e.EventDate,
+                    StartTime = e.StartTime,
+                    EndTime = e.EndTime,
+                    Event_Attendances = e.Event_Attendances.Select(ea => new Event_Attendance
+                    {
+                        Event_AttendanceId = ea.Event_AttendanceId,
+                        Rating = ea.Rating,
+                        Feedback = ea.Feedback,
+                        Event = ea.Event,
+                        // Exclude the user field
+                        user = null
+                    }).ToList()
+                })
                 .ToListAsync();
         }
 
@@ -26,22 +45,18 @@ namespace StarterKit.Services
         {
             return await _context.Event
                 .Include(e => e.Event_Attendances)
-                .ThenInclude(ea => ea.user)
+                    .ThenInclude(ea => ea.user)
                 .FirstOrDefaultAsync(e => e.EventId == eventId);
         }
 
         public async Task<Event> AddReviewAsync(int eventId, string review)
         {
-            var eventToUpdate = await _context.Event.FindAsync(eventId, review);
-
-            if (eventToUpdate == null)
+            var eventToUpdate = await _context.Event.FindAsync(eventId);
+            if (eventToUpdate != null)
             {
-                return null;
+                eventToUpdate.Review = review;
+                await _context.SaveChangesAsync();
             }
-
-            eventToUpdate.Review = review;
-            _context.Event.Update(eventToUpdate);
-            await _context.SaveChangesAsync();
             return eventToUpdate;
         }
 

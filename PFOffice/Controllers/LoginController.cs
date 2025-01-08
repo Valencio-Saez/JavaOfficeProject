@@ -2,7 +2,6 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using StarterKit.Models;
 using StarterKit.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace StarterKit.Controllers;
@@ -45,12 +44,12 @@ public class LoginController : Controller
             {
                 HttpContext.Session.SetString("userId", user.UserId.ToString());
                 HttpContext.Session.SetString("userLoggedIn", loginBody.UserName);
-                if (loginBody.UserName == "admin1")
-                {
-                    HttpContext.Session.SetString("adminLoggedIn", loginBody.UserName);
-                    return Ok(new { message = $"Admin {loginBody.UserName} logged in" });
-                }
                 return Ok(new { message = $"User {loginBody.UserName} logged in" });
+            }
+            if (loginBody.UserName == "admin1")
+            {
+                HttpContext.Session.SetString("adminLoggedIn", loginBody.UserName);
+                return Ok(new { message = $"Admin {loginBody.UserName} logged in" });
             }
         }
 

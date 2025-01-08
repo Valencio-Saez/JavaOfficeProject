@@ -59,8 +59,4 @@ namespace StarterKit.Controllers
         }
     }
 
-    public class AttendanceRequest
-    {
-        public int EventId { get; set; }
-    }
 }

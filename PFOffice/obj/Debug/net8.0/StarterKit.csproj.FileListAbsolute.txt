@@ -733,3 +733,4 @@ C:\Users\ikben\OneDrive\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\n
 C:\Users\ikben\OneDrive\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\ikben\OneDrive\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\runtimes\linux-musl-s390x\native\libe_sqlite3.so
 C:\Users\ikben\OneDrive\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\YanAd\OneDrive\Documents\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\Microsoft.Extensions.Caching.SqlServer.dll
