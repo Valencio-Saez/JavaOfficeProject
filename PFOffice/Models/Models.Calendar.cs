@@ -57,7 +57,7 @@ namespace StarterKit.Models
 
         //[JsonIgnore]
         public required List<Event_Attendance> Event_Attendances { get; set; }
-        public required string? Review { get; set; }
+        public string? Review { get; set; }
     }
 
     public class AttendanceRequest

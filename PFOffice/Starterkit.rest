@@ -51,7 +51,7 @@ POST http://localhost:5097/api/v1/Login/Login
 Content-Type: application/json
 
 {
-  "UserName": "--",
+  "UserName": "admin1",
   "Password": "password"
 }
 
@@ -60,7 +60,7 @@ POST http://localhost:5097/api/v1/Login/UserLogin
 content-Type: application/json
 
 {
-    "Username": "Aicon",
+    "Username": "admin1",
     "Password": "password"
 }
 ###
@@ -195,6 +195,11 @@ Content-Type: application/json
   "UserId": 2,
   "AttendanceDate": "2024-12-25T09:00:00"
 }
+###
+
+###
+//Get specific event
+GET http://localhost:5097/api/v1/Event/3
 ###
 
 

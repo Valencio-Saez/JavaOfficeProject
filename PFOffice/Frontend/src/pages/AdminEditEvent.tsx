@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import AccessibilityOptions from './AccessibilityOptions';
+import { useEvent } from '../EventContext';
 
 const AdminEditEvent = () => {
   const { eventId } = useParams<{ eventId: string }>();
-  const [event, setEvent] = useState({
+  const { event, setEvent } = useEvent();
+  const navigate = useNavigate();
+  const [originalEvent, setOriginalEvent] = useState({
+    eventId: 0,
     title: '',
     description: '',
     eventDate: '',
@@ -12,18 +16,38 @@ const AdminEditEvent = () => {
     endTime: '',
     location: ''
   });
-  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchEvent();
-  }, []);
+    if (eventId && event.eventId !== Number(eventId)) {
+      fetchEvent();
+    }
+
+    // return () => {
+    //   setEvent({
+    //     eventId: 0,
+    //     title: '',
+    //     description: '',
+    //     location: '',
+    //     eventDate: '',
+    //     startTime: '',
+    //     endTime: ''
+    //   });
+    // };
+  }, [eventId]);
 
   const fetchEvent = async () => {
     try {
       const response = await fetch(`/api/v1/Event/GetEvent/${eventId}`);
       if (response.ok) {
-        const data = await response.json();
-        setEvent(data);
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+          const data = await response.json();
+          setEvent(data);
+          setOriginalEvent(data);
+        } else {
+          const text = await response.text();
+          console.error('Error fetching event:', text);
+        }
       } else {
         console.error('Error fetching event:', response.statusText);
       }
@@ -60,6 +84,7 @@ const AdminEditEvent = () => {
     }
   };
 
+
   return (
     <div>
       <h1>Admin Dashboard</h1>
@@ -67,6 +92,7 @@ const AdminEditEvent = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="title" className="bold-label">Title:</label>
+          <span className="light-grey-text">{originalEvent.title}</span>
           <input
             type="text"
             id="title"
@@ -78,6 +104,7 @@ const AdminEditEvent = () => {
         </div>
         <div className="form-group">
           <label htmlFor="description" className="bold-label">Description:</label>
+          <span className="light-grey-text">{originalEvent.description}</span>
           <input
             type="text"
             id="description"
@@ -89,6 +116,7 @@ const AdminEditEvent = () => {
         </div>
         <div className="form-group">
           <label htmlFor="eventDate" className="bold-label">Event Date:</label>
+          <span className="light-grey-text">{originalEvent.eventDate}</span>
           <input
             type="text"
             id="eventDate"
@@ -100,6 +128,7 @@ const AdminEditEvent = () => {
         </div>
         <div className="form-group">
           <label htmlFor="startTime" className="bold-label">Start Time:</label>
+          <span className="light-grey-text">{originalEvent.startTime}</span>
           <input
             type="text"
             id="startTime"
@@ -111,6 +140,7 @@ const AdminEditEvent = () => {
         </div>
         <div className="form-group">
           <label htmlFor="endTime" className="bold-label">End Time:</label>
+          <span className="light-grey-text">{originalEvent.endTime}</span>
           <input
             type="text"
             id="endTime"
@@ -122,6 +152,7 @@ const AdminEditEvent = () => {
         </div>
         <div className="form-group">
           <label htmlFor="location" className="bold-label">Location:</label>
+          <span className="light-grey-text">{originalEvent.location}</span>
           <input
             type="text"
             id="location"
