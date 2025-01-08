@@ -14,7 +14,7 @@ const UserPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchEvents(); // Fetch events directly for testing purposes
+    fetchEvents();
   }, []);
 
   const fetchEvents = async () => {
@@ -23,14 +23,15 @@ const UserPage = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       const data = await response.json();
+      console.log('API response:', data); // Debugging
 
       if (data && data.$values && Array.isArray(data.$values)) {
-        // Filter events to only include those in the future
         const now = new Date();
         const futureEvents = data.$values.filter((event: Event) => {
           const eventDateTime = new Date(`${event.eventDate}T${event.startTime}`);
           return eventDateTime > now;
         });
+        console.log('Filtered events:', futureEvents); // Debugging
         setEvents(futureEvents);
       } else {
         console.error('Unexpected API response format:', data);
@@ -41,10 +42,12 @@ const UserPage = () => {
   };
 
   const handleEventClick = (id: number) => {
+    console.log(`Navigating to event details for event ID: ${id}`); // Debugging
     navigate(`/events/${id}`);
   };
 
   const handleLogout = () => {
+    console.log('Logging out'); // Debugging
     localStorage.removeItem('token');
     navigate('/');
   };
