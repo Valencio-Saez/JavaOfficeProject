@@ -21,15 +21,12 @@
 
 //1.4
 // Amen 1.4.1 tm 1.4.4 (Submit Attendance (POST Request), Protected GET Endpoint to View Attendees.)
+// Jayden 1.4.5 Check the availability of the event.
 // Jayden/Amen 1.4.6 Delete Attendance for a Specific Event (DELETE Request)
 
 ///////// MISSING/FAILED TESTS /////////
 
-//1.4
-// Jayden 1.4.5 Check the availability of the event.
-
 ///1.5
-// Jayden 1.5.1 
 // Valencio 1.5.2/1.5.3 
 
 
@@ -155,7 +152,7 @@ POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance
 Content-Type: application/json
 
 {
-    "EventId": 14,
+    "EventId": 13,
     "UserId" : 1
 }
 
@@ -176,7 +173,7 @@ DELETE http://localhost:5097/api/v1/Event/2/attendees/1
 
 // 1.2.4
 ### Delete Attendance for Specific Event
-DELETE http://localhost:5097/api/v1/Event/9/specifieke/2
+DELETE http://localhost:5097/api/v1/Event/14/specifieke/1
 # Authorization: Bearer {jwt_token}
 ###
 
@@ -197,10 +194,3 @@ Content-Type: application/json
   "AttendanceDate": "2024-12-25T09:00:00"
 }
 ###
-
-
-///////////////////////////////// FAILED TESTS BELOW  ////////////////////////////////////////////////////////////////////////////////////////
-
-//1.4.5
-### Get Attendees by Event ID
-GET http://localhost:5097/api/v1/Attendance/GetAttendees/100
