@@ -51,7 +51,6 @@ namespace StarterKit.Models
         public TimeSpan EndTime { get; set; }
         public required string Location { get; set; }
         public bool AdminApproval { get; set; }
-
         //[JsonIgnore]
         public required List<Event_Attendance> Event_Attendances { get; set; }
         public string? Review { get; set; }

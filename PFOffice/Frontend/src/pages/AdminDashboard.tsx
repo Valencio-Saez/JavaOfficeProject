@@ -68,7 +68,7 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <h1>Admin Dashboard 2</h1>
+      <h1>Admin Dashboard 22</h1>
       <h2>All Events</h2>
 
       <div className="text-right">

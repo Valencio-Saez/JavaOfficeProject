@@ -7,6 +7,7 @@ import AdminAddEvent from "./pages/AdminAddEvent";
 import AdminEditEvent from "./pages/AdminEditEvent";
 import AdminViewAttendees from "./pages/AdminViewAttendees";
 import LayoutFeature from './pages/LayoutFeature'; // Import the LayoutFeature page
+import UserPastEvents from "./pages/UserPastEvents"; // Import the UserDashboard page
 
 
 createRoot(document.getElementById('root')!)
@@ -16,6 +17,7 @@ createRoot(document.getElementById('root')!)
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/UserPastEvents" element={<UserPastEvents />} />
                     <Route path="/add-event" element={<AdminAddEvent/>} />
                     <Route path="/edit-event/:eventId" element={<AdminEditEvent/>} />    
                     <Route path="/event/:eventId/attendees" element={<AdminViewAttendees/>} />

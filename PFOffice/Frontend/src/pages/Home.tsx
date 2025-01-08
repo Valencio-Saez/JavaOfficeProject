@@ -8,6 +8,10 @@ export default function Home() {
     navigate('/admin');
   };
 
+  const goToUserPastEvents = () => {
+    navigate('/UserPastEvents');
+  };
+
   return (
     <div className="container px-5 my-5">
       <h1>Welcome to the Web development Starter kit!</h1>
@@ -53,6 +57,7 @@ export default function Home() {
       </p>
 
       <button onClick={goToAdminDashboard}>Go to Admin Dashboard</button>
+      <button onClick={goToUserPastEvents}>Go to User Past Events</button>
     </div>
   );
 }
