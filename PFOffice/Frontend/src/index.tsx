@@ -26,6 +26,8 @@ createRoot(document.getElementById('root')!)
                     <Route path="/register" element={<Register />} />
                     <Route path="/edit-event/:eventId" element={<AdminEditEvent />} />
                     <Route path="/user" element={<UserPage />} />
+                    <Route path="/add-event" element={<AdminAddEvent />} />
+                    <Route path="/events/:eventId/attendees" element={<AdminViewAttendees />} />
                 </Routes>
             </Router>
             </EventProvider>

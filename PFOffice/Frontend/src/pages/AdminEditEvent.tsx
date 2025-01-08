@@ -8,6 +8,8 @@ const AdminEditEvent = () => {
   const { eventId } = useParams<{ eventId: string }>();
   const { event, setEvent } = useEvent();
   const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+  const [alertShown, setAlertShown] = useState(false);
   const [originalEvent, setOriginalEvent] = useState({
     eventId: 0,
     title: '',
@@ -18,22 +20,47 @@ const AdminEditEvent = () => {
     location: ''
   });
 
+  const checkAdminLoggedIn = async () => {
+    try {
+      const response = await fetch('/api/v1/Login/IsAdminLoggedIn');
+      if (response.ok) {
+        const data = await response.json();
+        if (!data && !alertShown) {
+          setAlertShown(true);
+          navigate('/login?error=Admin%20login%20required');
+        }
+      } else {
+        if (!alertShown) {
+          setAlertShown(true);
+          navigate('/login?error=Admin%20login%20required');
+        }
+      }
+    } catch (error) {
+      console.error('Error checking admin login status:', error);
+      if (!alertShown) {
+        setAlertShown(true);
+        navigate('/login?error=Admin%20login%20required');
+      }
+    }
+  };
+  
   useEffect(() => {
     if (eventId && event.eventId !== Number(eventId)) {
+      checkAdminLoggedIn();
       fetchEvent();
     }
 
-    // return () => {
-    //   setEvent({
-    //     eventId: 0,
-    //     title: '',
-    //     description: '',
-    //     location: '',
-    //     eventDate: '',
-    //     startTime: '',
-    //     endTime: ''
-    //   });
-    // };
+    return () => {
+      setEvent({
+        eventId: 0,
+        title: '',
+        description: '',
+        location: '',
+        eventDate: '',
+        startTime: '',
+        endTime: ''
+      });
+    };
   }, [eventId]);
 
   const fetchEvent = async () => {

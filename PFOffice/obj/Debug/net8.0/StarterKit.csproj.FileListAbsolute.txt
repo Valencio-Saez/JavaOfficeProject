@@ -851,3 +851,7 @@ C:\Users\31633\OneDrive - Hogeschool Rotterdam\Documenten\GitHub\JavaOfficeProje
 C:\Users\31633\OneDrive - Hogeschool Rotterdam\Documenten\GitHub\JavaOfficeProject\PFOffice\obj\Debug\net8.0\StarterKit.pdb
 C:\Users\31633\OneDrive - Hogeschool Rotterdam\Documenten\GitHub\JavaOfficeProject\PFOffice\obj\Debug\net8.0\StarterKit.genruntimeconfig.cache
 C:\Users\31633\OneDrive - Hogeschool Rotterdam\Documenten\GitHub\JavaOfficeProject\PFOffice\obj\Debug\net8.0\ref\StarterKit.dll
+C:\Users\31633\OneDrive - Hogeschool Rotterdam\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\31633\OneDrive - Hogeschool Rotterdam\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\Microsoft.Extensions.Caching.SqlServer.dll
+C:\Users\31633\OneDrive - Hogeschool Rotterdam\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\31633\OneDrive - Hogeschool Rotterdam\Documenten\GitHub\JavaOfficeProject\PFOffice\bin\Debug\net8.0\System.ClientModel.dll

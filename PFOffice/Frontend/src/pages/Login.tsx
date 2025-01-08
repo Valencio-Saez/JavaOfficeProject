@@ -1,12 +1,34 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../../../wwwroot/css/site.css';
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState<string | null>(null);
+    const [alertShown, setAlertShown] = useState(false); // Prevent multiple alerts
     const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        // Extract error message from query parameters
+        const queryParams = new URLSearchParams(location.search);
+        const errorMessage = queryParams.get('error');
+
+        if (errorMessage && !alertShown) {
+            alert(decodeURIComponent(errorMessage)); // Show the alert
+            setAlertShown(true); // Mark alert as shown
+            setError(decodeURIComponent(errorMessage)); // Optional: Set the error state
+
+            // Remove the query parameter from the URL
+            const newSearchParams = new URLSearchParams(location.search);
+            newSearchParams.delete('error');
+            navigate({
+                pathname: location.pathname,
+                search: newSearchParams.toString(),
+            }, { replace: true }); // Replace history to prevent re-triggering
+        }
+    }, [location, alertShown, navigate]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -19,26 +41,30 @@ const Login: React.FC = () => {
                 body: JSON.stringify({ username, password }),
             });
 
-            const data = await response.json();
-
             if (response.ok) {
                 const data = await response.json();
+                // localStorage.setItem('token', data.token);
+                // localStorage.setItem('userId', data.UserId);
+                // localStorage.setItem('username', data.UserName);
                 if (username === 'admin1') {
                     navigate('/admin');
                 } else {
                     navigate('/user');
                 }
             } else {
-                setError(data.message || 'Login failed');
+                const errorData = await response.json();
+                setError(errorData.message || 'Login failed');
             }
         } catch (error) {
             setError('An unexpected error occurred. Please try again.');
         }
     };
 
+
     return (
         <div>
             <h1>Login</h1>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>
@@ -60,11 +86,15 @@ const Login: React.FC = () => {
                         required
                     />
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <button type="submit">Login</button>
             </form>
-        </div>
+            <button type="button" onClick={() => navigate('/register')}>Go to register page</button>
+            <div>
+                <button type="button" onClick={() => navigate('/')}>Home</button>
+            </div>
+        </div >
     );
 };
 
 export default Login;
+
