@@ -16,15 +16,12 @@ const EventDetailsHome = () => {
   const [event, setEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (eventId) {
       fetchEventDetails(eventId);
     }
-    const storedUserId = localStorage.getItem('userId');
-    setUserId(storedUserId);
   }, [eventId]);
 
   const fetchEventDetails = async (id: string) => {
@@ -50,11 +47,6 @@ const EventDetailsHome = () => {
   };
 
   const handleAttend = async () => {
-    if (!userId) {
-      alert('User not logged in.');
-      return;
-    }
-
     try {
       const response = await fetch('/api/v1/AttendanceModification/AddAttendance', {
         method: 'POST',
@@ -64,18 +56,19 @@ const EventDetailsHome = () => {
         },
         body: JSON.stringify({
           eventId: parseInt(eventId!),
-          userId: parseInt(userId),
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to attend event');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to attend event');
       }
 
       const data = await response.json();
       alert(`You are now attending the event. Welcome, ${data.username}!`);
     } catch (error) {
       console.error('Error attending event:', error);
+      alert((error as Error).message); // Explicitly cast error to Error
     }
   };
 
@@ -107,12 +100,6 @@ const EventDetailsHome = () => {
         <button style={{ marginRight: '30px' }} onClick={goBack}>Go Back</button>
         <button onClick={handleAttend}>Attend Event</button>
       </div>
-      {userId && (
-        <div>
-          <h2>User ID:</h2>
-          <p>{userId}</p>
-        </div>
-      )}
     </div>
   );
 };

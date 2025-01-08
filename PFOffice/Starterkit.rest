@@ -96,12 +96,12 @@ content-Type: application/json
 # Authorization: Bearer {jwt_token} 
 
 {
-    "Title": "test Event",
+    "Title": "Event3",
     "Description": "This is a new event created for testing purposes. and checking",
-    "EventDate": "2025-12-02",
-    "StartTime": "13:00:00",
-    "EndTime": "15:00:00",
-    "Location": "Online"
+    "EventDate": "2025-12-05",
+    "StartTime": "10:00:00",
+    "EndTime": "12:00:00",
+    "Location": "Wijnhaven 107"
 }
 
 // TRELLO 1.2.6 (Amen)
