@@ -57,7 +57,7 @@ const AdminAddEvent: React.FC = () => {
                     <label htmlFor="eventDate" className="bold-label">Event Date:</label>
                     <input type="text" id="eventDate" name="eventDate" value={eventDate} onChange={(e) => setEventDate(e.target.value)} placeholder="YYYY-MM-DD" />
                 </div>
-                <div className="form-group">    
+                <div className="form-group">
                     <label htmlFor="startTime" className="bold-label">Start Time:</label>
                     <input type="text" id="startTime" name="startTime" value={startTime} onChange={(e) => setStartTime(e.target.value)} placeholder="HH:MM:SS" />
                 </div>
