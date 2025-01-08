@@ -6,6 +6,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminAddEvent from "./pages/AdminAddEvent";
 import AdminEditEvent from "./pages/AdminEditEvent";
 import AdminViewAttendees from "./pages/AdminViewAttendees";
+import LayoutFeature from './pages/LayoutFeature'; // Import the LayoutFeature page
+
 
 createRoot(document.getElementById('root')!)
     .render(
@@ -17,6 +19,8 @@ createRoot(document.getElementById('root')!)
                     <Route path="/add-event" element={<AdminAddEvent/>} />
                     <Route path="/edit-event/:eventId" element={<AdminEditEvent/>} />    
                     <Route path="/event/:eventId/attendees" element={<AdminViewAttendees/>} />
+                    <Route path="/layout" element={<LayoutFeature />} />
+
                 </Routes>
             </Router>
         </React.StrictMode>

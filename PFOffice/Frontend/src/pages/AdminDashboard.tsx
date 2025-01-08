@@ -68,11 +68,18 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <h1>Admin Dashboard</h1>
+      <h1>Admin Dashboard 2</h1>
       <h2>All Events</h2>
+
       <div className="text-right">
-        <button className="btn btn-primary" onClick={() => navigate('/add-event')}>Add new event</button>
+        <button className="btn btn-primary" onClick={() => navigate('/add-event')}>Add new event 2</button>
       </div>
+
+      <div className="text-right">
+        <button className="btn btn-primary" onClick={() => navigate('/layout')}>Change Layout</button>
+      </div>
+
+
       <table>
         <thead>
           <tr>

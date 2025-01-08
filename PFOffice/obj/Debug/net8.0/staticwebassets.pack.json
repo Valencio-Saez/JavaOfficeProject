@@ -1,39 +1,67 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\StarterKit.bundle.scp.css",
-      "PackagePath": "staticwebassets\\StarterKit.bundle.scp.css"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/obj/Debug/net8.0/scopedcss/projectbundle/StarterKit.bundle.scp.css",
+      "PackagePath": "staticwebassets/StarterKit.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\images\\portal.jpg",
-      "PackagePath": "staticwebassets\\images\\portal.jpg"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/images/portal.jpg",
+      "PackagePath": "staticwebassets/images/portal.jpg"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\lib\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap.min.css"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.03a9ac1e301734999494.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.03a9ac1e301734999494.hot-update.js"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.StarterKit.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.03a9ac1e301734999494.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.03a9ac1e301734999494.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.33600ac1af2319559129.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.33600ac1af2319559129.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.33600ac1af2319559129.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.33600ac1af2319559129.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.db15534662283352c1a4.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.db15534662283352c1a4.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.db15534662283352c1a4.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.db15534662283352c1a4.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/main.js",
+      "PackagePath": "staticwebassets/js/main.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/lib/bootstrap.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap.min.css"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.StarterKit.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.StarterKit.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.StarterKit.props",
       "PackagePath": "build\\StarterKit.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.StarterKit.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.StarterKit.props",
       "PackagePath": "buildMultiTargeting\\StarterKit.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.StarterKit.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.StarterKit.props",
       "PackagePath": "buildTransitive\\StarterKit.props"
     }
   ],
