@@ -27,12 +27,25 @@ namespace StarterKit.Controllers
         // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllEvents()
         {
-            if (!IsAdminLoggedIn())
-            {
-                return Unauthorized("Admin privileges required to create an event.");
-            }
+            // if (!IsAdminLoggedIn())
+            // {
+            //     return Unauthorized("Admin privileges required to create an event.");
+            // }
             var events = await _eventService.GetAllEventsAsync();
             return Ok(events);
+        }
+
+        [HttpGet("{eventId}")]
+        public async Task<IActionResult> GetEventById(int eventId)
+        {
+            var eventDetails = await _eventService.GetEventByIdAsync(eventId);
+
+            if (eventDetails == null)
+            {
+                return NotFound("Event not found.");
+            }
+
+            return Ok(eventDetails);
         }
 
         [HttpPost("{eventId}/reviews")]
@@ -46,46 +59,20 @@ namespace StarterKit.Controllers
         // [Authorize(Roles = "adminLoggedIn")]
         public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
         {
-            if (!IsAdminLoggedIn())
-            {
-                return Unauthorized("Admin privileges required to create an event.");
-            }
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
             var createdEvent = await _eventService.CreateEventAsync(eventBody);
+
             return CreatedAtAction(nameof(GetAllEvents), new { id = createdEvent.EventId }, createdEvent);
         }
 
-        // [HttpPut("UpdateEvent/{id}")]
-        // [Authorize(Roles = "Admin")]
-        // public async Task<IActionResult> UpdateEvent(int id, [FromBody] Eventbody eventBody)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return BadRequest(ModelState);
-        //     }
-
-        //     var updatedEvent = await _eventService.UpdateEventAsync(id, eventBody);
-        //     if (updatedEvent == null)
-        //     {
-        //         return NotFound("Event not found.");
-        //     }
-
-        //     return Ok(updatedEvent);
-        // }
         [HttpPut("UpdateEvent/{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] Eventbody eventBody)
         {
-            if (!IsAdminLoggedIn())
-            {
-                return Unauthorized("Admin privileges required to update an event.");
-            }
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -100,28 +87,9 @@ namespace StarterKit.Controllers
             return Ok(updatedEvent);
         }
 
-        // [HttpDelete("DeleteEvent/{id}")]
-        // [Authorize(Roles = "Admin")]
-        // public async Task<IActionResult> DeleteEvent(int id)
-        // {
-        //     var deleted = await _eventService.DeleteEventAsync(id);
-        //     if (!deleted)
-        //     {
-        //         return NotFound("Event not found.");
-        //     }
-
-        //     return Ok("Event deleted successfully.");
-        // }
-
-        // DELETE: api/v1/Event/DeleteEvent/{id} (alleen toegankelijk voor ingelogde admins)
         [HttpDelete("DeleteEvent/{id}")]
         public async Task<IActionResult> DeleteEvent(int id)
         {
-            if (!IsAdminLoggedIn())
-            {
-                return Unauthorized("Admin privileges required to delete an event.");
-            }
-
             var deleted = await _eventService.DeleteEventAsync(id);
             if (!deleted)
             {
@@ -181,4 +149,3 @@ namespace StarterKit.Controllers
     }
 
 }
-

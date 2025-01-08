@@ -1,6 +1,6 @@
 import * as React from "react";
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { createRoot } from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AdminDashboard from "./pages/AdminDashboard";
 import Login from "./pages/Login";
@@ -8,7 +8,9 @@ import Register from "./pages/Register";
 import AdminAddEvent from "./pages/AdminAddEvent";
 import AdminEditEvent from "./pages/AdminEditEvent";
 import AdminViewAttendees from "./pages/AdminViewAttendees";
+import EventDetailsHome from "./pages/EventDetailsHome";
 import AccessibilityOptions from "./pages/AccessibilityOptions";
+import UserPage from "./pages/UserPage";
 
 createRoot(document.getElementById('root')!)
     .render(
@@ -16,11 +18,12 @@ createRoot(document.getElementById('root')!)
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/events/:eventId" element={<EventDetailsHome />} />
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/edit-event/:eventId" element={<AdminEditEvent />} />
-                    <Route path="/event/:eventId/attendees" element={<AdminViewAttendees />} />
+                    <Route path="/user" element={<UserPage />} />
                 </Routes>
             </Router>
         </React.StrictMode>

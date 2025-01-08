@@ -22,25 +22,12 @@ namespace StarterKit.Services
                 .ToListAsync();
         }
 
-        public async Task<Event> CreateEventAsync(Eventbody eventBody)
+        public async Task<Event> GetEventByIdAsync(int eventId)
         {
-
-            var newEvent = new Event
-            {
-                Title = eventBody.Title,
-                Description = eventBody.Description,
-                EventDate = eventBody.EventDate,
-                StartTime = eventBody.StartTime,
-                EndTime = eventBody.EndTime,
-                Location = eventBody.Location,
-                AdminApproval = false,
-                Event_Attendances = new List<Event_Attendance>(),
-                Review = ""
-            };
-
-            _context.Event.Add(newEvent);
-            await _context.SaveChangesAsync();
-            return newEvent;
+            return await _context.Event
+                .Include(e => e.Event_Attendances)
+                .ThenInclude(ea => ea.user)
+                .FirstOrDefaultAsync(e => e.EventId == eventId);
         }
 
         public async Task<Event> AddReviewAsync(int eventId, string review)
@@ -57,6 +44,27 @@ namespace StarterKit.Services
             await _context.SaveChangesAsync();
             return eventToUpdate;
         }
+
+        public async Task<Event> CreateEventAsync(Eventbody eventBody)
+        {
+
+            var newEvent = new Event
+            {
+                Title = eventBody.Title,
+                Description = eventBody.Description,
+                EventDate = eventBody.EventDate,
+                StartTime = eventBody.StartTime,
+                EndTime = eventBody.EndTime,
+                Location = eventBody.Location,
+                AdminApproval = false,
+                Event_Attendances = new List<Event_Attendance>()
+            };
+
+            _context.Event.Add(newEvent);
+            await _context.SaveChangesAsync();
+            return newEvent;
+        }
+
 
         public async Task<Event> UpdateEventAsync(int id, Eventbody eventBody)
         {

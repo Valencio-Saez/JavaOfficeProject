@@ -1,6 +1,4 @@
 using System.Threading.Tasks;
-using StarterKit.Controllers;
-using StarterKit.Models;
 
 namespace StarterKit.Services
 {

@@ -43,10 +43,13 @@ const Login: React.FC = () => {
 
             if (response.ok) {
                 const data = await response.json();
+                // localStorage.setItem('token', data.token);
+                // localStorage.setItem('userId', data.UserId);
+                // localStorage.setItem('username', data.UserName);
                 if (username === 'admin1') {
                     navigate('/admin');
                 } else {
-                    navigate('/');
+                    navigate('/user');
                 }
             } else {
                 const errorData = await response.json();

@@ -25,8 +25,8 @@ namespace StarterKit.Controllers
             var userIdString = HttpContext.Session.GetString("userId");
             if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
             {
-                return Unauthorized(new { message = "User not logged in" });
-            }
+                return BadRequest("Invalid request data.");
+            };
 
             var result = await _attendanceService.AddAttendanceAsync(userId, attendanceRequest.EventId);
             if (!result.Success)
