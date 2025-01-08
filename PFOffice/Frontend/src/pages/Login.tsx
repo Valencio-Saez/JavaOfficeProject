@@ -46,7 +46,7 @@ const Login: React.FC = () => {
                 if (username === 'admin1') {
                     navigate('/admin');
                 } else {
-                    navigate('/');
+                    navigate('/user');
                 }
             } else {
                 const errorData = await response.json();

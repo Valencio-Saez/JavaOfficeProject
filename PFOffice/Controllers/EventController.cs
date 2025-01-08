@@ -17,14 +17,20 @@ namespace StarterKit.Controllers
             _eventService = eventService;
         }
 
+        // Controleer of de gebruiker een ingelogde admin is
+        private bool IsAdminLoggedIn()
+        {
+            return HttpContext.Session.GetString("adminLoggedIn") != null;
+        }
+
         [HttpGet("GetAllEvents")]
         // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllEvents()
         {
-            if (!IsAdminLoggedIn())
-            {
-                return Unauthorized("Admin privileges required to create an event.");
-            }
+            // if (!IsAdminLoggedIn())
+            // {
+            //     return Unauthorized("Admin privileges required to create an event.");
+            // }
             var events = await _eventService.GetAllEventsAsync();
             return Ok(events);
         }

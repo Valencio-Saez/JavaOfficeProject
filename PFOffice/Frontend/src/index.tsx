@@ -10,6 +10,7 @@ import AdminEditEvent from "./pages/AdminEditEvent";
 import AdminViewAttendees from "./pages/AdminViewAttendees";
 import EventDetailsHome from "./pages/EventDetailsHome";
 import AccessibilityOptions from "./pages/AccessibilityOptions";
+import UserPage from "./pages/UserPage";
 
 createRoot(document.getElementById('root')!)
     .render(
@@ -22,7 +23,7 @@ createRoot(document.getElementById('root')!)
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/edit-event/:eventId" element={<AdminEditEvent />} />
-                    <Route path="/event/:eventId/attendees" element={<AdminViewAttendees />} />
+                    <Route path="/user" element={<UserPage />} />
                 </Routes>
             </Router>
         </React.StrictMode>
