@@ -23,11 +23,16 @@ namespace StarterKit.Controllers
             return HttpContext.Session.GetString("adminLoggedIn") != null;
         }
 
+        private bool IsUserLoggedin()
+        {
+            return HttpContext.Session.GetString("userLoggedIn") != null;
+        }
+
         [HttpGet("GetAllEvents")]
         // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllEvents()
         {
-            // if (!IsAdminLoggedIn())
+            // if (!IsUserLoggedin())
             // {
             //     return Unauthorized("Admin privileges required to create an event.");
             // }

@@ -12,12 +12,33 @@ interface Event {
 const UserPage = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [userEvents, setUserEvents] = useState<Event[]>([]);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchEvents();
-    fetchUserEvents();
+    checkUserLoggedIn();
   }, []);
+
+  const checkUserLoggedIn = async () => {
+    try {
+      const response = await fetch('/api/v1/Login/IsUserLoggedIn', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      const data = await response.json();
+      setIsAuthenticated(data);
+      if (!data) {
+        navigate('/'); // Redirect to Home if not authenticated
+      } else {
+        fetchEvents();
+        fetchUserEvents();
+      }
+    } catch (error) {
+      console.error('Error checking user login status:', error);
+      navigate('/'); // Redirect to Home if there's an error
+    }
+  };
 
   const fetchEvents = async () => {
     try {
@@ -71,6 +92,10 @@ const UserPage = () => {
     localStorage.removeItem('token');
     navigate('/');
   };
+
+  if (isAuthenticated === null) {
+    return <div>Loading...</div>; // or a loading spinner
+  }
 
   return (
     <div>

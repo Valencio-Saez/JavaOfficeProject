@@ -17,18 +17,39 @@ const EventDetailsHome = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isUserAttending, setIsUserAttending] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (eventId) {
-      fetchEventDetails(eventId);
-      checkUserAttendance(eventId);
+    checkUserLoggedIn();
+  }, []);
+
+  const checkUserLoggedIn = async () => {
+    try {
+      const response = await fetch('/api/v1/Login/IsUserLoggedIn', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      const data = await response.json();
+      setIsAuthenticated(data);
+      if (!data) {
+        navigate('/'); 
+      } else {
+        if (eventId) {
+          fetchEventDetails(eventId);
+          checkUserAttendance(eventId);
+        }
+      }
+    } catch (error) {
+      console.error('Error checking user login status:', error);
+      navigate('/'); 
     }
-  }, [eventId]);
+  };
 
   const fetchEventDetails = async (id: string) => {
     try {
-      console.log(`Fetching event details for ID: ${id}`); // Debugging
+      console.log(`Fetching event details for ID: ${id}`); 
       const response = await fetch(`/api/v1/Event/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -38,7 +59,7 @@ const EventDetailsHome = () => {
         throw new Error('Failed to fetch event details');
       }
       const data = await response.json();
-      console.log('Event details response:', data); // Debugging
+      console.log('Event details response:', data); 
       setEvent(data);
     } catch (error) {
       console.error('Error fetching event details:', error);
@@ -88,7 +109,7 @@ const EventDetailsHome = () => {
       setIsUserAttending(true);
     } catch (error) {
       console.error('Error attending event:', error);
-      alert((error as Error).message); // Explicitly cast error to Error
+      alert((error as Error).message);
     }
   };
 
@@ -108,10 +129,10 @@ const EventDetailsHome = () => {
 
       alert('Attendance deleted successfully.');
       setIsUserAttending(false);
-      navigate('/user'); // Navigate to UserPage to refresh the events list
+      navigate('/user'); 
     } catch (error) {
       console.error('Error deleting attendance:', error);
-      alert((error as Error).message); // Explicitly cast error to Error
+      alert((error as Error).message); 
     }
   };
 
@@ -119,8 +140,8 @@ const EventDetailsHome = () => {
     navigate(-1);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
+  if (isAuthenticated === null || loading) {
+    return <div>Loading...</div>; 
   }
 
   if (error) {
