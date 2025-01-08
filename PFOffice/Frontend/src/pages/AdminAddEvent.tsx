@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AccessibilityOptions from './AccessibilityOptions';
 
@@ -9,7 +9,13 @@ const AdminAddEvent: React.FC = () => {
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [location, setLocation] = useState('');
+    const [error, setError] = useState<string | null>(null);
+    const [alertShown, setAlertShown] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        checkAdminLoggedIn();
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -40,7 +46,32 @@ const AdminAddEvent: React.FC = () => {
         }
     };
 
+    const checkAdminLoggedIn = async () => {
+        try {
+            const response = await fetch('/api/v1/Login/IsAdminLoggedIn');
+            if (response.ok) {
+                const data = await response.json();
+                if (!data && !alertShown) {
+                    setAlertShown(true);
+                    navigate('/login?error=Admin%20login%20required');
+                }
+            } else {
+                if (!alertShown) {
+                    setAlertShown(true);
+                    navigate('/login?error=Admin%20login%20required');
+                }
+            }
+        } catch (error) {
+            console.error('Error checking admin login status:', error);
+            if (!alertShown) {
+                setAlertShown(true);
+                navigate('/login?error=Admin%20login%20required');
+            }
+        }
+    };
+
     return (
+        checkAdminLoggedIn(),
         <div className="container">
             <h1>Admin Dashboard</h1>
             <h2>Add New Event</h2>
