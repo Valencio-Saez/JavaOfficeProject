@@ -20,23 +20,21 @@ namespace StarterKit.Controllers
         }
 
         [HttpPost("AddAttendance")]
-        public async Task<IActionResult> AddAttendance([FromBody] AttendanceRequest request)
+        public async Task<IActionResult> AddAttendance([FromBody] AttendanceRequest attendanceRequest)
         {
-            if (request == null || request.EventId <= 0 || request.UserId <= 0)
+            var userIdString = HttpContext.Session.GetString("userId");
+            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
             {
-                return BadRequest("Invalid request data.");
-            };
-
-            var result = await _attendanceService.AddAttendanceAsync(request.UserId, request.EventId);
-            if (!result.Success)
-            {
-                return BadRequest(result.Message);
+                return Unauthorized(new { message = "User not logged in" });
             }
 
-            return Ok(new
+            var result = await _attendanceService.AddAttendanceAsync(userId, attendanceRequest.EventId);
+            if (!result.Success)
             {
-                result.Message
-            });
+                return BadRequest(new { message = result.Message + " Please try again." });
+            }
+
+            return Ok(new { message = result.Message });
         }
 
         [HttpDelete("DeleteAttendance/{attendanceId}")]
@@ -64,6 +62,5 @@ namespace StarterKit.Controllers
     public class AttendanceRequest
     {
         public int EventId { get; set; }
-        public int UserId { get; set; }
     }
 }

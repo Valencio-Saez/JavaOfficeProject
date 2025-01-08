@@ -118,7 +118,7 @@ content-Type: application/json
 ### Events GET test – Retrieve All Events 
 GET http://localhost:5097/api/v1/Event/GetAllEvents
 # Authorization: Bearer {jwt_token}
-Accept: application/json
+# Accept: application/json
 
 ###
 GET http://localhost:5097/api/v1/Event/2
@@ -152,8 +152,7 @@ POST http://localhost:5097/api/v1/AttendanceModification/AddAttendance
 Content-Type: application/json
 
 {
-    "EventId": 13,
-    "UserId" : 1
+    "eventId": 2
 }
 
 

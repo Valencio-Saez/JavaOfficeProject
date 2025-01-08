@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using StarterKit.Models;
 using StarterKit.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace StarterKit.Controllers;
 
@@ -13,9 +14,10 @@ public class LoginController : Controller
     private readonly DatabaseContext _context;
     private bool isLoggedIn;
 
-    public LoginController(ILoginService loginService)
+    public LoginController(ILoginService loginService, DatabaseContext context)
     {
         _loginService = loginService;
+        _context = context;
     }
 
     [HttpPost("Login")]
@@ -38,13 +40,18 @@ public class LoginController : Controller
 
         if (result == LoginStatus.Success)
         {
-            if (loginBody.UserName == "admin1")
+            var user = await _context.User.FirstOrDefaultAsync(u => u.UserName == loginBody.UserName);
+            if (user != null)
             {
-                HttpContext.Session.SetString("adminLoggedIn", loginBody.UserName);
-                return Ok(new { message = $"Admin {loginBody.UserName} logged in" });
+                HttpContext.Session.SetString("userId", user.UserId.ToString());
+                HttpContext.Session.SetString("userLoggedIn", loginBody.UserName);
+                if (loginBody.UserName == "admin1")
+                {
+                    HttpContext.Session.SetString("adminLoggedIn", loginBody.UserName);
+                    return Ok(new { message = $"Admin {loginBody.UserName} logged in" });
+                }
+                return Ok(new { message = $"User {loginBody.UserName} logged in" });
             }
-            HttpContext.Session.SetString("userLoggedIn", loginBody.UserName);
-            return Ok(new { message = $"User {loginBody.UserName} logged in" });
         }
 
         return Unauthorized(new { message = "Login failed" });
@@ -59,7 +66,6 @@ public class LoginController : Controller
         }
 
         var user = await _loginService.RegisterUserAsync(registerBody);
-
         return CreatedAtAction("Register", user);
     }
 
@@ -79,28 +85,28 @@ public class LoginController : Controller
     public IActionResult AdminLogout()
     {
         HttpContext.Session.Remove("adminLoggedIn");
+        HttpContext.Session.Remove("userId");
         return Ok("Logged out");
     }
 
-    [HttpGet("userLogout")]
+    [HttpGet("UserLogout")]
     public IActionResult UserLogout()
     {
         HttpContext.Session.Remove("userLoggedIn");
+        HttpContext.Session.Remove("userId");
         return Ok("Logged out");
     }
 
     [HttpGet("AdminDashboard")]
     public IActionResult AdminDashboard()
     {
-        if (IsAdminLoggedIn() == null)
+        if (HttpContext.Session.GetString("adminLoggedIn") == null)
         {
             return Unauthorized("Access denied. Admin login required.");
         }
 
         return Ok("Welcome to the admin dashboard!");
     }
-
-
 }
 
 public class LoginBody
