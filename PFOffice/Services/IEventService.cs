@@ -8,6 +8,7 @@ namespace StarterKit.Services
     {
         Task<List<Event>> GetAllEventsAsync();
         Task<Event> GetEventByIdAsync(int eventId);
+        Task<List<Event>> GetUserEventsAsync(int userId);
 
         Task<Event> AddReviewAsync(int eventid, string review);
         Task<Event> CreateEventAsync(Eventbody eventBody);
@@ -16,5 +17,7 @@ namespace StarterKit.Services
         Task<(bool Success, string Message, Event AttendedEvent)> AddAttendanceAsync(int eventId, int userId);
         Task<List<Event_Attendance>> GetEventAttendeesAsync(int eventId);
         Task<bool> DeleteAttendanceAsync(int eventId, int userId);
+        Task<bool> SpecificEventAttendee(int eventId, int userId);
+        Task<bool> IsUserAttendingAsync(int eventId, int userId);
     }
 }

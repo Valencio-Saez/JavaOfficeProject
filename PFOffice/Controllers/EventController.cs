@@ -23,6 +23,10 @@ namespace StarterKit.Controllers
             return HttpContext.Session.GetString("adminLoggedIn") != null;
         }
 
+        private bool IsUserLoggedin()
+        {
+            return HttpContext.Session.GetString("userLoggedIn") != null;
+        }
 
         [HttpGet("GetAllEvents")]
         public async Task<IActionResult> GetAllEvents()
@@ -31,7 +35,26 @@ namespace StarterKit.Controllers
             // {
             //     return Unauthorized("Access denied. Admin login required.");
             // }
+            var userIdString = HttpContext.Session.GetString("userId");
+            int? userId = null;
+            if (!string.IsNullOrEmpty(userIdString) && int.TryParse(userIdString, out var parsedUserId))
+            {
+                userId = parsedUserId;
+            }
             var events = await _eventService.GetAllEventsAsync();
+            return Ok(events);
+        }
+
+        [HttpGet("GetUserEvents")]
+        public async Task<IActionResult> GetUserEvents()
+        {
+            var userIdString = HttpContext.Session.GetString("userId");
+            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
+            {
+                return Unauthorized(new { message = "User not logged in" });
+            }
+
+            var events = await _eventService.GetUserEventsAsync(userId);
             return Ok(events);
         }
 
@@ -137,7 +160,13 @@ namespace StarterKit.Controllers
         [HttpDelete("{eventId}/attendees/{userId}")]
         public async Task<IActionResult> SpecificEventAttendee(int eventId, int userId)
         {
-            var deleted = await _eventService.DeleteAttendanceAsync(eventId, userId);
+            var userIdString = HttpContext.Session.GetString("userId");
+            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
+            {
+                return Unauthorized(new { message = "User not logged in" });
+            }
+
+            var deleted = await _eventService.SpecificEventAttendee(eventId, userId);
             if (!deleted)
             {
                 return NotFound("Attendance not found.");
@@ -145,6 +174,21 @@ namespace StarterKit.Controllers
 
             return Ok("Attendee removed successfully.");
         }
+
+        [HttpGet("{eventId}/isUserAttending")]
+        public async Task<IActionResult> IsUserAttending(int eventId)
+        {
+            var userIdString = HttpContext.Session.GetString("userId");
+            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
+            {
+                return Unauthorized(new { message = "User not logged in" });
+            }
+
+            var isAttending = await _eventService.IsUserAttendingAsync(eventId, userId);
+            var message = isAttending ? "User is attending the event." : "User is not attending the event.";
+            return Ok(new { isAttending, message });
+        }
+        
     }
 
 }

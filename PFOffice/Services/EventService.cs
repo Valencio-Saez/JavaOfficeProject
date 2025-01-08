@@ -40,6 +40,14 @@ namespace StarterKit.Services
                 .ToListAsync();
         }
 
+        public async Task<List<Event>> GetUserEventsAsync(int userId)
+        {
+            return await _context.Event
+                .Include(e => e.Event_Attendances)
+                .Where(e => e.Event_Attendances.Any(ea => ea.user.UserId == userId))
+                .ToListAsync();
+        }
+
         public async Task<Event> GetEventByIdAsync(int eventId)
         {
             return await _context.Event
@@ -190,9 +198,12 @@ namespace StarterKit.Services
 
             return eventEntity.Event_Attendances;
         }
+        
         public async Task<bool> DeleteAttendanceAsync(int eventId, int userId)
         {
             var eventAttendance = await _context.Event_Attendance
+                .Include(ea => ea.Event)
+                .Include(ea => ea.user)
                 .FirstOrDefaultAsync(ea => ea.Event.EventId == eventId && ea.user.UserId == userId);
 
             if (eventAttendance == null)
@@ -203,6 +214,29 @@ namespace StarterKit.Services
             _context.Event_Attendance.Remove(eventAttendance);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<bool> SpecificEventAttendee(int eventId, int userId)
+        {
+            var eventAttendance = await _context.Event_Attendance
+                .Include(ea => ea.Event)
+                .Include(ea => ea.user)
+                .FirstOrDefaultAsync(ea => ea.Event.EventId == eventId && ea.user.UserId == userId);
+
+            if (eventAttendance == null)
+            {
+                return false;
+            }
+
+            _context.Event_Attendance.Remove(eventAttendance);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> IsUserAttendingAsync(int eventId, int userId)
+        {
+            return await _context.Event_Attendance
+                .AnyAsync(ea => ea.Event.EventId == eventId && ea.user.UserId == userId);
         }
 
     }

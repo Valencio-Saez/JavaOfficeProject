@@ -16,20 +16,40 @@ const EventDetailsHome = () => {
   const [event, setEvent] = useState<Event | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
+  const [isUserAttending, setIsUserAttending] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (eventId) {
-      fetchEventDetails(eventId);
+    checkUserLoggedIn();
+  }, []);
+
+  const checkUserLoggedIn = async () => {
+    try {
+      const response = await fetch('/api/v1/Login/IsUserLoggedIn', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      const data = await response.json();
+      setIsAuthenticated(data);
+      if (!data) {
+        navigate('/'); 
+      } else {
+        if (eventId) {
+          fetchEventDetails(eventId);
+          checkUserAttendance(eventId);
+        }
+      }
+    } catch (error) {
+      console.error('Error checking user login status:', error);
+      navigate('/'); 
     }
-    const storedUserId = localStorage.getItem('userId');
-    setUserId(storedUserId);
-  }, [eventId]);
+  };
 
   const fetchEventDetails = async (id: string) => {
     try {
-      console.log(`Fetching event details for ID: ${id}`); // Debugging
+      console.log(`Fetching event details for ID: ${id}`); 
       const response = await fetch(`/api/v1/Event/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -39,7 +59,7 @@ const EventDetailsHome = () => {
         throw new Error('Failed to fetch event details');
       }
       const data = await response.json();
-      console.log('Event details response:', data); // Debugging
+      console.log('Event details response:', data); 
       setEvent(data);
     } catch (error) {
       console.error('Error fetching event details:', error);
@@ -49,12 +69,24 @@ const EventDetailsHome = () => {
     }
   };
 
-  const handleAttend = async () => {
-    if (!userId) {
-      alert('User not logged in.');
-      return;
+  const checkUserAttendance = async (id: string) => {
+    try {
+      const response = await fetch(`/api/v1/Event/${id}/isUserAttending`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Failed to check user attendance');
+      }
+      const data = await response.json();
+      setIsUserAttending(data.isAttending);
+    } catch (error) {
+      console.error('Error checking user attendance:', error);
     }
+  };
 
+  const handleAttend = async () => {
     try {
       const response = await fetch('/api/v1/AttendanceModification/AddAttendance', {
         method: 'POST',
@@ -64,18 +96,43 @@ const EventDetailsHome = () => {
         },
         body: JSON.stringify({
           eventId: parseInt(eventId!),
-          userId: parseInt(userId),
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to attend event');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to attend event');
       }
 
       const data = await response.json();
-      alert(`You are now attending the event. Welcome, ${data.username}!`);
+      alert(`You are now attending the event. Welcome, ${data.UserName}!`);
+      setIsUserAttending(true);
     } catch (error) {
       console.error('Error attending event:', error);
+      alert((error as Error).message);
+    }
+  };
+
+  const handleDeleteAttendance = async () => {
+    try {
+      const response = await fetch(`/api/v1/Event/${eventId}/specifieke`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || 'Failed to delete attendance');
+      }
+
+      alert('Attendance deleted successfully.');
+      setIsUserAttending(false);
+      navigate('/user'); 
+    } catch (error) {
+      console.error('Error deleting attendance:', error);
+      alert((error as Error).message); 
     }
   };
 
@@ -83,8 +140,8 @@ const EventDetailsHome = () => {
     navigate(-1);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
+  if (isAuthenticated === null || loading) {
+    return <div>Loading...</div>; 
   }
 
   if (error) {
@@ -105,14 +162,12 @@ const EventDetailsHome = () => {
       <p><strong>End Time:</strong> {event.endTime}</p>
       <div style={{ marginTop: '20px' }}>
         <button style={{ marginRight: '30px' }} onClick={goBack}>Go Back</button>
-        <button onClick={handleAttend}>Attend Event</button>
+        {isUserAttending ? (
+          <button onClick={handleDeleteAttendance}>Delete Attendance</button>
+        ) : (
+          <button onClick={handleAttend}>Attend Event</button>
+        )}
       </div>
-      {userId && (
-        <div>
-          <h2>User ID:</h2>
-          <p>{userId}</p>
-        </div>
-      )}
     </div>
   );
 };
