@@ -24,7 +24,7 @@ namespace StarterKit.Controllers
         }
 
         [HttpGet("GetAllEvents")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllEvents()
         {
             var events = await _eventService.GetAllEventsAsync();
@@ -39,13 +39,13 @@ namespace StarterKit.Controllers
         }
 
         [HttpPost("events")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateEvent([FromBody] Eventbody eventBody)
         {
-            // if (!IsAdminLoggedIn())
-            // {
-            //     return Unauthorized("Admin privileges required to create an event.");
-            // }
+            if (!IsAdminLoggedIn())
+            {
+                return Unauthorized("Admin privileges required to create an event.");
+            }
 
             if (!ModelState.IsValid)
             {
@@ -77,10 +77,10 @@ namespace StarterKit.Controllers
         //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEvent(int id, [FromBody] Eventbody eventBody)
         {
-            // if (!IsAdminLoggedIn())
-            // {
-            //     return Unauthorized("Admin privileges required to update an event.");
-            // }
+            if (!IsAdminLoggedIn())
+            {
+                return Unauthorized("Admin privileges required to update an event.");
+            }
 
             if (!ModelState.IsValid)
             {
@@ -111,13 +111,12 @@ namespace StarterKit.Controllers
 
         // DELETE: api/v1/Event/DeleteEvent/{id} (alleen toegankelijk voor ingelogde admins)
         [HttpDelete("DeleteEvent/{id}")]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteEvent(int id)
         {
-            // if (!IsAdminLoggedIn())
-            // {
-            //     return Unauthorized("Admin privileges required to delete an event.");
-            // }
+            if (!IsAdminLoggedIn())
+            {
+                return Unauthorized("Admin privileges required to delete an event.");
+            }
 
             var deleted = await _eventService.DeleteEventAsync(id);
             if (!deleted)
@@ -131,7 +130,7 @@ namespace StarterKit.Controllers
 
 
         [HttpGet("{eventId}/attendees")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetEventAttendees(int eventId)
         {
             var eventAttendees = await _eventService.GetEventAttendeesAsync(eventId);
@@ -164,7 +163,7 @@ namespace StarterKit.Controllers
         // }
 
         [HttpDelete("{eventId}/attendees/{userId}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> SpecificEventAttendee(int eventId, int userId)
         {
             var deleted = await _eventService.DeleteAttendanceAsync(eventId, userId);
@@ -174,19 +173,6 @@ namespace StarterKit.Controllers
             }
 
             return Ok("Attendee removed successfully.");
-        }
-
-        [HttpGet("{eventId}")]
-        public async Task<IActionResult> GetEventById(int eventId)
-        {
-            var eventDetails = await _eventService.GetEventByIdAsync(eventId);
-
-            if (eventDetails == null)
-            {
-                return NotFound("Event not found.");
-            }
-
-            return Ok(eventDetails);
         }
     }
 

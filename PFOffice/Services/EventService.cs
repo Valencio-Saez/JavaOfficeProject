@@ -19,25 +19,6 @@ namespace StarterKit.Services
             return await _context.Event
                 .Include(e => e.Event_Attendances)
                     .ThenInclude(ea => ea.user)
-                .Select(e => new Event
-                {
-                    EventId = e.EventId,
-                    Title = e.Title,
-                    Description = e.Description,
-                    Location = e.Location,
-                    EventDate = e.EventDate,
-                    StartTime = e.StartTime,
-                    EndTime = e.EndTime,
-                    Event_Attendances = e.Event_Attendances.Select(ea => new Event_Attendance
-                    {
-                        Event_AttendanceId = ea.Event_AttendanceId,
-                        Rating = ea.Rating,
-                        Feedback = ea.Feedback,
-                        Event = ea.Event,
-                        // Exclude the user field
-                        user = null
-                    }).ToList()
-                })
                 .ToListAsync();
         }
 
@@ -200,14 +181,6 @@ namespace StarterKit.Services
             _context.Event_Attendance.Remove(eventAttendance);
             await _context.SaveChangesAsync();
             return true;
-        }
-
-        public async Task<Event> GetEventByIdAsync(int eventId)
-        {
-            return await _context.Event
-                .Include(e => e.Event_Attendances)
-                .ThenInclude(ea => ea.user)
-                .FirstOrDefaultAsync(e => e.EventId == eventId);
         }
 
     }
