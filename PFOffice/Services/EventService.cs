@@ -48,16 +48,13 @@ namespace StarterKit.Services
             var eventEntity = await _context.Event.FindAsync(eventId);
             if (eventEntity != null)
             {
-                if (eventEntity.Review != "")
-                {
-                    eventEntity.Review = review;
-                    //await _context.SaveChangesAsync();
-                    return eventEntity;
-                }
+                eventEntity.Review = review;  // Zorg ervoor dat je de review altijd update
+                await _context.SaveChangesAsync();
                 return eventEntity;
             }
             throw new System.Exception("Event not found");
         }
+
 
         public async Task<Event> UpdateEventAsync(int id, Eventbody eventBody)
         {
@@ -182,6 +179,7 @@ namespace StarterKit.Services
             // Return the list of attendees for this event
             return eventEntity.Event_Attendances;
         }
+
         public async Task<bool> DeleteAttendanceAsync(int eventId, int userId)
         {
             var eventAttendance = await _context.Event_Attendance
@@ -197,5 +195,33 @@ namespace StarterKit.Services
             return true;
         }
 
+        public async Task<(bool Success, string Message, double AverageRating)> AddRatingToEventAsync(int eventId, int rating)
+        {
+            if (rating < 1 || rating > 5)
+            {
+                return (false, "Rating must be between 1 and 5.", 0);
+            }
+
+            try
+            {
+                var eventEntity = await _context.Event.Include(e => e.Ratings).FirstOrDefaultAsync(e => e.EventId == eventId);
+                if (eventEntity == null)
+                {
+                    return (false, "Event not found.", 0);
+                }
+
+                // Assuming Ratings is a List<int>
+                eventEntity.Ratings.Add(rating);
+                await _context.SaveChangesAsync();
+
+                var averageRating = eventEntity.Ratings.Average(); // Calculate the new average rating
+                return (true, "Rating successfully added.", averageRating);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception here
+                return (false, "An error occurred while adding the rating.", 0);
+            }
+        }
     }
 }

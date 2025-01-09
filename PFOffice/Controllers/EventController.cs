@@ -98,18 +98,6 @@ namespace StarterKit.Controllers
             }));
         }
 
-        [HttpDelete("{eventId}/attendees/{userId}")]
-        // [Authorize]
-        public async Task<IActionResult> DeleteEventAttendee(int eventId)
-        {
-            var deleted = await _eventService.DeleteEventAsync(eventId);
-            if (!deleted)
-            {
-                return NotFound("Event or attendee not found.");
-            }
-
-            return Ok("Attendee removed successfully.");
-        }
 
         [HttpDelete("{eventId}/attendees/{userId}")]
         // [Authorize]
@@ -123,6 +111,22 @@ namespace StarterKit.Controllers
 
             return Ok("Attendee removed successfully.");
         }
+
+
+        [HttpPost("{eventId}/ratings")]
+        public async Task<IActionResult> AddRating(int eventId, [FromBody] int rating)
+        {
+            var result = await _eventService.AddRatingToEventAsync(eventId, rating);
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(new { Message = result.Message, AverageRating = result.AverageRating });
+        }
+
+
+
+
     }
 
 }

@@ -51,7 +51,9 @@ const UserPastEvents: React.FC = () => {
 
   const handleRating = async (eventId: number, rating: number) => {
     try {
-      const response = await fetch(`/api/v1/Event_Attendance/RateEvent`, {
+      
+      const response = await fetch(`/api/v1/Event/${eventId}/ratings`, {
+
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +95,7 @@ const UserPastEvents: React.FC = () => {
   return (
     <div>
       <h1>User Dashboard</h1>
-      <h2>My Past Events</h2>
+      <h2>My Past Events2</h2>
 
       <table>
         <thead>
