@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AccessibilityOptions from './AccessibilityOptions';
 
 interface Event {
   eventId: number;
@@ -29,14 +30,14 @@ const UserPage = () => {
       const data = await response.json();
       setIsAuthenticated(data);
       if (!data) {
-        navigate('/'); // Redirect to Home if not authenticated
+        navigate('/'); 
       } else {
         fetchEvents();
         fetchUserEvents();
       }
     } catch (error) {
       console.error('Error checking user login status:', error);
-      navigate('/'); // Redirect to Home if there's an error
+      navigate('/'); 
     }
   };
 
@@ -46,7 +47,7 @@ const UserPage = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       const data = await response.json();
-      console.log('API response:', data); // Debugging
+      console.log('API response:', data); 
 
       if (data && data.$values && Array.isArray(data.$values)) {
         const now = new Date();
@@ -54,7 +55,7 @@ const UserPage = () => {
           const eventDateTime = new Date(`${event.eventDate}T${event.startTime}`);
           return eventDateTime > now;
         });
-        console.log('Filtered events:', futureEvents); // Debugging
+        console.log('Filtered events:', futureEvents); 
         setEvents(futureEvents);
       } else {
         console.error('Unexpected API response format:', data);
@@ -70,8 +71,6 @@ const UserPage = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       const data = await response.json();
-      console.log('User events response:', data); // Debugging
-
       if (data && data.$values && Array.isArray(data.$values)) {
         setUserEvents(data.$values);
       } else {
@@ -83,18 +82,18 @@ const UserPage = () => {
   };
 
   const handleEventClick = (id: number) => {
-    console.log(`Navigating to event details for event ID: ${id}`); // Debugging
+    console.log(`Navigating to event details for event ID: ${id}`); 
     navigate(`/events/${id}`);
   };
 
   const handleLogout = () => {
-    console.log('Logging out'); // Debugging
+    console.log('Logging out'); 
     localStorage.removeItem('token');
     navigate('/');
   };
 
   if (isAuthenticated === null) {
-    return <div>Loading...</div>; // or a loading spinner
+    return <div>Loading...</div>; 
   }
 
   return (
@@ -130,7 +129,7 @@ const UserPage = () => {
           </table>
         </div>
         <div style={{ flex: 1 }}>
-          <h2>My Events</h2>
+          <h2>Attended Events</h2>
           <table>
             <thead>
               <tr>
@@ -157,6 +156,7 @@ const UserPage = () => {
           </table>
         </div>
       </div>
+      <AccessibilityOptions />
     </div>
   );
 };

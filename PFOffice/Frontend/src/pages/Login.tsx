@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../../../wwwroot/css/site.css';
+import AccessibilityOptions from './AccessibilityOptions';
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
@@ -89,6 +90,7 @@ const Login: React.FC = () => {
             <div>
                 <button type="button" onClick={() => navigate('/')}>Home</button>
             </div>
+            <AccessibilityOptions />
         </div >
     );
 };

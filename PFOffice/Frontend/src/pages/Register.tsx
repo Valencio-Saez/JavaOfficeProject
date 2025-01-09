@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../../wwwroot/css/site.css'
+import AccessibilityOptions from './AccessibilityOptions';
 
 const Register: React.FC = () => {
     const [username, setUsername] = useState('');
@@ -122,6 +123,7 @@ const Register: React.FC = () => {
             <div>
                 <button type="button" onClick={() => navigate('/')}>Home</button>
             </div>
+            <AccessibilityOptions />
         </div>
     );
 };

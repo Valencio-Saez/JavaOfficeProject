@@ -61,10 +61,10 @@ namespace StarterKit.Controllers
         [HttpGet("{eventId}")]
         public async Task<IActionResult> GetEventById(int eventId)
         {
-            if (!IsAdminLoggedIn()) 
-            {
-                return Unauthorized("Access denied. Admin login required.");
-            }
+            // if (!IsAdminLoggedIn()) 
+            // {
+            //     return Unauthorized("Access denied. Admin login required.");
+            // }
             var eventDetails = await _eventService.GetEventByIdAsync(eventId);
 
             if (eventDetails == null)
@@ -157,8 +157,8 @@ namespace StarterKit.Controllers
             }));
         }
 
-        [HttpDelete("{eventId}/attendees/{userId}")]
-        public async Task<IActionResult> SpecificEventAttendee(int eventId, int userId)
+        [HttpDelete("{eventId}/specifieke")]
+        public async Task<IActionResult> SpecificEventAttendee(int eventId)
         {
             var userIdString = HttpContext.Session.GetString("userId");
             if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
