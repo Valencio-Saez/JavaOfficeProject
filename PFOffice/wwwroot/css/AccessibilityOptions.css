@@ -41,3 +41,24 @@
   body.large-text {
     font-size: 20px;
   }
+
+  .black-white-mode {
+    background-color: #000000; /* Zwarte achtergrond */
+    color: #ffffff; /* Witte tekst */
+  }
+  
+  .black-white-mode a {
+    color: #00ffff; /* Optionele kleur voor links in wit */
+  }
+  
+  .black-white-mode button {
+    background-color: #222222; /* Donkergrijs voor knoppen */
+    color: #ffffff;
+    border: 1px solid #ffffff; /* Witte rand voor contrast */
+  }
+  
+  .black-white-mode h1, 
+  .black-white-mode h2, 
+  .black-white-mode h3 {
+    color: #ffffff; /* Witte kleur voor koppen */
+  }
