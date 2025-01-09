@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StarterKit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4142c70a2589de76bf12a2477bc8c76573d7c184")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2e1fd57c7b8eb38b3a8114a53513ff49fcf14bc")]
 [assembly: System.Reflection.AssemblyProductAttribute("StarterKit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StarterKit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
