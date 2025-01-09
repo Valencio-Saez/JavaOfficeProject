@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*************************************************************************************/
 /***/ ((module, exports, __webpack_require__) => {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../Frontend/node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \".access ul {\\r\\n    list-style-type: none;\\r\\n  }\\r\\n  \\r\\n  #accessibility-button img {\\r\\n    width: 50px;\\r\\n    height: 50px;\\r\\n  }\\r\\n  \\r\\n  .high-contrast {\\r\\n    color: #f00;\\r\\n    -webkit-filter: invert(100%);\\r\\n    filter: invert(100%);\\r\\n  }\\r\\n  \\r\\n  .grey-hues {\\r\\n    filter: grayscale(100%);\\r\\n  }\\r\\n  \\r\\n  .colorblind {\\r\\n    width: 30%;\\r\\n    border: none;\\r\\n    background-color: transparent;\\r\\n    display: flex;\\r\\n    justify-content: center;\\r\\n    align-items: center;\\r\\n    cursor: pointer;\\r\\n    margin: -30px;\\r\\n  }\\r\\n  \\r\\n  .colorchange {\\r\\n    width: 100%;\\r\\n    height: 40%;\\r\\n    align-items: center;\\r\\n  }\\r\\n  \\r\\n  body.colorblind-mode {\\r\\n    background-color: #DDCC77;\\r\\n  }\\r\\n  \\r\\n  body.large-text {\\r\\n    font-size: 20px;\\r\\n  }\", \"\"]);\n\n\n\n//# sourceURL=webpack://hello-react-typescript/../wwwroot/css/AccessibilityOptions.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../../Frontend/node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \".access ul {\\n    list-style-type: none;\\n  }\\n  \\n  #accessibility-button img {\\n    width: 50px;\\n    height: 50px;\\n  }\\n  \\n  .high-contrast {\\n    color: #f00;\\n    -webkit-filter: invert(100%);\\n    filter: invert(100%);\\n  }\\n  \\n  .grey-hues {\\n    filter: grayscale(100%);\\n  }\\n  \\n  .colorblind {\\n    width: 30%;\\n    border: none;\\n    background-color: transparent;\\n    display: flex;\\n    justify-content: center;\\n    align-items: center;\\n    cursor: pointer;\\n    margin: -30px;\\n  }\\n  \\n  .colorchange {\\n    width: 100%;\\n    height: 40%;\\n    align-items: center;\\n  }\\n  \\n  body.colorblind-mode {\\n    background-color: #DDCC77;\\n  }\\n  \\n  body.large-text {\\n    font-size: 20px;\\n  }\\n\\n  .black-white-mode {\\n    background-color: black;\\n    color: white;\\n  }\", \"\"]);\n\n\n\n//# sourceURL=webpack://hello-react-typescript/../wwwroot/css/AccessibilityOptions.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -36,7 +36,7 @@ eval("exports = module.exports = __webpack_require__(/*! ../../Frontend/node_mod
   \*********************************************************************/
 /***/ ((module, exports, __webpack_require__) => {
 
-eval("exports = module.exports = __webpack_require__(/*! ../../Frontend/node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \".add-event-form {\\r\\n    margin-top: 30px; \\r\\n}\\r\\n\\r\\n.bold-label {\\r\\n    font-weight: bold;\\r\\n}\\r\\n\\r\\n.text-right {\\r\\n  text-align:  left;\\r\\n\\r\\n  margin-bottom: 20px;\\r\\n}\\r\\n\\r\\n.btn-primary {\\r\\n    margin-top: 10px;\\r\\n    margin-bottom: 10px;\\r\\n}\\r\\n\\r\\n.btn-secondary {\\r\\n    margin-top: 10px;\\r\\n    margin-bottom: 10px;\\r\\n}\\r\\n\\r\\n.form-group {\\r\\n    display: flex;\\r\\n    flex-direction: column;\\r\\n    margin-bottom: 15px;\\r\\n  }\\r\\n  \\r\\n  .form-group label {\\r\\n    margin-bottom: 5px;\\r\\n  }\\r\\n  \\r\\n  .form-group input {\\r\\n    padding: 4px;\\r\\n    font-size: 12px;\\r\\n  }\", \"\"]);\n\n\n\n//# sourceURL=webpack://hello-react-typescript/../wwwroot/css/site.css?./node_modules/css-loader/dist/cjs.js");
+eval("exports = module.exports = __webpack_require__(/*! ../../Frontend/node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.id, \".add-event-form {\\n    margin-top: 30px; \\n}\\n\\n.bold-label {\\n    font-weight: bold;\\n}\\n\\n.text-right {\\n  text-align:  left;\\n\\n  margin-bottom: 20px;\\n}\\n\\n.btn-primary {\\n    margin-top: 10px;\\n    margin-bottom: 10px;\\n}\\n\\n.btn-secondary {\\n    margin-top: 10px;\\n    margin-bottom: 10px;\\n}\\n\\n.form-group {\\n    display: flex;\\n    flex-direction: column;\\n    margin-bottom: 15px;\\n  }\\n  \\n  .form-group label {\\n    margin-bottom: 5px;\\n  }\\n  \\n  .form-group input {\\n    padding: 4px;\\n    font-size: 12px;\\n  }\", \"\"]);\n\n\n\n//# sourceURL=webpack://hello-react-typescript/../wwwroot/css/site.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -241,7 +241,7 @@ eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ?
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\nconst react_1 = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n__webpack_require__(/*! ../../../wwwroot/css/AccessibilityOptions.css */ \"../wwwroot/css/AccessibilityOptions.css\");\nconst AccessibilityOptions = () => {\n    (0, react_1.useEffect)(() => {\n        const toggleAccessibilityPanel = () => {\n            const panel = document.getElementById('accessibility-panel');\n            if (panel) {\n                panel.style.display = panel.style.display === 'none' ? 'block' : 'none';\n            }\n        };\n        const toggleColorBlindMode = () => {\n            document.body.classList.toggle('colorblind-mode');\n        };\n        const toggleLargeText = () => {\n            const currentFontSize = parseInt(getComputedStyle(document.body).fontSize);\n            const newFontSize = currentFontSize + 5;\n            document.body.style.fontSize = `${newFontSize}px`;\n        };\n        const toggleSmallText = () => {\n            const currentFontSize = parseInt(getComputedStyle(document.body).fontSize);\n            const newFontSize = currentFontSize - 5;\n            document.body.style.fontSize = `${newFontSize}px`;\n        };\n        const toggleHighContrast = () => {\n            document.body.classList.toggle('high-contrast');\n        };\n        const toggleGreyHues = () => {\n            document.body.classList.toggle('grey-hues');\n        };\n        document.getElementById('accessibility-button')?.addEventListener('click', toggleAccessibilityPanel);\n        document.getElementById('colorblind-button')?.addEventListener('click', toggleColorBlindMode);\n        document.getElementById('largetxt')?.addEventListener('click', toggleLargeText);\n        document.getElementById('smalltxt')?.addEventListener('click', toggleSmallText);\n        document.getElementById('highcontrast')?.addEventListener('click', toggleHighContrast);\n        document.getElementById('greyhues')?.addEventListener('click', toggleGreyHues);\n        return () => {\n            document.getElementById('accessibility-button')?.removeEventListener('click', toggleAccessibilityPanel);\n            document.getElementById('colorblind-button')?.removeEventListener('click', toggleColorBlindMode);\n            document.getElementById('largetxt')?.removeEventListener('click', toggleLargeText);\n            document.getElementById('smalltxt')?.removeEventListener('click', toggleSmallText);\n            document.getElementById('highcontrast')?.removeEventListener('click', toggleHighContrast);\n            document.getElementById('greyhues')?.removeEventListener('click', toggleGreyHues);\n        };\n    }, []);\n    return ((0, jsx_runtime_1.jsxs)(\"div\", { className: \"access\", children: [(0, jsx_runtime_1.jsx)(\"button\", { id: \"accessibility-button\", children: \"Accessibility Options\" }), (0, jsx_runtime_1.jsxs)(\"div\", { id: \"accessibility-panel\", style: { display: 'none' }, children: [(0, jsx_runtime_1.jsx)(\"h2\", { children: \"Accessibility Options\" }), (0, jsx_runtime_1.jsxs)(\"ul\", { children: [(0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"colorblind-button\", className: \"colorblind-button\", children: \"Toggle Color Blind Mode\" }) }), (0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"largetxt\", className: \"largetxt\", children: \"Toggle Large Text\" }) }), (0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"smalltxt\", className: \"smalltxt\", children: \"Toggle Small Text\" }) }), (0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"highcontrast\", className: \"highcontrast\", children: \"Toggle High Contrast\" }) }), (0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"greyhues\", className: \"greyhues\", children: \"Grey Hues\" }) })] })] })] }));\n};\nexports[\"default\"] = AccessibilityOptions;\n\n\n//# sourceURL=webpack://hello-react-typescript/./src/pages/AccessibilityOptions.tsx?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst jsx_runtime_1 = __webpack_require__(/*! react/jsx-runtime */ \"./node_modules/react/jsx-runtime.js\");\nconst react_1 = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n__webpack_require__(/*! ../../../wwwroot/css/AccessibilityOptions.css */ \"../wwwroot/css/AccessibilityOptions.css\");\nconst AccessibilityOptions = () => {\n    (0, react_1.useEffect)(() => {\n        const toggleAccessibilityPanel = () => {\n            const panel = document.getElementById('accessibility-panel');\n            if (panel) {\n                panel.style.display = panel.style.display === 'none' ? 'block' : 'none';\n            }\n        };\n        const toggleColorBlindMode = () => {\n            document.body.classList.toggle('colorblind-mode');\n        };\n        const toggleLargeText = () => {\n            const currentFontSize = parseInt(getComputedStyle(document.body).fontSize);\n            const newFontSize = currentFontSize + 5;\n            document.body.style.fontSize = `${newFontSize}px`;\n        };\n        const toggleSmallText = () => {\n            const currentFontSize = parseInt(getComputedStyle(document.body).fontSize);\n            const newFontSize = currentFontSize - 5;\n            document.body.style.fontSize = `${newFontSize}px`;\n        };\n        const toggleHighContrast = () => {\n            document.body.classList.toggle('high-contrast');\n        };\n        const toggleGreyHues = () => {\n            document.body.classList.toggle('grey-hues');\n        };\n        const toggleBlackWhiteMode = () => {\n            document.body.classList.toggle('black-white-mode');\n        };\n        document.getElementById('accessibility-button')?.addEventListener('click', toggleAccessibilityPanel);\n        document.getElementById('colorblind-button')?.addEventListener('click', toggleColorBlindMode);\n        document.getElementById('largetxt')?.addEventListener('click', toggleLargeText);\n        document.getElementById('smalltxt')?.addEventListener('click', toggleSmallText);\n        document.getElementById('highcontrast')?.addEventListener('click', toggleHighContrast);\n        document.getElementById('greyhues')?.addEventListener('click', toggleGreyHues);\n        document.getElementById('black-white-mode')?.addEventListener('click', toggleBlackWhiteMode);\n        return () => {\n            document.getElementById('accessibility-button')?.removeEventListener('click', toggleAccessibilityPanel);\n            document.getElementById('colorblind-button')?.removeEventListener('click', toggleColorBlindMode);\n            document.getElementById('largetxt')?.removeEventListener('click', toggleLargeText);\n            document.getElementById('smalltxt')?.removeEventListener('click', toggleSmallText);\n            document.getElementById('highcontrast')?.removeEventListener('click', toggleHighContrast);\n            document.getElementById('greyhues')?.removeEventListener('click', toggleGreyHues);\n            document.getElementById('black-white-mode')?.removeEventListener('click', toggleBlackWhiteMode);\n        };\n    }, []);\n    return ((0, jsx_runtime_1.jsxs)(\"div\", { className: \"access\", children: [(0, jsx_runtime_1.jsx)(\"button\", { id: \"accessibility-button\", children: \"Accessibility Options\" }), (0, jsx_runtime_1.jsxs)(\"div\", { id: \"accessibility-panel\", style: { display: 'none' }, children: [(0, jsx_runtime_1.jsx)(\"h2\", { children: \"Accessibility Options\" }), (0, jsx_runtime_1.jsxs)(\"ul\", { children: [(0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"colorblind-button\", className: \"colorblind-button\", children: \"Toggle Color Blind Mode\" }) }), (0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"largetxt\", className: \"largetxt\", children: \"Toggle Large Text\" }) }), (0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"smalltxt\", className: \"smalltxt\", children: \"Toggle Small Text\" }) }), (0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"highcontrast\", className: \"highcontrast\", children: \"Toggle High Contrast\" }) }), (0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"greyhues\", className: \"greyhues\", children: \"Grey Hues\" }) }), (0, jsx_runtime_1.jsx)(\"li\", { children: (0, jsx_runtime_1.jsx)(\"button\", { id: \"black-white-mode\", className: \"black-white-mode\", children: \"Toggle Black/White Mode\" }) })] })] })] }));\n};\nexports[\"default\"] = AccessibilityOptions;\n\n\n//# sourceURL=webpack://hello-react-typescript/./src/pages/AccessibilityOptions.tsx?");
 
 /***/ }),
 
@@ -462,7 +462,7 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("7067bf22d4e6bc252c26")
+/******/ 		__webpack_require__.h = () => ("87de11943afdc51c8c46")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
@@ -723,7 +723,7 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /******/ 					if (idx >= 0) registeredStatusHandlers.splice(idx, 1);
 /******/ 				},
 /******/ 		
-/******/ 				//inherit from previous dispose call
+/******/ 				// inherit from previous dispose call
 /******/ 				data: currentModuleData[moduleId]
 /******/ 			};
 /******/ 			currentChildModule = undefined;
@@ -815,11 +815,10 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /******/ 							return waitForBlockingPromises(function () {
 /******/ 								if (applyOnUpdate) {
 /******/ 									return internalApply(applyOnUpdate);
-/******/ 								} else {
-/******/ 									return setStatus("ready").then(function () {
-/******/ 										return updatedModules;
-/******/ 									});
 /******/ 								}
+/******/ 								return setStatus("ready").then(function () {
+/******/ 									return updatedModules;
+/******/ 								});
 /******/ 							});
 /******/ 						});
 /******/ 					});
@@ -1090,15 +1089,12 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /******/ 				if (__webpack_require__.o(currentUpdate, moduleId)) {
 /******/ 					var newModuleFactory = currentUpdate[moduleId];
 /******/ 					/** @type {TODO} */
-/******/ 					var result;
-/******/ 					if (newModuleFactory) {
-/******/ 						result = getAffectedModuleEffects(moduleId);
-/******/ 					} else {
-/******/ 						result = {
-/******/ 							type: "disposed",
-/******/ 							moduleId: moduleId
-/******/ 						};
-/******/ 					}
+/******/ 					var result = newModuleFactory
+/******/ 						? getAffectedModuleEffects(moduleId)
+/******/ 						: {
+/******/ 								type: "disposed",
+/******/ 								moduleId: moduleId
+/******/ 							};
 /******/ 					/** @type {Error|false} */
 /******/ 					var abortError = false;
 /******/ 					var doApply = false;
@@ -1349,17 +1345,17 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /******/ 										moduleId: moduleId,
 /******/ 										module: __webpack_require__.c[moduleId]
 /******/ 									});
-/******/ 								} catch (err2) {
+/******/ 								} catch (err1) {
 /******/ 									if (options.onErrored) {
 /******/ 										options.onErrored({
 /******/ 											type: "self-accept-error-handler-errored",
 /******/ 											moduleId: moduleId,
-/******/ 											error: err2,
+/******/ 											error: err1,
 /******/ 											originalError: err
 /******/ 										});
 /******/ 									}
 /******/ 									if (!options.ignoreErrored) {
-/******/ 										reportError(err2);
+/******/ 										reportError(err1);
 /******/ 										reportError(err);
 /******/ 									}
 /******/ 								}

@@ -41,3 +41,8 @@
   body.large-text {
     font-size: 20px;
   }
+
+  .black-white-mode {
+    background-color: black;
+    color: white;
+  }
