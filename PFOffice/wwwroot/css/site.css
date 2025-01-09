@@ -36,37 +36,3 @@
     padding: 4px;
     font-size: 12px;
   }
-
-  /* Default light mode styles */
-body {
-  background-color: white;
-  color: black;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-
-/*///////////////////////////////////////////////
-
-
-/* Dark mode styles */
-body.dark-mode {
-  background-color: black;
-  color: white;
-}
-
-/* Button styles */
-button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-.theme-selector {
-  margin: 20px 0;
-  text-align: center;
-}

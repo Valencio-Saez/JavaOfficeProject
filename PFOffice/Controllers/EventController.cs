@@ -189,21 +189,6 @@ namespace StarterKit.Controllers
             return Ok(new { isAttending, message });
         }
         
-
-        [HttpPost("{eventId}/ratings")]
-        public async Task<IActionResult> AddRating(int eventId, [FromBody] int rating)
-        {
-            var result = await _eventService.AddRatingToEventAsync(eventId, rating);
-            if (!result.Success)
-            {
-                return BadRequest(result.Message);
-            }
-            return Ok(new { Message = result.Message, AverageRating = result.AverageRating });
-        }
-
-
-
-
     }
 
 }

@@ -99,18 +99,11 @@ const AdminDashboard = () => {
   return (
     <div>
       <h1>Admin Dashboard</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'blue' }}>{error}</p>}
       <h2>All Events</h2>
-
       <div className="text-right">
-        <button className="btn btn-primary" onClick={() => navigate('/add-event')}>Add new event 2</button>
+        <button className="btn btn-primary" onClick={() => navigate('/add-event')}>Add new event</button>
       </div>
-
-      <div className="text-right">
-        <button className="btn btn-primary" onClick={() => navigate('/layout')}>Change Layout</button>
-      </div>
-
-
       <table>
         <thead>
           <tr>

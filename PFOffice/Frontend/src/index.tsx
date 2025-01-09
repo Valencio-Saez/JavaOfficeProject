@@ -12,9 +12,6 @@ import EventDetailsHome from "./pages/EventDetailsHome";
 import AccessibilityOptions from "./pages/AccessibilityOptions";
 import EventContext, { EventProvider } from "./EventContext";
 import UserPage from "./pages/UserPage";
-import LayoutFeature from './pages/LayoutFeature'; // Import the LayoutFeature page
-import UserPastEvents from "./pages/UserPastEvents"; // Import the UserDashboard page
-
 
 createRoot(document.getElementById('root')!)
     .render(
@@ -31,9 +28,6 @@ createRoot(document.getElementById('root')!)
                     <Route path="/user" element={<UserPage />} />
                     <Route path="/add-event" element={<AdminAddEvent />} />
                     <Route path="/events/:eventId/attendees" element={<AdminViewAttendees />} />
-                    <Route path="/UserPastEvents" element={<UserPastEvents />} />
-                    <Route path="/layout" element={<LayoutFeature />} />
-
                 </Routes>
             </Router>
             </EventProvider>
