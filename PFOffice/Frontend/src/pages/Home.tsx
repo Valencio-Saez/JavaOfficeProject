@@ -13,6 +13,10 @@ const Home = () => {
     navigate('/register');
   };
 
+  const goToUserPastEvents = () => {
+    navigate('/UserPastEvents');
+  };
+
   return (
     <div>
       <h1>Welcome to the Office Management System</h1>

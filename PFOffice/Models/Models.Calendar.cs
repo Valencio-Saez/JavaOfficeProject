@@ -55,6 +55,10 @@ namespace StarterKit.Models
         // [JsonIgnore]
         public required List<Event_Attendance> Event_Attendances { get; set; }
         public string? Review { get; set; }
+
+        public List<int> Ratings { get; set; } = new(); // Nieuw: lijst met ratings
+        public double AverageRating => Ratings.Count > 0 ? Ratings.Average() : 0.0;
+
     }
 
     public class AttendanceRequest
