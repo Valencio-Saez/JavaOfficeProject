@@ -12,6 +12,7 @@ interface Event {
 
 const UserPage = () => {
   const [events, setEvents] = useState<Event[]>([]);
+  const [pastEvents, setPastEvents] = useState<Event[]>([]);
   const [userEvents, setUserEvents] = useState<Event[]>([]);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const navigate = useNavigate();
@@ -30,14 +31,14 @@ const UserPage = () => {
       const data = await response.json();
       setIsAuthenticated(data);
       if (!data) {
-        navigate('/'); 
+        navigate('/');
       } else {
         fetchEvents();
         fetchUserEvents();
       }
     } catch (error) {
       console.error('Error checking user login status:', error);
-      navigate('/'); 
+      navigate('/');
     }
   };
 
@@ -47,16 +48,22 @@ const UserPage = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       const data = await response.json();
-      console.log('API response:', data); 
 
       if (data && data.$values && Array.isArray(data.$values)) {
         const now = new Date();
+
         const futureEvents = data.$values.filter((event: Event) => {
           const eventDateTime = new Date(`${event.eventDate}T${event.startTime}`);
           return eventDateTime > now;
         });
-        console.log('Filtered events:', futureEvents); 
+
+        const pastEvents = data.$values.filter((event: Event) => {
+          const eventDateTime = new Date(`${event.eventDate}T${event.startTime}`);
+          return eventDateTime <= now;
+        });
+
         setEvents(futureEvents);
+        setPastEvents(pastEvents);
       } else {
         console.error('Unexpected API response format:', data);
       }
@@ -82,18 +89,16 @@ const UserPage = () => {
   };
 
   const handleEventClick = (id: number) => {
-    console.log(`Navigating to event details for event ID: ${id}`); 
     navigate(`/events/${id}`);
   };
 
   const handleLogout = () => {
-    console.log('Logging out'); 
     localStorage.removeItem('token');
     navigate('/');
   };
 
   if (isAuthenticated === null) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   return (
@@ -128,6 +133,8 @@ const UserPage = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Aangepaste volgorde: Past Events nu onder Attended Events */}
         <div style={{ flex: 1 }}>
           <h2>Attended Events</h2>
           <table>
@@ -142,6 +149,35 @@ const UserPage = () => {
             </thead>
             <tbody>
               {userEvents.map((event) => (
+                <tr key={event.eventId}>
+                  <td>{event.title}</td>
+                  <td>{new Date(event.eventDate).toLocaleDateString()}</td>
+                  <td>{event.startTime}</td>
+                  <td>{event.endTime}</td>
+                  <td>
+                    <button onClick={() => handleEventClick(event.eventId)}>View Details</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Aangepaste volgorde: Past Events komt nu na Attended Events */}
+        <div style={{ flex: 1, marginLeft: '20px' }}>
+          <h2>Past Events</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Event Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pastEvents.map((event) => (
                 <tr key={event.eventId}>
                   <td>{event.title}</td>
                   <td>{new Date(event.eventDate).toLocaleDateString()}</td>
