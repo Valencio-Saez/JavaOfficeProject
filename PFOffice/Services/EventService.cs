@@ -20,23 +20,23 @@ namespace StarterKit.Services
                 .Include(e => e.Event_Attendances)
                     .ThenInclude(ea => ea.user)
                      .Select(e => new Event
-                {
-                    EventId = e.EventId,
-                    Title = e.Title,
-                    Description = e.Description,
-                    Location = e.Location,
-                    EventDate = e.EventDate,
-                    StartTime = e.StartTime,
-                    EndTime = e.EndTime,
-                    Event_Attendances = e.Event_Attendances.Select(ea => new Event_Attendance
-                    {
-                        Event_AttendanceId = ea.Event_AttendanceId,
-                        Rating = ea.Rating,
-                        Feedback = ea.Feedback,
-                        Event = ea.Event,
-                        user = null
-                    }).ToList()
-                })
+                     {
+                         EventId = e.EventId,
+                         Title = e.Title,
+                         Description = e.Description,
+                         Location = e.Location,
+                         EventDate = e.EventDate,
+                         StartTime = e.StartTime,
+                         EndTime = e.EndTime,
+                         Event_Attendances = e.Event_Attendances.Select(ea => new Event_Attendance
+                         {
+                             Event_AttendanceId = ea.Event_AttendanceId,
+                             Rating = ea.Rating,
+                             Feedback = ea.Feedback,
+                             Event = ea.Event,
+                             user = null
+                         }).ToList()
+                     })
                 .ToListAsync();
         }
 
@@ -198,7 +198,7 @@ namespace StarterKit.Services
 
             return eventEntity.Event_Attendances;
         }
-        
+
         public async Task<bool> DeleteAttendanceAsync(int eventId, int userId)
         {
             var eventAttendance = await _context.Event_Attendance

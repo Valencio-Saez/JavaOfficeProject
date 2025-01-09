@@ -5,11 +5,12 @@ import AccessibilityOptions from './AccessibilityOptions';
 interface Event {
   eventId: number;
   title: string;
-  description: string;
+  description: string;  
   location: string;
   eventDate: string;
   startTime: string;
   endTime: string;
+  reviews: { userName: string, review: string }[]; // Assuming reviews are in this structure
 }
 
 const EventDetailsHome = () => {
@@ -19,6 +20,8 @@ const EventDetailsHome = () => {
   const [error, setError] = useState<string | null>(null);
   const [isUserAttending, setIsUserAttending] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [review, setReview] = useState('');
+  const [reviews, setReviews] = useState<{ userName: string, review: string }[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,6 +65,7 @@ const EventDetailsHome = () => {
       const data = await response.json();
       console.log('Event details response:', data); 
       setEvent(data);
+      setReviews(data.reviews || []); // Assuming reviews are part of the event data
     } catch (error) {
       console.error('Error fetching event details:', error);
       setError('Failed to fetch event details');
@@ -137,6 +141,62 @@ const EventDetailsHome = () => {
     }
   };
 
+
+
+
+
+
+
+  
+  const handleReviewSubmit = async () => {
+    if (!review.trim()) {
+      alert('Please write a review before submitting.');
+      return;
+    }
+  
+    try {
+      // Check the eventId value
+      console.log('Submitting review for eventId:', eventId);
+  
+      const response = await fetch(`/api/v1/Event/${eventId}/addReview`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({
+          review,
+        }),
+      });
+  
+      if (!response.ok) {
+        // Improved error handling
+        let errorMessage = 'Failed to submit review';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.message || errorMessage;
+        } catch (err) {
+          console.error('Error parsing JSON response:', err);
+        }
+        throw new Error(errorMessage);
+      }
+  
+      const data = await response.json();
+      console.log('Review submission response:', data); // Log the response data
+  
+      alert('Review submitted successfully');
+  
+      // Assuming the response includes the username and review text
+      setReviews((prevReviews) => [...prevReviews, { userName: data.userName, review: review }]);
+  
+      // Clear the review input after submission
+      setReview('');
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      alert((error as Error).message);
+    }
+  };
+  
   const goBack = () => {
     navigate(-1);
   };
@@ -169,6 +229,35 @@ const EventDetailsHome = () => {
           <button onClick={handleAttend}>Attend Event</button>
         )}
       </div>
+
+      <div style={{ marginTop: '30px' }}>
+        <h3>Write a Review</h3>
+        <textarea
+          value={review}
+          onChange={(e) => setReview(e.target.value)}
+          placeholder="Write your review here..."
+          rows={4}
+          style={{ width: '100%' }}
+        />
+        <button onClick={handleReviewSubmit} style={{ marginTop: '10px' }}>
+          Submit Review
+        </button>
+      </div>
+
+      <div style={{ marginTop: '30px' }}>
+        <h3>Reviews</h3>
+        {reviews.length > 0 ? (
+          reviews.map((review, index) => (
+            <div key={index} style={{ marginBottom: '10px' }}>
+              <p><strong>{review.userName}:</strong></p>
+              <p>{review.review}</p>
+            </div>
+          ))
+        ) : (
+          <p>No reviews yet.</p>
+        )}
+      </div>
+
       <AccessibilityOptions />
     </div>
   );

@@ -34,12 +34,17 @@ const AccessibilityOptions: React.FC = () => {
       document.body.classList.toggle('grey-hues');
     };
 
+    const toggleBlackWhiteMode = () => {
+      document.body.classList.toggle('black-white-mode');
+    };
+
     document.getElementById('accessibility-button')?.addEventListener('click', toggleAccessibilityPanel);
     document.getElementById('colorblind-button')?.addEventListener('click', toggleColorBlindMode);
     document.getElementById('largetxt')?.addEventListener('click', toggleLargeText);
     document.getElementById('smalltxt')?.addEventListener('click', toggleSmallText);
     document.getElementById('highcontrast')?.addEventListener('click', toggleHighContrast);
     document.getElementById('greyhues')?.addEventListener('click', toggleGreyHues);
+    document.getElementById('blackwhite')?.addEventListener('click', toggleBlackWhiteMode);
 
     return () => {
       document.getElementById('accessibility-button')?.removeEventListener('click', toggleAccessibilityPanel);
@@ -48,6 +53,7 @@ const AccessibilityOptions: React.FC = () => {
       document.getElementById('smalltxt')?.removeEventListener('click', toggleSmallText);
       document.getElementById('highcontrast')?.removeEventListener('click', toggleHighContrast);
       document.getElementById('greyhues')?.removeEventListener('click', toggleGreyHues);
+      document.getElementById('blackwhite')?.removeEventListener('click', toggleBlackWhiteMode);
     };
   }, []);
 
@@ -62,6 +68,7 @@ const AccessibilityOptions: React.FC = () => {
           <li><button id="smalltxt" className="smalltxt">Toggle Small Text</button></li>
           <li><button id="highcontrast" className="highcontrast">Toggle High Contrast</button></li>
           <li><button id="greyhues" className="greyhues">Grey Hues</button></li>
+          <li><button id="blackwhite" className="blackwhite">Toggle Black and White Mode</button></li>
         </ul>
       </div>
     </div>

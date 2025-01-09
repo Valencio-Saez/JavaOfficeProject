@@ -1,195 +1,299 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\StarterKit.bundle.scp.css",
-      "PackagePath": "staticwebassets\\StarterKit.bundle.scp.css"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/obj/Debug/net8.0/scopedcss/projectbundle/StarterKit.bundle.scp.css",
+      "PackagePath": "staticwebassets/StarterKit.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\css\\AccessibilityOptions.css",
-      "PackagePath": "staticwebassets\\css\\AccessibilityOptions.css"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/css/AccessibilityOptions.css",
+      "PackagePath": "staticwebassets/css/AccessibilityOptions.css"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\images\\portal.jpg",
-      "PackagePath": "staticwebassets\\images\\portal.jpg"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/images/portal.jpg",
+      "PackagePath": "staticwebassets/images/portal.jpg"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\images\\wheelchairicon.png",
-      "PackagePath": "staticwebassets\\images\\wheelchairicon.png"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/images/wheelchairicon.png",
+      "PackagePath": "staticwebassets/images/wheelchairicon.png"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.0af71216dc7547a12a09.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.0af71216dc7547a12a09.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.026e9013e47c562d6801.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.026e9013e47c562d6801.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.0af71216dc7547a12a09.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.0af71216dc7547a12a09.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.026e9013e47c562d6801.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.026e9013e47c562d6801.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.22416fd9b99229c197cb.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.22416fd9b99229c197cb.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.036dfcc380be2348cb96.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.036dfcc380be2348cb96.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.22416fd9b99229c197cb.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.22416fd9b99229c197cb.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.036dfcc380be2348cb96.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.036dfcc380be2348cb96.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.5301428ac125d50e33ec.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.5301428ac125d50e33ec.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.03a9ac1e301734999494.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.03a9ac1e301734999494.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.5301428ac125d50e33ec.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.5301428ac125d50e33ec.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.03a9ac1e301734999494.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.03a9ac1e301734999494.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.67a1830072d842730cf4.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.67a1830072d842730cf4.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.2cb2c72be39127890a3a.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.2cb2c72be39127890a3a.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.67a1830072d842730cf4.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.67a1830072d842730cf4.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.2cb2c72be39127890a3a.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.2cb2c72be39127890a3a.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.6cd012b7537b6d4c9c55.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.6cd012b7537b6d4c9c55.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.33600ac1af2319559129.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.33600ac1af2319559129.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.6cd012b7537b6d4c9c55.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.6cd012b7537b6d4c9c55.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.33600ac1af2319559129.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.33600ac1af2319559129.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.75f2faaf45ae3e4131de.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.75f2faaf45ae3e4131de.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.493c0ec864e4d648dd81.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.493c0ec864e4d648dd81.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.75f2faaf45ae3e4131de.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.75f2faaf45ae3e4131de.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.493c0ec864e4d648dd81.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.493c0ec864e4d648dd81.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.77dfc58d299309f5afa8.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.77dfc58d299309f5afa8.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.4e10e29ca46a53b56cdd.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.4e10e29ca46a53b56cdd.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.77dfc58d299309f5afa8.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.77dfc58d299309f5afa8.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.4e10e29ca46a53b56cdd.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.4e10e29ca46a53b56cdd.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.b6c7fd479bac6ba5b283.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.b6c7fd479bac6ba5b283.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.4ec707682d3f2a530274.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.4ec707682d3f2a530274.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.b6c7fd479bac6ba5b283.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.b6c7fd479bac6ba5b283.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.4ec707682d3f2a530274.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.4ec707682d3f2a530274.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.b6dcd51f269a26d98e9c.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.b6dcd51f269a26d98e9c.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.5248745b5c9053c4f0fb.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.5248745b5c9053c4f0fb.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.b6dcd51f269a26d98e9c.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.b6dcd51f269a26d98e9c.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.5248745b5c9053c4f0fb.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.5248745b5c9053c4f0fb.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.bc9f2f25f3629e7d52a6.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.bc9f2f25f3629e7d52a6.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.53ca4ca0ca2a95e22ef1.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.53ca4ca0ca2a95e22ef1.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.bc9f2f25f3629e7d52a6.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.bc9f2f25f3629e7d52a6.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.53ca4ca0ca2a95e22ef1.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.53ca4ca0ca2a95e22ef1.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.c29046c23fcb915885cd.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.c29046c23fcb915885cd.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.5e596040ddd3853d5fdf.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.5e596040ddd3853d5fdf.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.c29046c23fcb915885cd.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.c29046c23fcb915885cd.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.5e596040ddd3853d5fdf.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.5e596040ddd3853d5fdf.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.c55c8bc0335fa92eef73.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.c55c8bc0335fa92eef73.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.66443ceb3d6f429933d8.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.66443ceb3d6f429933d8.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.c55c8bc0335fa92eef73.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.c55c8bc0335fa92eef73.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.66443ceb3d6f429933d8.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.66443ceb3d6f429933d8.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.c71ae1bbd4c1b1a6098f.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.c71ae1bbd4c1b1a6098f.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.70c26772a55f0e3dd72b.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.70c26772a55f0e3dd72b.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.c71ae1bbd4c1b1a6098f.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.c71ae1bbd4c1b1a6098f.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.70c26772a55f0e3dd72b.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.70c26772a55f0e3dd72b.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.d20fc8af8a41da865b75.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.d20fc8af8a41da865b75.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.71d6976d5e4648d410ae.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.71d6976d5e4648d410ae.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.d20fc8af8a41da865b75.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.d20fc8af8a41da865b75.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.71d6976d5e4648d410ae.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.71d6976d5e4648d410ae.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.df41280c87b5a99dfd68.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.df41280c87b5a99dfd68.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.732723a6ba43f00edd92.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.732723a6ba43f00edd92.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.df41280c87b5a99dfd68.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.df41280c87b5a99dfd68.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.732723a6ba43f00edd92.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.732723a6ba43f00edd92.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.e659a49d57e79f3d13f1.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.e659a49d57e79f3d13f1.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.77fd5cac33856322a33f.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.77fd5cac33856322a33f.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.e659a49d57e79f3d13f1.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.e659a49d57e79f3d13f1.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.77fd5cac33856322a33f.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.77fd5cac33856322a33f.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.e6cb3d82a47fe60e0abb.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.e6cb3d82a47fe60e0abb.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.78a7b34bc5558fd4b17b.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.78a7b34bc5558fd4b17b.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.e6cb3d82a47fe60e0abb.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.e6cb3d82a47fe60e0abb.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.78a7b34bc5558fd4b17b.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.78a7b34bc5558fd4b17b.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.f7fcc92f7ab7b8d61a3f.hot-update.js",
-      "PackagePath": "staticwebassets\\js\\app.f7fcc92f7ab7b8d61a3f.hot-update.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.7a8aaa88139b950cb13e.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.7a8aaa88139b950cb13e.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\app.f7fcc92f7ab7b8d61a3f.hot-update.json",
-      "PackagePath": "staticwebassets\\js\\app.f7fcc92f7ab7b8d61a3f.hot-update.json"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.7a8aaa88139b950cb13e.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.7a8aaa88139b950cb13e.hot-update.json"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\js\\main.js",
-      "PackagePath": "staticwebassets\\js\\main.js"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.a281fbccc01fc8a788f4.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.a281fbccc01fc8a788f4.hot-update.js"
     },
     {
-      "Id": "C:\\Users\\31633\\OneDrive - Hogeschool Rotterdam\\Documenten\\GitHub\\JavaOfficeProject\\PFOffice\\wwwroot\\lib\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap.min.css"
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.a281fbccc01fc8a788f4.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.a281fbccc01fc8a788f4.hot-update.json"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.StarterKit.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.b16e14da488f170fdb60.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.b16e14da488f170fdb60.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.b16e14da488f170fdb60.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.b16e14da488f170fdb60.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.c38708432a0eec8a9e4b.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.c38708432a0eec8a9e4b.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.c38708432a0eec8a9e4b.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.c38708432a0eec8a9e4b.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.c4444e8d16cdf633c1fe.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.c4444e8d16cdf633c1fe.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.c4444e8d16cdf633c1fe.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.c4444e8d16cdf633c1fe.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.c5be6965e9c43cd4da42.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.c5be6965e9c43cd4da42.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.c5be6965e9c43cd4da42.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.c5be6965e9c43cd4da42.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.d85152816ea95464cd0c.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.d85152816ea95464cd0c.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.d85152816ea95464cd0c.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.d85152816ea95464cd0c.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.db15534662283352c1a4.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.db15534662283352c1a4.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.db15534662283352c1a4.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.db15534662283352c1a4.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.e3c96293aeb935ac8306.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.e3c96293aeb935ac8306.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.e3c96293aeb935ac8306.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.e3c96293aeb935ac8306.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.eb891e6ba018a425f711.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.eb891e6ba018a425f711.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.eb891e6ba018a425f711.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.eb891e6ba018a425f711.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.eeb84ef2f7e159551d7f.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.eeb84ef2f7e159551d7f.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.eeb84ef2f7e159551d7f.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.eeb84ef2f7e159551d7f.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.f6b4d2dcc86084d4bf74.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.f6b4d2dcc86084d4bf74.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.f6b4d2dcc86084d4bf74.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.f6b4d2dcc86084d4bf74.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.f7eb7f1dd8242f256ee9.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.f7eb7f1dd8242f256ee9.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.f7eb7f1dd8242f256ee9.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.f7eb7f1dd8242f256ee9.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.fa43e62d90cceb42cf91.hot-update.js",
+      "PackagePath": "staticwebassets/js/app.fa43e62d90cceb42cf91.hot-update.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/app.fa43e62d90cceb42cf91.hot-update.json",
+      "PackagePath": "staticwebassets/js/app.fa43e62d90cceb42cf91.hot-update.json"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/js/main.js",
+      "PackagePath": "staticwebassets/js/main.js"
+    },
+    {
+      "Id": "/Users/valenciomuskiet/GithubProjects/JavaOfficeProject/PFOffice/wwwroot/lib/bootstrap.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap.min.css"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.StarterKit.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.StarterKit.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.StarterKit.props",
       "PackagePath": "build\\StarterKit.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.StarterKit.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.StarterKit.props",
       "PackagePath": "buildMultiTargeting\\StarterKit.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.StarterKit.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.StarterKit.props",
       "PackagePath": "buildTransitive\\StarterKit.props"
     }
   ],
